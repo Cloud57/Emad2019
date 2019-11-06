@@ -1,5 +1,7 @@
 {
   "name": "emad",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
