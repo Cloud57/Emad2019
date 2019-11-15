@@ -1,9 +1,58 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>register</ion-title>
-  </ion-toolbar>
+  
+      <ion-button class="return"  icon-only>
+          <ion-icon name="arrow-round-back"></ion-icon>
+        </ion-button>
+
 </ion-header>
 
 <ion-content>
+    <img src="../../assets/img/profilo.png" alt="logo">
+   
+    <p text-center><a href="" >Inserisci immagine profilo</a></p>
+
+  
+    <form  class="reg" #form="ngForm" (ngSubmit)="Reg(form)" method="post">
+        <ion-item>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input ngModel type="nome" name="nome"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label position="floating">Cognome</ion-label>
+          <ion-input ngModel type="cognome" name="cognome"></ion-input>
+        </ion-item>
+
+      
+        <ion-item>
+          <ion-label position="floating">Città</ion-label>
+          <ion-input ngModel type="citta" name="citta"></ion-input>
+        </ion-item>
+          
+        
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input ngModel type="email" name="email"></ion-input>
+        </ion-item>
+          
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input ngModel type="password" name="password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Tipologia Utente</ion-label>
+            <ion-select interface="popover">
+              <ion-select-option value="Med">Medico</ion-select-option>
+              <ion-select-option value="Ter">Terapista</ion-select-option>
+              <ion-select-option value="Pz">Paziente</ion-select-option>
+              <ion-select-option value="Care">Caregiver</ion-select-option>
+              
+            </ion-select>
+          </ion-item>
+          <ion-button type="submit"  >Registrati</ion-button>
+        
+    </form>
+
 
 </ion-content>

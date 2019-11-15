@@ -77,3 +77,24 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+ion-button{
+  
+  --background:#202040;
+  margin-top:5%;
+  
+
+  width: 100%;
+
+}
+ion-content{
+  background-color: #292152;
+  background-size: cover;
+  text-align: center;
+
+  //margin-right: 20%;
+  //margin-left: 20%;
+}
+.return{
+  width:2%;
+}
+
