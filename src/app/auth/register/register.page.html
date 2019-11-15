@@ -1,9 +1,9 @@
 <ion-header>
-  
-      <ion-button class="return"  icon-only>
-          <ion-icon name="arrow-round-back"></ion-icon>
-        </ion-button>
-
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -12,33 +12,37 @@
     <p text-center><a href="" >Inserisci immagine profilo</a></p>
 
   
-    <form  class="reg" #form="ngForm" (ngSubmit)="Reg(form)" method="post">
-        <ion-item>
-          <ion-label position="floating">Nome</ion-label>
-          <ion-input ngModel type="nome" name="nome"></ion-input>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label position="floating">Cognome</ion-label>
-          <ion-input ngModel type="cognome" name="cognome"></ion-input>
-        </ion-item>
+    <form #form="ngForm"  method="post">
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+        
+       
+      <ion-item>
+        <ion-label position="floating">Cognome</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
 
       
+      <ion-item>
+        <ion-label position="floating">Città</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+          
+        
         <ion-item>
-          <ion-label position="floating">Città</ion-label>
-          <ion-input ngModel type="citta" name="citta"></ion-input>
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input></ion-input>
         </ion-item>
           
         
         <ion-item>
-          <ion-label position="floating">Email</ion-label>
-          <ion-input ngModel type="email" name="email"></ion-input>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input></ion-input>
         </ion-item>
-          
-        <ion-item>
-          <ion-label position="floating">Password</ion-label>
-          <ion-input ngModel type="password" name="password"></ion-input>
-        </ion-item>
+
 
         <ion-item>
             <ion-label>Tipologia Utente</ion-label>

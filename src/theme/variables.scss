@@ -98,3 +98,22 @@ ion-content{
   width:2%;
 }
 
+ion-input{
+  border: 20%;
+  border-color: white;
+ 
+}
+
+form{
+
+  ion-item{
+      border: solid 2px;
+      border-radius: 10px;
+      margin-top:2%;
+      border-color:#8B8B8B;
+      --background: #20203F;
+      margin-left:5%;
+      margin-right: 5%;
+   }
+}
+
