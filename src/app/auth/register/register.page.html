@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-back-button defaultHref="home" (click)="loginPage()"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -15,28 +15,28 @@
   
     <form #form="ngForm"  method="post">
       <ion-item>
-        <ion-input placeholder="Nome"></ion-input>
+        <ion-input placeholder="Nome" type="text"></ion-input>
       </ion-item>
 
         
        
       <ion-item>
-        <ion-input placeholder="Cognome"></ion-input>
+        <ion-input placeholder="Cognome" type="text"></ion-input>
       </ion-item>
 
       
       <ion-item>
-        <ion-input placeholder="Città"></ion-input>
+        <ion-input placeholder="Città" type="text"></ion-input>
       </ion-item>
           
         
         <ion-item>
-          <ion-input placeholder="Email"></ion-input>
+          <ion-input type="email" placeholder="Email"></ion-input>
         </ion-item>
           
         
         <ion-item>
-          <ion-input placeholder="Password"></ion-input>
+          <ion-input type="password" placeholder="Password"></ion-input>
         </ion-item>
 
 

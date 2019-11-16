@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { AlertService } from 'src/app/service/alert.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) {}
 
   ngOnInit() {
+  }
+  loginPage(){
+    this.navCtrl.navigateRoot('/');
   }
 
 }

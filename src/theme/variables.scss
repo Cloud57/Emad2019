@@ -81,12 +81,8 @@ ion-button{
   
   --background:#202040;
   margin-top:5%;
-  width: 100%;
-  border: solid 2px;
-  border-radius: 10px;
-  border-color:#8B8B8B;
-  --background: #20203F;
-  color: #7B7B7B;
+  width: 80%;
+ 
 
 }
 ion-content{
@@ -100,18 +96,10 @@ ion-content{
 .return{
   width:2%;
 }
-ion-label{
-  --color: #7B7B7B;
-  color:#7B7B7B;
-  --ion-text-color:#7B7B7B;
-
-}
 ion-input{
   border: 20%;
   border-color: white;
   
-  
- 
 }
 
 form{
@@ -124,6 +112,10 @@ form{
       --background: #20203F;
       margin-left:5%;
       margin-right: 5%;
+   }
+   button{
+     color: #7B7B7B;
+     --ion-text-color:white;
    }
 }
 
