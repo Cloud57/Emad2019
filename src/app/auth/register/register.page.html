@@ -8,45 +8,41 @@
 
 <ion-content>
     <img src="../../assets/img/profilo.png" alt="logo">
+    <ion-button type="submit" class="profile" >Inserisci immagine profilo</ion-button>
    
-    <p text-center><a href="" >Inserisci immagine profilo</a></p>
+   
 
   
     <form #form="ngForm"  method="post">
       <ion-item>
-        <ion-label position="floating">Nome</ion-label>
-        <ion-input></ion-input>
+        <ion-input placeholder="Nome"></ion-input>
       </ion-item>
 
         
        
       <ion-item>
-        <ion-label position="floating">Cognome</ion-label>
-        <ion-input></ion-input>
+        <ion-input placeholder="Cognome"></ion-input>
       </ion-item>
 
       
       <ion-item>
-        <ion-label position="floating">Città</ion-label>
-        <ion-input></ion-input>
+        <ion-input placeholder="Città"></ion-input>
       </ion-item>
           
         
         <ion-item>
-          <ion-label position="floating">E-mail</ion-label>
-          <ion-input></ion-input>
+          <ion-input placeholder="Email"></ion-input>
         </ion-item>
           
         
         <ion-item>
-            <ion-label position="floating">Password</ion-label>
-            <ion-input></ion-input>
+          <ion-input placeholder="Password"></ion-input>
         </ion-item>
 
 
-        <ion-item>
-            <ion-label>Tipologia Utente</ion-label>
-            <ion-select interface="popover">
+        <ion-item class="utente">
+            <ion-label >Tipologia Utente</ion-label>
+            <ion-select  interface="popover">
               <ion-select-option value="Med">Medico</ion-select-option>
               <ion-select-option value="Ter">Terapista</ion-select-option>
               <ion-select-option value="Pz">Paziente</ion-select-option>
