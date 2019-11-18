@@ -3,8 +3,7 @@
 
 /** Ionic CSS Variables **/
 :root {
-  --ion-background-color:#292152;
-  --ion-text-color:white;
+
  /** /** primary **/
   --ion-color-primary: #292152;
   --ion-color-primary-rgb: 56, 128, 255;
@@ -84,16 +83,10 @@
   --ion-color-facebook-shade: #3b5998;
   --ion-color-facebook-tint: #3b5998;
 }
-ion-button{
-  
-  --background:#202040;
-  margin-top:5%;
-  width: 80%;
- 
 
-}
 ion-content{
-  background-color: #292152;
+  --ion-background-color:#292152;
+  --ion-text-color:white;
   background-size: cover;
   text-align: center;
 
