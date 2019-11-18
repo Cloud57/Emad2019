@@ -6,7 +6,7 @@
   --ion-background-color:#292152;
   --ion-text-color:white;
  /** /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #292152;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -76,6 +76,13 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-color-facebook: #3b5998;
+  --ion-color-facebook-rgb: 105,187,123;
+  --ion-color-facebook-contrast: #ffffff;
+  --ion-color-facebook-contrast-rgb: 255,255,255;
+  --ion-color-facebook-shade: #3b5998;
+  --ion-color-facebook-tint: #3b5998;
 }
 ion-button{
   
@@ -117,5 +124,18 @@ form{
      color: #7B7B7B;
      --ion-text-color:white;
    }
-}
+  }
+   .grayText{
+     color: #7B7B7B;
+   }
+
+   
+   .roundButton{
+    border: solid 1px;
+    border-radius: 25px;
+    border-color:#8B8B8B;
+    --background: #202040;
+
+ }
+
 
