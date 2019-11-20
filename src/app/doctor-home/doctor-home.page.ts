@@ -20,6 +20,6 @@ export class DoctorHomePage implements OnInit {
       .open();
   }
   inserisciPaziente() {
-    this.navCtrl.navigateRoot('/nuovoPaziente/tabs');
+    this.navCtrl.navigateRoot('/tabs/tab1');
   }
 }

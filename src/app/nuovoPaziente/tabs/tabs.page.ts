@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.page.html',
@@ -11,5 +12,9 @@ export class TabsPage implements OnInit {
 
   ngOnInit() {
   }
+  ionChange(myTabs) {
+    console.log(myTabs.getSelected());
+}
+
 
 }
