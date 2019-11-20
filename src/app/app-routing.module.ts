@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { TabsPage } from './nuovoPaziente/tabs/tabs.page';
+import { from } from 'rxjs';
 
 const routes: Routes = [
   {
@@ -9,6 +11,9 @@ const routes: Routes = [
   { path: 'register', loadChildren: './auth/register/register.module#RegisterPageModule' },
   { path: 'doctor-home', loadChildren: './doctor-home/doctor-home.module#DoctorHomePageModule' },
   { path: 'doctor-home', loadChildren: './doctor-home/doctor-home.module#DoctorHomePageModule' },
+  {path: '', loadChildren: './nuovoPaziente/tabs/tabs.module#TabsPageModule'},
+  { path: '', loadChildren: './nuovoPaziente/tabs/tabs.module#TabsPageModule'},
+
 ];
 @NgModule({
   imports: [

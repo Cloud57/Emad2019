@@ -16,5 +16,8 @@ export class RegisterPage implements OnInit {
   loginPage(){
     this.navCtrl.navigateRoot('/');
   }
+  HomePage() {
+    this.navCtrl.navigateRoot('/doctor-home');
+  }
 
 }

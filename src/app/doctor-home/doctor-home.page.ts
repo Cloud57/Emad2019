@@ -19,4 +19,7 @@ export class DoctorHomePage implements OnInit {
     document.querySelector('ion-menu-controller')
       .open();
   }
+  inserisciPaziente() {
+    this.navCtrl.navigateRoot('/nuovoPaziente/tabs');
+  }
 }

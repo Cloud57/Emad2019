@@ -132,6 +132,11 @@ form{
  }
  ion-toolbar{
    --background: #292152;
+   img{
+    float: right;
+    width: 50px;
+    margin-right: 2%;
+ }
  }
  ion-back-button{
   color: light;
@@ -139,4 +144,26 @@ form{
  ion-menu-button{
   color: #FFFFFF;
 }
+.menuLaterale{
+  align-content: center;
+  img{
+      margin-right: 10%;
+  }
+  ion-ist{
+      background: black;
+  }
+  }
 
+  ion-tabs{
+   ion-label{
+    // font-size: 150%;
+     color: white
+     
+   }
+
+   ion-tab-button{
+    --color:white;
+   }
+
+
+  }

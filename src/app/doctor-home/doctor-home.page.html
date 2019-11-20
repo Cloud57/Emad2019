@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+      <ion-title >Lista Pazienti</ion-title>
 
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
@@ -43,14 +44,16 @@
   
   <ion-router-outlet id="content1" main></ion-router-outlet>
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button color="light">
+    <ion-fab-button color="light" (click)="inserisciPaziente()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
+
+    
   </ion-fab>
 
   <ion-content>
 
-      <ion-title>Lista Pazienti</ion-title>
+      
      
   </ion-content>
 
