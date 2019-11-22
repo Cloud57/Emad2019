@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'doctor-home', loadChildren: './doctor-home/doctor-home.module#DoctorHomePageModule' },
   {path: '', loadChildren: './nuovoPaziente/tabs/tabs.module#TabsPageModule'},
   { path: '', loadChildren: './nuovoPaziente/tabs/tabs.module#TabsPageModule'},
+  { path: 'new-task', loadChildren: './new-task/new-task.module#NewTaskPageModule' },
 
 ];
 @NgModule({

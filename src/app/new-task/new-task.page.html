@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="end" type="submit" shape="round" class="roundButton">Crea</ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <img src="../../assets/img/info.png" alt="">
+
+  <ion-button type="submit" shape="round" class="roundButton">Inserici un icona</ion-button>
+  <form #form="ngForm" method="post">
+    <ion-label>Task</ion-label>
+    <ion-item>
+      <ion-input placeholder='Task' type="text"></ion-input>
+    </ion-item>
+    <ion-label>Descrizione</ion-label>
+    <ion-item>
+      <ion-textarea placeholder="Inserisci una descrizione..." type="text"></ion-textarea>
+    </ion-item>
+    <ion-label>Durata</ion-label>
+    <ion-item class="durata">
+        
+      <ion-input type="text" placeholder="Minuti"></ion-input>
+    </ion-item>
+    <ion-label>Inserisci materiale</ion-label>
+    
+    <div class="round-button"><div class="round-button-circle"><a>+</a></div></div>
+  
+    
+  </form>
+
+</ion-content>
