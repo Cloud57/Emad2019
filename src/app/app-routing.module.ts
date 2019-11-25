@@ -14,6 +14,8 @@ const routes: Routes = [
   {path: '', loadChildren: './nuovoPaziente/tabs/tabs.module#TabsPageModule'},
   { path: '', loadChildren: './nuovoPaziente/tabs/tabs.module#TabsPageModule'},
   { path: 'new-task', loadChildren: './new-task/new-task.module#NewTaskPageModule' },
+  { path: 'com-problema', loadChildren: './paziente/com-problema/com-problema.module#ComProblemaPageModule' },
+  { path: '', loadChildren: './paziente/com-problema/new-com-problema/new-com-problema.module#NewComProblemaPageModule' },
 
 ];
 @NgModule({
