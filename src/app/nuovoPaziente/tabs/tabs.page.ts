@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-
+import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.page.html',
@@ -8,12 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
   }
   ionChange(myTabs) {
     console.log(myTabs.getSelected());
+}
+homePage() {
+  this.navCtrl.navigateRoot('/doctor-home');
 }
 
 

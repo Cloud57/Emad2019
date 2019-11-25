@@ -22,4 +22,10 @@ export class DoctorHomePage implements OnInit {
   inserisciPaziente() {
     this.navCtrl.navigateRoot('/tabs/tab1');
   }
+  ComProblema() {
+    this.navCtrl.navigateRoot('/com-problema');
+  }
+  homeDoctor() {
+    this.navCtrl.navigateRoot('/doctor-home');
+  }
 }
