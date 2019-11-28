@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-new-com-problema',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewComProblemaPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
   }
-
+  comProblemaPage() {
+    this.navCtrl.navigateRoot('/com-problema');
+  }
 }
