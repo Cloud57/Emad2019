@@ -1,14 +1,15 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button color="light" defaultHref="home" (click)="loginPage()"></ion-back-button>
+      <ion-back-button color="secondary" defaultHref="home" (click)="loginPage()"></ion-back-button>
     </ion-buttons>
+    <ion-title>Registrazione</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <img src="../../assets/img/profilo.png" alt="logo">
-    <ion-button type="submit" class="profile" >Inserisci immagine profilo</ion-button>
+    <img src="../../assets/img/profilo.png" alt="logo"> <br/>
+    <ion-button type="submit" class="spacingButton" >Inserisci immagine profilo</ion-button>
    
    
 
@@ -50,7 +51,7 @@
               
             </ion-select>
           </ion-item>
-          <ion-button type="submit" shape="round" class="roundButton"(click)="HomePage()" >Registrati</ion-button>
+          <ion-button type="submit" class="spacingButton" (click)="HomePage()" >Registrati</ion-button>
         
     </form>
 

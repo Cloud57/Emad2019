@@ -1,4 +1,8 @@
-
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title >THEA</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content padding>
   <img src="../../assets/img/logo.jpg" alt="logo">
@@ -14,16 +18,16 @@
     <ion-item>
       <ion-input  type="password" placeholder="Password" ></ion-input>
     </ion-item>
-    <p text-center class="grayText">Forgot Password?</p>
+    <p text-center class="grayText">Password dimenticata?</p>
 
 </form>
 
-<ion-button type="submit" shape="round" class="roundButton">Login</ion-button>
-
+<ion-button type="submit">Login</ion-button>
+  <br/>
   
-  <ion-button shape="round" (click)="registerPage()" class="roundButton facebookButton"><ion-icon name="logo-facebook"></ion-icon>
+  <ion-button  (click)="registerPage()" class="facebookButton"><ion-icon name="logo-facebook"></ion-icon>
        Facebook
       </ion-button>
   
-  <p text-center (click)="registerPage()">Don't have a account? Registrati</p>
+  <p text-center (click)="registerPage()">Non hai un account? Registrati</p>
 </ion-content>
