@@ -80,10 +80,16 @@ form{
      color: white
      
    }
-
+   ion-title{
+    font-size: 150%;
+    color: #f1f1f1;
+    text-align: center;
+}
    ion-tab-button{
     --color:white;
+    --color-selected:white;
+       
+      background-color:#0D47A1; 
    }
-
-
+   
   }
