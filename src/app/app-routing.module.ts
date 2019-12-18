@@ -10,13 +10,14 @@ const routes: Routes = [
   },
   { path: 'register', loadChildren: './auth/register/register.module#RegisterPageModule' },
   { path: 'doctor-home', loadChildren: './doctor-home/doctor-home.module#DoctorHomePageModule' },
-  { path: 'doctor-home', loadChildren: './doctor-home/doctor-home.module#DoctorHomePageModule' },
   { path: '', loadChildren: './nuovoPaziente/tabs/tabs.module#TabsPageModule'},
   { path: '', loadChildren: './nuovoPaziente/tabs/tabs.module#TabsPageModule'},
   { path: 'new-task', loadChildren: './new-task/new-task.module#NewTaskPageModule' },
   { path: 'com-problema', loadChildren: './paziente/com-problema/com-problema.module#ComProblemaPageModule' },
   { path: '', loadChildren: './paziente/com-problema/new-com-problema/new-com-problema.module#NewComProblemaPageModule' },
   { path: '', loadChildren: './paziente/task/tabs-task/tabs-task.module#TabsTaskPageModule' },
+  { path: 'paziente-home', loadChildren: './paziente-home/paziente.module#PazientePageModule' },
+
 
 ];
 @NgModule({
