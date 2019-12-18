@@ -1,4 +1,5 @@
 <ion-header>
+  <!--toolbar-->
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
@@ -6,7 +7,7 @@
     <ion-grid>
       <ion-row>
           
-          <ion-title style="text-align:center;" >Lista Pazienti</ion-title>
+          <ion-title style="text-align:center;" >Allenaza</ion-title>
           <img src="../../assets/img/profilo.png">
       </ion-row>
        
@@ -15,6 +16,7 @@
 </ion-header>
 
 <ion-content>
+  <!--menu-->
   <ion-menu contentId="content1" side="start">
     <ion-header>
       <ion-toolbar color="primary">
@@ -32,7 +34,7 @@
            
           Alleanza
         </ion-item>
-        <ion-item class="custom-item-nav"  menu-close (click)="ComProblema()">
+        <ion-item class="custom-item-nav"  menu-close href="alleanza">
             
           Comportamento
         </ion-item>
@@ -44,21 +46,49 @@
       </ion-list>
     </ion-content>
   </ion-menu>
-
+  <ion-router-outlet id="content1" main></ion-router-outlet>
+  <!--page content-->
 <ion-content>
-<ion-grid>
-  <ion-row>
-    <ion-col align-self: center>  
-      <ion-card class="card">
-        <ion-card-header>
-          <ion-card-title>Martina Bianchi</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-    </ion-card>
-  </ion-col> 
-  </ion-row>
-</ion-grid>
+  
+  <ion-list>
+    <ion-item class="item">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <img src="../../assets/img/martina.png">
+          </ion-col>
+          <ion-col pull="3" >
+            <h3>Martina Bianchi</h3>
+            <p>
+              Terapista <br>
+              Tel: 3334546657 
+            </p>
+          </ion-col>
+          <ion-col  push="3">
+            <img src="../../assets/img/whatsapp.png" height="50" width="50" >
+          </ion-col>
+        </ion-row>
+     </ion-grid>  
+    </ion-item>
+    <ion-item class="item">
+      <ion-grid>
+        <ion-row>
+          <ion-col >
+            <img src="../../assets/img/francesco.png" >
+          </ion-col>
+          <ion-col pull="3">
+            <h3>Francesco Cascone</h3>
+            <p>Medico <br>
+               Tel:3336644433
+            </p>
+          </ion-col>
+          <ion-col push="3">
+            <img src="../../assets/img/whatsapp.png" height="50" width="50" >
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    
+  </ion-list>
+
 </ion-content>
