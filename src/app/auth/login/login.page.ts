@@ -34,6 +34,10 @@ export class LoginPage implements OnInit {
   loginPage(){
     this.navCtrl.navigateRoot('/');
   }
+
+  goHome() {
+    this.navCtrl.navigateRoot('/paziente-home');
+  }
   login(form: NgForm) {
     this.authService.login(form.value.email, form.value.password).subscribe(
       data => {
