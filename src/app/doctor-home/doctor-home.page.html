@@ -16,6 +16,7 @@
 
 
 <ion-content>
+  <!--menu-->
   <ion-menu contentId="content1" side="start">
     <ion-header>
       <ion-toolbar color="primary">
@@ -45,15 +46,16 @@
       </ion-list>
     </ion-content>
   </ion-menu>
-  
+  <!--page content-->
   <ion-router-outlet id="content1" main></ion-router-outlet>
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button color="light" (click)="inserisciPaziente()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
+  
 
-    
-  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="inserisciPaziente()">
+      <ion-icon name="add" color="secondary" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>  
+ 
 
   <ion-content>
 
