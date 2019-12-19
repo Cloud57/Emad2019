@@ -1,4 +1,4 @@
-import { UiComponentsModule } from './../ui-components/ui-components.module';
+import { UiComponentsModule } from '../../../../genericPackage/ui-components/ui-components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -6,12 +6,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PazientePage } from './paziente.page';
+import { MembroAlleanzaPage } from './membro-alleanza.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: PazientePage
+    component: MembroAlleanzaPage
   }
 ];
 
@@ -21,8 +21,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     UiComponentsModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes)
   ],
-  declarations: [PazientePage]
+  declarations: [MembroAlleanzaPage]
 })
-export class PazientePageModule {}
+export class MembroAlleanzaPageModule {}

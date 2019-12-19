@@ -1,5 +1,3 @@
-import { UiComponentsModule } from './ui-components/ui-components.module';
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
