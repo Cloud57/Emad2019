@@ -16,36 +16,7 @@
 </ion-header>
 
 <ion-content>
-  <!--menu-->
-  <ion-menu contentId="content1" side="start">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title >Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="menuLaterale">
-       
-      <ion-list>
-        <ion-item class="custom-item-nav" menu-close href="doctor-home">
-          
-          Home
-        </ion-item>
-        <ion-item class="custom-item-nav"  menu-close href="new-task">
-           
-          Alleanza
-        </ion-item>
-        <ion-item class="custom-item-nav"  menu-close href="alleanza">
-            
-          Comportamento
-        </ion-item>
-        <ion-item class="custom-item-nav"  menu-close href="">
-            
-          Task
-        </ion-item>
-        
-      </ion-list>
-    </ion-content>
-  </ion-menu>
+ <app-ion-menu></app-ion-menu>
   <ion-router-outlet id="content1" main></ion-router-outlet>
   <!--page content-->
 <ion-content>
@@ -80,7 +51,7 @@
             <img src="../../assets/img/francesco.png" >
           </ion-col>
           <ion-col size="8">
-            <ion-label>>rancesco Cascone</ion-label>
+            <ion-label>Francesco Cascone</ion-label>
             <p>Medico <br>
                Tel:3336644433
             </p>
@@ -96,8 +67,8 @@
     
   </ion-list>
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button color="primary">
-    <ion-icon name="add" color="primary" ></ion-icon>
+  <ion-fab-button color="primary" href="">
+    <ion-icon name="add" color="secondary" ></ion-icon>
   </ion-fab-button>
 </ion-fab>
 </ion-content>

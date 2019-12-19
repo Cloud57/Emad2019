@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: '', loadChildren: './paziente/task/tabs-task/tabs-task.module#TabsTaskPageModule' },
   { path: 'alleanza', loadChildren: './alleanza/alleanza.module#AlleanzaPageModule' },
   { path: 'paziente-home', loadChildren: './paziente-home/paziente.module#PazientePageModule' },
+  { path: 'membro-alleanza', loadChildren: './alleanza/membro-alleanza/membro-alleanza.module#MembroAlleanzaPageModule' },
 
 
 ];
