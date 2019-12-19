@@ -14,39 +14,9 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-  <!--menu-->
-  <ion-menu contentId="content1" side="start">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title >Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="menuLaterale">
-       
-      <ion-list>
-        <ion-item class="custom-item-nav" menu-close href="doctor-home">
-          
-          Home
-        </ion-item>
-        <ion-item class="custom-item-nav"  menu-close href="new-task">
-           
-          Alleanza
-        </ion-item>
-        <ion-item class="custom-item-nav"  menu-close (click)="ComProblema()">
-            
-          Comportamento
-        </ion-item>
-        <ion-item class="custom-item-nav"  menu-close href="">
-            
-          Task
-        </ion-item>
-        
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-  <!--page content-->
+  <app-ion-menu></app-ion-menu>
+  
   <ion-router-outlet id="content1" main></ion-router-outlet>
   
 
