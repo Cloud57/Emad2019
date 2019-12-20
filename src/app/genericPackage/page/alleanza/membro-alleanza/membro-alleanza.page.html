@@ -15,22 +15,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
 <app-ion-menu></app-ion-menu>
 <ion-router-outlet id="content1" main></ion-router-outlet>
 
 <!--form-->
-<form #form="ngForm" method="post" name="newMember" class="form">
-  <ion-label>Nome</ion-label>
-  <ion-item>
-    <ion-input placeholder='Inserisci nome' type="text"></ion-input>
-  </ion-item>
-  <ion-label>Cognome</ion-label>
-  <ion-item>
-    <ion-input placeholder='Inserisci Cognome' type="text"></ion-input>
-  </ion-item>
+<form #form="ngForm" method="post" name="newMember" >
   
+  <ion-list >  
+    <ion-button small color="primary"  float-end> Save</ion-button>
+    <ion-item style="margin-top: 50px;">
+        <ion-input name="nome" placeholder="nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input name="cognome" placeholder="cognome"></ion-input>
+      </ion-item>
 
-  
+      <ion-item>
+        <ion-label fixed color="placeholder">Foto</ion-label>
+        <ion-input type="file"  id="foto"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="placeholder">Tipologia Utente</ion-label>
+        <ion-select  interface="popover">
+          <ion-select-option value="Med">Medico</ion-select-option>
+          <ion-select-option value="Ter">Terapista</ion-select-option>
+          <ion-select-option value="Care">Caregiver</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
 </form>
 </ion-content>
