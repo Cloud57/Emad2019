@@ -1,3 +1,4 @@
+import { UiComponentsModule } from './../../../genericPackage/ui-components/ui-components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    UiComponentsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [NewTaskPage]
