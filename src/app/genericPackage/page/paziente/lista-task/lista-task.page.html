@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+
+        <ion-title style="text-align:center;">Lista Task</ion-title>
+        <img src="../../assets/img/profilo.png">
+      </ion-row>
+
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-ion-menu></app-ion-menu>
+  
+<ion-searchbar placeholder="Ricerca Task"></ion-searchbar>
+
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" 
+      size-xs="6" 
+      size-sm="6" 
+      size-md="4" 
+      size-lg="3">
+        <ion-card class="active">
+          <ion-card-title>
+            <ion-icon name="radio-button-on" color="success"></ion-icon>
+
+          </ion-card-title>
+         
+          
+          <ion-card-content>
+            <ion-img src="https://image.freepik.com/icone-gratis/lavatrice_318-1619.jpg"></ion-img>
+
+            Lavatrice
+            
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" 
+      size-xs="6" 
+      size-sm="6" 
+      size-md="4" 
+      size-lg="3">
+        <ion-card>
+          <ion-card-content>
+            <ion-img src="https://image.freepik.com/icone-gratis/lavatrice_318-1619.jpg"></ion-img>
+
+            Aspirapolvere
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" 
+      size-xs="6" 
+      size-sm="6" 
+      size-md="4" 
+      size-lg="3">
+        <ion-card>
+          <ion-card-content>
+            <ion-img src="https://image.freepik.com/icone-gratis/lavatrice_318-1619.jpg"></ion-img>
+
+          Lavare i denti
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
