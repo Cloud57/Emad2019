@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { EnvService } from './env.service';
 
 @Injectable({
@@ -10,7 +10,8 @@ export class RubyApiService {
   constructor(public http: HttpClient, public env:EnvService ) { }
 
   getUsers() {
-    return this.http.get(this.env.API_URL+"/users.json");
-  }
+    var login = {email :"usertwo@gmail.com", password : "123456" };
+    return this.http.post(this.env.API_URL+"/authenticate",JSON.stringify(login), {headers: {'Content-Type': 'application/json'}});
+    }
 
 }
