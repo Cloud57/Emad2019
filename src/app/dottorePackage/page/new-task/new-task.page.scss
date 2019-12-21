@@ -1,59 +1,10 @@
-img{
-    width: 10%;
-    
+.round{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border:  1px solid blue;
+  background-color:#0D47A1;
+  margin-bottom: 1%;
+  color: white;
+  margin-top: 10%;
 }
-.label{
-    --background: transparent;
-    border-color:transparent;
-}
-ion-label{
-    float: left;
-    margin-left:5%;
-     margin-right: 100%;
-     margin-bottom: 1%;
-     margin-top: 1%;
-}
-.durata{
-    margin-left: 5%;
-    width: 100px;
-    float: left;  
-
-}
-
-.round-button {
-    width:5%;
-    margin-left:5%;
-  }
-  .round-button-circle {
-    width: 100%;
-    height:0;
-    padding-bottom: 100%;
-    border-radius: 50%;
-    border:1px solid #7B7B7B;
-    overflow:hidden;
-          
-    background: #20203F;
-    box-shadow: 0 0 3px gray;
-  }
-  .round-button-circle:hover {
-    background:#30588e;
-  }
-  .round-button a {
-    display:block;
-    float:left;
-    width:100%;
-    padding-top:50%;
-    padding-bottom:50%;
-    line-height:1em;
-    margin-top:-0.5em;
-    color:#7B7B7B;
-          
-    text-align:center;
-    
-    font-family:Verdana;
-    font-size:1.2em;
-    font-weight:bold;
-    text-decoration:none;
-  }
-
-

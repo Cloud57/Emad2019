@@ -1,6 +1,17 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-button slot="end" type="submit" shape="round" class="roundButton">Crea</ion-button>
+  <!--toolbar-->
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+          
+          <ion-title style="text-align:center;">Nuovo Task</ion-title>
+          <img src="../../assets/img/profilo.png">
+      </ion-row>
+       
+  </ion-grid> 
   </ion-toolbar>
 </ion-header>
 
@@ -9,10 +20,44 @@
   <app-ion-menu></app-ion-menu>
   <ion-router-outlet id="content1" main></ion-router-outlet>
  
-
-
-  <form #form="ngForm" method="post">
+  <form #form="ngForm" method="post" class="form">
     
+    
+    <ion-list >
+      <ion-button small color="primary"  float-end> Crea</ion-button>
+      <button class="round" float-center>
+        Aggiungi
+        icona
+      </button>
+      <ion-item style="margin-top: 30px;">
+        <ion-input name="nameTask" placeholder="Nome task" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Durata"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Descrizione"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label> Autonomia</ion-label>
+        <ion-select  interface="action-sheet">
+          <ion-select-option value="aft">AFT</ion-select-option>
+          <ion-select-option value="afp">AFP</ion-select-option>
+          <ion-select-option value="av">AV</ion-select-option>
+          <ion-select-option value="sa">SA</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-textarea placeholder="Descrizione Task"></ion-textarea>
+      </ion-item>
+      <ion-list-header>Aggiungi Materiale</ion-list-header>
+      <ion-item>
+        <button class="round" style="margin-top:1%;width:40px;height:40px!important"> 
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-item>
+      
+    </ion-list>
   </form>
 
 </ion-content>
