@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
+
 @Component({
-  selector: 'app-paziente',
-  templateUrl: './paziente.page.html',
-  styleUrls: ['./paziente.page.scss'],
+  selector: 'app-profilo-paziente',
+  templateUrl: './profilo-paziente.page.html',
+  styleUrls: ['./profilo-paziente.page.scss'],
 })
-export class PazientePage implements OnInit {
+export class ProfiloPazientePage implements OnInit {
 
   constructor(private navCtrl: NavController) { }
 
