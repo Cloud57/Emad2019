@@ -30,10 +30,15 @@ export class LoginPage implements OnInit {
 
 
   login(form: NgForm) {
-    console.log(form.value)
+    var response : any = {response : { user_type :""} };
     this.rubyService.login(form.value.email, form.value.password).subscribe(
       data => {
+        response = data
         this.alertService.presentToast("Logged In");
+        if(response.user_type == 2 && response.user_type == 1)
+          this.navCtrl.navigateRoot('doctor-home');
+        else
+          this.navCtrl.navigateRoot('paziente-home');        
       },
       error => {
         console.log(error);
