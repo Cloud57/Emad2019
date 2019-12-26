@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
-import { AuthService } from 'src/app/service/auth.service';
 import { AlertService } from 'src/app/service/alert.service';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { Observable } from 'rxjs';
@@ -13,16 +12,10 @@ import { Observable } from 'rxjs';
 export class LoginPage implements OnInit {
   public users:Observable<any>
   constructor(
-    private authService: AuthService,
     private navCtrl: NavController,
     private alertService: AlertService,
     public rubyService: RubyApiService
   ) {
-    
-    this.users = rubyService.getUsers()
-    this.users.subscribe(data => {
-      console.log('my data: ', data);
-    })
   }
   ngOnInit() {
   }
@@ -35,11 +28,10 @@ export class LoginPage implements OnInit {
     this.navCtrl.navigateRoot('/');
   }
 
-  goHome() {
-    this.navCtrl.navigateRoot('/paziente-home');
-  }
+
   login(form: NgForm) {
-    this.authService.login(form.value.email, form.value.password).subscribe(
+    console.log(form.value)
+    this.rubyService.login(form.value.email, form.value.password).subscribe(
       data => {
         this.alertService.presentToast("Logged In");
       },
@@ -47,7 +39,7 @@ export class LoginPage implements OnInit {
         console.log(error);
       },
       () => {
-        this.registerPage();
+       
       }
     );
   }

@@ -14,44 +14,47 @@
    
 
   
-    <form #form="ngForm"  method="post">
+    <form #form="ngForm" (ngSubmit)="register(form)">
       <ion-item>
-        <ion-input placeholder="Nome" type="text"></ion-input>
+        <ion-input placeholder="Nome" name="name" ngModel type="text" required></ion-input>
       </ion-item>
 
         
        
       <ion-item>
-        <ion-input placeholder="Cognome" type="text"></ion-input>
+        <ion-input required placeholder="Cognome" ngModel name="surname" type="text"></ion-input>
       </ion-item>
 
       
       <ion-item>
-        <ion-input placeholder="Città" type="text"></ion-input>
+        <ion-input placeholder="Cellulare" ngModel name="telephone" type="number"></ion-input>
       </ion-item>
           
         
         <ion-item>
-          <ion-input type="email" placeholder="Email"></ion-input>
+          <ion-input required type="email" ngModel name="email" placeholder="Email"></ion-input>
         </ion-item>
           
         
         <ion-item>
-          <ion-input type="password" placeholder="Password"></ion-input>
+          <ion-input required type="password" ngModel name="password" placeholder="Password"></ion-input>
         </ion-item>
 
-
+        <ion-item>
+          <ion-input required type="password" ngModel name="password_confirmation" placeholder="Conferma Password"></ion-input>
+        </ion-item>
         <ion-item class="utente">
-            <ion-label >Tipologia Utente</ion-label>
-            <ion-select  interface="popover">
-              <ion-select-option value="Med">Medico</ion-select-option>
-              <ion-select-option value="Ter">Terapista</ion-select-option>
-              <ion-select-option value="Pz">Paziente</ion-select-option>
-              <ion-select-option value="Care">Caregiver</ion-select-option>
-              
-            </ion-select>
-          </ion-item>
-          <ion-button type="submit" class="spacingButton" (click)="HomePage()" >Registrati</ion-button>
+          <ion-label >Tipologia Utente</ion-label>
+          <ion-select  interface="popover" ngModel required name="user_type">
+            <ion-select-option value="2">Medico</ion-select-option>
+            <ion-select-option value="1">Terapista</ion-select-option>
+            <ion-select-option value="0">Caregiver</ion-select-option>
+            
+          </ion-select>
+        </ion-item>
+
+      
+          <ion-button [disabled]="!form.form.valid" type="submit" class="spacingButton" >Registrati</ion-button>
         
     </form>
 

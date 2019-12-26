@@ -8,27 +8,24 @@
   <img src="../../assets/img/LOGOthea1.png" alt="logo">
  
  
-  <form #form="ngForm" (ngSubmit)="login(form)" method="post">
+  <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-item>
      
-      <ion-input n type="email" placeholder="Email" floating ></ion-input>
+      <ion-input required type="email" placeholder="Email" ngModel name="email"></ion-input>
       
     </ion-item>
   
     <ion-item>
       
-      <ion-input  type="password" placeholder="Password"></ion-input>
+      <ion-input required type="password" placeholder="Password" ngModel name="password"></ion-input>
     </ion-item>
     <p text-center class="grayText">Password dimenticata?</p>
-
+    <ion-button  [disabled]="!form.form.valid" type="submit">Login</ion-button>
 </form>
 
-<ion-button (click)="goHome()" type="submit">Login</ion-button>
-  <br/>
-  
-  <ion-button  (click)="registerPage()" class="facebookButton"><ion-icon name="logo-facebook"></ion-icon>
+  <!--ion-button  (click)="registerPage()" class="facebookButton"><ion-icon name="logo-facebook"></ion-icon>
        Facebook
-      </ion-button>
+      </ion-button-->
   
   <p text-center (click)="registerPage()">Non hai un account? Registrati</p>
 </ion-content>
