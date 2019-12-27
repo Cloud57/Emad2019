@@ -35,7 +35,7 @@ export class LoginPage implements OnInit {
       data => {
         response = data
         this.alertService.presentToast("Logged In");
-        if(response.user_type == 2 && response.user_type == 1)
+        if(response.response.user_type == 2 || response.response.user_type == 1)
           this.navCtrl.navigateRoot('doctor-home');
         else
           this.navCtrl.navigateRoot('paziente-home');        
