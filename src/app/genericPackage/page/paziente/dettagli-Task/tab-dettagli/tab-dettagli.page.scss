@@ -1,0 +1,33 @@
+ion-title{
+    font-size: 150%;
+    color: white;
+    text-align: center;
+}
+
+
+ion-button{
+    margin-left: auto;
+    margin-right: auto;
+    background-color:transparent;
+}
+ion-item-divider{
+    background-color:black;
+    margin-left: 10%;
+    padding-right:150px;
+
+}
+ion-card{
+    --color:white;
+    border:2px solid transparent;
+    border-radius: 20px;
+}
+
+
+ion-searchbar{
+    --background:#20203F;   
+    color: white;
+    width:80%;
+}
+.imgTask{
+    width: 50%;
+}

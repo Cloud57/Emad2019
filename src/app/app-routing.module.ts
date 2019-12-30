@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'lista-task', loadChildren: './genericPackage/page/paziente/lista-task/lista-task.module#ListaTaskPageModule' },
   { path: 'profilo-paziente', loadChildren: './genericPackage/page/paziente/profilo-paziente/profilo-paziente.module#ProfiloPazientePageModule' },
   { path: 'storico', loadChildren: './genericPackage/page/paziente/storico/storico.module#StoricoPageModule' },
-
+  { path: '', loadChildren: './genericPackage/page/paziente/dettagli-Task/tabs-dettagli-task/tabs-dettagli-task.module#TabsDettagliTaskPageModule' },
+  
 
 ];
 @NgModule({
