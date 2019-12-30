@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'membro-alleanza', loadChildren: './genericPackage/page/alleanza/membro-alleanza/membro-alleanza.module#MembroAlleanzaPageModule' },
   { path: 'lista-task', loadChildren: './genericPackage/page/paziente/lista-task/lista-task.module#ListaTaskPageModule' },
   { path: 'profilo-paziente', loadChildren: './genericPackage/page/paziente/profilo-paziente/profilo-paziente.module#ProfiloPazientePageModule' },
+  { path: 'storico', loadChildren: './genericPackage/page/paziente/storico/storico.module#StoricoPageModule' },
 
 
 ];
