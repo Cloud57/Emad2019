@@ -15,10 +15,12 @@ export class RubyApiService {
     }
 
     register(form) {
-      var register = {name :form.name, surname : form.surname, email : form.email,
-      password: form.password, password_confirmation: form.password_confirmation,
-      telephone: form.telephone, user_type:form.user_type};
-      return this.http.post(this.env.API_URL+"/user/create",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+      var register = {user : {
+        name :form.name, surname : form.surname, email : form.email,
+        password: form.password, password_confirmation: form.password_confirmation,
+        telephone: form.telephone, user_type:form.user_type}
+       };
+      return this.http.post(this.env.API_URL+"/users",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
       }
 
 }
