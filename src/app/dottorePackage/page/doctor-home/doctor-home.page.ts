@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { RubyApiService } from 'src/app/service/ruby-api.service';
 
 @Component({
   selector: 'app-doctor-home',
@@ -8,9 +9,11 @@ import { NavController } from '@ionic/angular';
 })
 export class DoctorHomePage implements OnInit {
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController,
+    public rubyService: RubyApiService) { }
 
   ngOnInit() {
+    this.getListaPazienti()
   }
   loginPage() {
     this.navCtrl.navigateRoot('/');
@@ -27,5 +30,21 @@ export class DoctorHomePage implements OnInit {
   }
   homeDoctor() {
     this.navCtrl.navigateRoot('/doctor-home');
+  }
+
+  getListaPazienti() {
+    var response : any = { id :"", name : "", surname: "", address: "", birth_date: "", height: "", weight: "", diagnosis: ""};
+    this.rubyService.get_patients().subscribe(
+      data => {
+        response = data   
+        console.log(JSON.stringify(response))
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+       
+      }
+    );
   }
 }

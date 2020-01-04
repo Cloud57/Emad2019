@@ -1,13 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { EnvService } from './env.service';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RubyApiService {
+  userToken: string;
+  constructor(public http: HttpClient, public env:EnvService,
+    private storage: Storage ) { 
+      this.getToken();
+  }
 
-  constructor(public http: HttpClient, public env:EnvService ) { }
+   // this will get called once with constructor execution:
+   getToken() {
+    this.storage.get('user').then((val) => {
+      if(val != undefined){
+      console.log("ruby"+val);
+      this.userToken=JSON.parse(val).auth_token
+      
+      console.log("ruby"+this.userToken);
+    }
+      }
+    );
+  };
+
+  getHeaderToken(){
+    const headers = new HttpHeaders().set('Authorization', this.userToken);
+    headers.append('Content-Type', 'application/json')
+      return headers
+  }
 
   login(emailInput,passwordInput) {
     var login = {email :emailInput, password : passwordInput};
@@ -22,5 +45,18 @@ export class RubyApiService {
        };
       return this.http.post(this.env.API_URL+"/users",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
       }
+
+      new_patient(form) {
+        var register = { patient : {
+          name :form.name, surname : form.surname, address : form.address,
+          birth_date: form.birth_date, height: form.height,
+          weight: form.weight, diagnosis: form.diagnosis}
+         };
+        return this.http.post(this.env.API_URL+"/patients",JSON.stringify(register), {headers: this.getHeaderToken()});
+        }
+
+        get_patients() {
+          return this.http.get(this.env.API_URL+"/patients",{headers: this.getHeaderToken()});
+          }
 
 }
