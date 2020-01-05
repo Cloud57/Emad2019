@@ -4,6 +4,9 @@ import { NgForm } from '@angular/forms';
 import { AlertService } from 'src/app/service/alert.service';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { Observable } from 'rxjs';
+import { Storage } from '@ionic/storage';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,7 +17,8 @@ export class LoginPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private alertService: AlertService,
-    public rubyService: RubyApiService
+    public rubyService: RubyApiService,
+    private storage: Storage
   ) {
   }
   ngOnInit() {
@@ -30,10 +34,11 @@ export class LoginPage implements OnInit {
 
 
   login(form: NgForm) {
-    var response : any = {response : { user_type :""} };
+    var response : any = {response : { user_type :"", auth_token : "", name: "", surname: "", email: "", telephone: ""} };
     this.rubyService.login(form.value.email, form.value.password).subscribe(
       data => {
         response = data
+        this.storage.set("user", JSON.stringify(response.response));
         this.alertService.presentToast("Logged In");
         if(response.response.user_type == 2 || response.response.user_type == 1)
           this.navCtrl.navigateRoot('doctor-home');
@@ -41,6 +46,7 @@ export class LoginPage implements OnInit {
           this.navCtrl.navigateRoot('paziente-home');        
       },
       error => {
+        this.alertService.presentToast("Errore nel login");
         console.log(error);
       },
       () => {

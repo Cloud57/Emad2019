@@ -28,7 +28,9 @@
  
 
   <ion-content>
-
+    <div *ngFor="let paziente of response">
+      <ion-label>{{paziente?.name}} {{paziente?.surname}}</ion-label>
+    </div>
       
      
   </ion-content>
