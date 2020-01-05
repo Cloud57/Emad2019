@@ -10,7 +10,6 @@ export class RubyApiService {
   userToken: string;
   constructor(public http: HttpClient, public env:EnvService,
     private storage: Storage ) { 
-      this.getToken();
   }
 
    // this will get called once with constructor execution:
@@ -56,7 +55,7 @@ export class RubyApiService {
         }
 
         get_patients() {
-          return this.http.get(this.env.API_URL+"/patients",{headers: this.getHeaderToken()});
+          return this.http.get(this.env.API_URL+"/patients");
           }
 
 }
