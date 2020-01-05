@@ -12,24 +12,6 @@ export class RubyApiService {
     private storage: Storage ) { 
   }
 
-   // this will get called once with constructor execution:
-   getToken() {
-    this.storage.get('user').then((val) => {
-      if(val != undefined){
-      console.log("ruby"+val);
-      this.userToken=JSON.parse(val).auth_token
-      
-      console.log("ruby"+this.userToken);
-    }
-      }
-    );
-  };
-
-  getHeaderToken(){
-    const headers = new HttpHeaders().set('Authorization', this.userToken);
-    headers.append('Content-Type', 'application/json')
-      return headers
-  }
 
   login(emailInput,passwordInput) {
     var login = {email :emailInput, password : passwordInput};
@@ -51,7 +33,7 @@ export class RubyApiService {
           birth_date: form.birth_date, height: form.height,
           weight: form.weight, diagnosis: form.diagnosis}
          };
-        return this.http.post(this.env.API_URL+"/patients",JSON.stringify(register), {headers: this.getHeaderToken()});
+        return this.http.post(this.env.API_URL+"/patients",JSON.stringify(register));
         }
 
         get_patients() {

@@ -8,7 +8,7 @@ import { RubyApiService } from 'src/app/service/ruby-api.service';
   styleUrls: ['./doctor-home.page.scss'],
 })
 export class DoctorHomePage implements OnInit {
-
+  public response : any = [];
   constructor(private navCtrl: NavController,
     public rubyService: RubyApiService) { }
 
@@ -33,11 +33,10 @@ export class DoctorHomePage implements OnInit {
   }
 
   getListaPazienti() {
-    var response : any = { id :"", name : "", surname: "", address: "", birth_date: "", height: "", weight: "", diagnosis: ""};
+    
     this.rubyService.get_patients().subscribe(
       data => {
-        response = data   
-        console.log(JSON.stringify(response))
+        this.response = data   
       },
       error => {
         console.log(error);
