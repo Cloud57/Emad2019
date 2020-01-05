@@ -1,30 +1,24 @@
 <ion-header>
   <!--toolbar-->
-  <ion-toolbar color="primary">
+  <ion-toolbar color="primary"> 
     <ion-buttons slot="start">
-      <ion-menu-button autoHide="false"></ion-menu-button>
+      <ion-button  > <ion-icon name="arrow-round-back"></ion-icon></ion-button>
     </ion-buttons>
-    <ion-grid>
-      <ion-row>
-          
-          <ion-title style="text-align:center;">Nuovo Task</ion-title>
-          <img src="../../assets/img/profilo.png">
-      </ion-row>
-       
-  </ion-grid> 
+    <ion-title class="ion-text-center"> Nuovo Task</ion-title>
+    <ion-button slot="end" type="submit"><ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <app-ion-menu></app-ion-menu>
-  <ion-router-outlet id="content1" main></ion-router-outlet>
+
+  
  
   <form #form="ngForm" method="post" class="form">
     
     
     <ion-list >
-      <ion-button small color="primary"  float-end> Crea</ion-button>
+      
       <button class="round" float-center (click)="openModal()">
         Aggiungi
         icona
@@ -46,9 +40,6 @@
           <ion-select-option value="av">AV</ion-select-option>
           <ion-select-option value="sa">SA</ion-select-option>
         </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-textarea placeholder="Descrizione Task"></ion-textarea>
       </ion-item>
       <ion-list-header>Aggiungi Materiale</ion-list-header>
       <ion-item>
