@@ -1,17 +1,16 @@
-import { ModalPage } from './modal/modal.page';
-import { UiComponentsModule } from './../../../genericPackage/ui-components/ui-components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+
 import { IonicModule } from '@ionic/angular';
 
-import { NewTaskPage } from './new-task.page';
+import { ModalPage } from './modal.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: NewTaskPage
+    component: ModalPage
   }
 ];
 
@@ -20,10 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    UiComponentsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [NewTaskPage, ModalPage],
-  entryComponents:[ModalPage]
+  declarations: [ModalPage]
 })
-export class NewTaskPageModule {}
+export class ModalPageModule {}

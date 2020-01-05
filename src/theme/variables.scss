@@ -12,9 +12,14 @@
 
   /**placeholder**/
   --ion-color-placeholder: #7B7B7B;
+  /** tertiary**/
+  --ion-color-tertiary: #5472d3;
 }
 .ion-color-placeholder{
   --ion-color-base: var(--ion-color-placeholder);
+}
+.ion-color-tertiary{
+  --ion-color-base: var(--ion-color-tertiary);
 }
 ion-content{
   background-size: cover;
@@ -98,5 +103,5 @@ ion-input{
    
   }
   .form{
-    margin-top: 5%;
+    margin-top: 2%;
   }

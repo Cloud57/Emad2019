@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'profilo-paziente', loadChildren: './genericPackage/page/paziente/profilo-paziente/profilo-paziente.module#ProfiloPazientePageModule' },
   { path: 'storico', loadChildren: './genericPackage/page/paziente/storico/storico.module#StoricoPageModule' },
   { path: '', loadChildren: './genericPackage/page/paziente/dettagli-Task/tabs-dettagli-task/tabs-dettagli-task.module#TabsDettagliTaskPageModule' },
+  { path: 'modal', loadChildren: './dottorePackage/page/new-task/modal/modal.module#ModalPageModule' },
   
 
 ];

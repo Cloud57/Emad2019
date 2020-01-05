@@ -1,32 +1,27 @@
 <ion-content>
 
-  <form #form="ngForm" method="post">
+  
     <ion-item>
-      <ion-input placeholder="Nome e Cognome" type="text"></ion-input>
+      <ion-input placeholder="Nome e Cognome" type="text" name="nomeCognome"></ion-input>
     </ion-item>
-
-
-
     <ion-item>
-      <ion-input placeholder="Indirizzo" type="text"></ion-input>
+      <ion-input placeholder="Indirizzo" type="text" name="indirizzo"></ion-input>
     </ion-item>
-
-    <ion-item class="eta">
-        <ion-input type="text" placeholder="Età"> </ion-input>
+    <ion-item>
+      <ion-label color="placeholder"> Data di nascita</ion-label>
+      <ion-datetime display-format="DD MM YY" placeholder="GG/MM/AA" picker-format="DD MM YY" name="dataNascita"></ion-datetime>
     </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Altezza (m)" name="altezza"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Peso (Kg)" name="peso"></ion-input>
+    </ion-item>
+    <ion-button type="submit" shape="round" class="roundButton" name="imgProfilo" >
+      <ion-icon color="secondary" name="person"></ion-icon> 
+      <ion-label style="margin-left: 3%;">Inserisci immagine</ion-label>
+  </ion-button>
+  
   
 
-
-    <ion-item class="peso" >
-      <ion-input placeholder="Peso" type="text"></ion-input>
-    </ion-item>
-
-
-    <ion-item class="altezza">
-      <ion-input  type="text" placeholder="Altezza"></ion-input>
-    </ion-item>
-  </form>
-  
-  <ion-button type="submit" shape="round" class="roundButton" >
-      <ion-icon name="person"></ion-icon> <ion-icon name=""></ion-icon>Inserisci immagine</ion-button>
 </ion-content>
