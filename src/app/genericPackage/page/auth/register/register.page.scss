@@ -18,5 +18,19 @@ img{
     color:"blue";
     --color:"blue";
     --ion-text-color:blue;
+
 }
+
+.images{
+    margin-top: 3%;
+    align-content: center;
+    margin-right: 50%;
+    width: 600px;
+   
+}
+.image-container {
+ // min-height: 200px;
+  background-size: cover;
+}
+ 
 
