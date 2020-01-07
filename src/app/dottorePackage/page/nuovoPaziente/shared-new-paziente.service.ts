@@ -5,6 +5,6 @@ import { Patient } from 'src/app/models/patient';
   providedIn: 'root'
 })
 export class SharedNewPazienteService {
-  patient:Patient;
+  patient:Patient = new Patient();
   constructor() { }
 }
