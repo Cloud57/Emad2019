@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { SharedNewPazienteService } from '../shared-new-paziente.service';
 @Component({
   selector: 'app-tab2',
   templateUrl: './tab2.page.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab2Page implements OnInit {
 
-  constructor() { }
+  constructor(private sharedService: SharedNewPazienteService) { }
 
   ngOnInit() {
   }

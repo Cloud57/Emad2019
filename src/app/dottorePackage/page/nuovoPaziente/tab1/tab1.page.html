@@ -2,20 +2,20 @@
 
   
     <ion-item>
-      <ion-input placeholder="Nome e Cognome" type="text" name="nomeCognome"></ion-input>
+      <ion-input placeholder="Nome e Cognome" [(ngModel)]=" this.sharedService.nomeCognome" type="text" name="nomeCognome"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Indirizzo" type="text" name="indirizzo"></ion-input>
+      <ion-input placeholder="Indirizzo" [(ngModel)]=" this.sharedService.indirizzo" type="text" name="indirizzo"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="placeholder"> Data di nascita</ion-label>
-      <ion-datetime display-format="DD MM YY" placeholder="GG/MM/AA" picker-format="DD MM YY" name="dataNascita"></ion-datetime>
+      <ion-datetime display-format="DD MM YY" [(ngModel)]=" this.sharedService.dataNascita"placeholder="GG/MM/AA" picker-format="DD MM YY" name="dataNascita"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-input type="text" placeholder="Altezza (m)" name="altezza"></ion-input>
+      <ion-input type="text" placeholder="Altezza (m)" [(ngModel)]=" this.sharedService.altezza"name="altezza"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="text" placeholder="Peso (Kg)" name="peso"></ion-input>
+      <ion-input type="text" placeholder="Peso (Kg)" name="peso" [(ngModel)]=" this.sharedService.peso"></ion-input>
     </ion-item>
     <ion-button type="submit" shape="round" class="roundButton" name="imgProfilo" >
       <ion-icon color="secondary" name="person"></ion-icon> 
