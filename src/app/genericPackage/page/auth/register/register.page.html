@@ -8,10 +8,23 @@
 </ion-header>
 
 <ion-content>
-    <img src="../../assets/img/profilo.png" alt="logo"> <br/>
-    <ion-button type="submit" class="spacingButton" >Inserisci immagine profilo</ion-button>
-   
-   
+  <ion-grid>
+    <ion-row>
+      <ion-col >
+        <!-- More Pinterest floating gallery style -->
+        <div class="images">
+          <div *ngFor="let img of imageResponse">
+            <img src="{{img}}" alt="" srcset="">
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="getImages()">Inserisci immagine profilo</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   
     <form #form="ngForm" (ngSubmit)="register(form)">
