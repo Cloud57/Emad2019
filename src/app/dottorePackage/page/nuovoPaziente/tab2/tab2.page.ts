@@ -7,7 +7,7 @@ import { SharedNewPazienteService } from '../shared-new-paziente.service';
 })
 export class Tab2Page implements OnInit {
 
-  constructor(private sharedService: SharedNewPazienteService) { }
+  constructor(public sharedService: SharedNewPazienteService) { }
 
   ngOnInit() {
   }

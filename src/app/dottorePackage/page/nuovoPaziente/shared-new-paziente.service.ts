@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Patient } from 'src/app/models/patient';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedNewPazienteService {
-nomeCognome;
-indirizzo;
-dataNascita;
-altezza;
-peso;
-diagnosi;
+  patient:Patient;
   constructor() { }
 }
