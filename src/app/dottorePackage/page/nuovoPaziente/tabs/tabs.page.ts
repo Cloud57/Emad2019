@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-tabs',
@@ -6,7 +6,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
-
+@Input() nomeCognome: string;
   constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
@@ -18,5 +18,8 @@ homePage() {
   this.navCtrl.navigateRoot('/doctor-home');
 }
 
+save(){
+  console.log(this.nomeCognome);
+}
 
 }

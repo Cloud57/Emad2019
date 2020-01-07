@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-tab1',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab1.page.scss'],
 })
 export class Tab1Page implements OnInit {
-
+  @Output() nomeCognome = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
-
 }
