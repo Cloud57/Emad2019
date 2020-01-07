@@ -1,5 +1,5 @@
 import { ModalController } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal.page.scss'],
 })
 export class ModalPage implements OnInit {
-
+@Input() path:any;
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {
