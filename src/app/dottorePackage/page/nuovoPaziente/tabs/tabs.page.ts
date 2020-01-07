@@ -6,7 +6,6 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
-@Input() nomeCognome: string;
   constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
@@ -19,7 +18,7 @@ homePage() {
 }
 
 save(){
-  console.log(this.nomeCognome);
+  
 }
 
 }

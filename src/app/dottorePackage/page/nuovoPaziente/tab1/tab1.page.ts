@@ -7,7 +7,6 @@ import { EventEmitter } from 'protractor';
   styleUrls: ['./tab1.page.scss'],
 })
 export class Tab1Page implements OnInit {
-  @Output() nomeCognome = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
