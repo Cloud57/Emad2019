@@ -17,26 +17,21 @@ ion-item-divider{
 
 }
 ion-card{
-    --color:white;
+   
     border:2px solid transparent;
     border-radius: 20px;
 }
-.alta{
-    
-        --background:red;
-        
-    
-}
 
-.media{
-    --background:orange;
-}
-.bassa{
-    --background:green;
-}
 
 ion-searchbar{
-    --background:#20203F;   
-    color: white;
+    
     width:80%;
+}
+
+h1{
+    color: black;
+}
+.imgProfilo{
+    width: 5%;
+    height: 5%;
 }

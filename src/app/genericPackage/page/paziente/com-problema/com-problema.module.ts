@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ComProblemaPage } from './com-problema.page';
+import { UiComponentsModule } from '../../../ui-components/ui-components.module';
+
 
 const routes: Routes = [
   {
@@ -18,6 +20,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    UiComponentsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],

@@ -1,9 +1,43 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>dettagliEsecuzioneTask</ion-title>
+  <ion-toolbar color="primary"> 
+    <ion-buttons slot="start">
+      <ion-button> <ion-icon name="arrow-round-back"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center"> Esecuzione Task</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6"> <img class="imgTask" src="../../assets/img/profilo.png"></ion-col>
+      <ion-col size="6"><h3>PASSARE L'ASPIRAPOLVERE</h3></ion-col>
+    </ion-row>
+    <ion-row><h3>Autonomia</h3></ion-row>
+    <ion-row>
+      <ion-range min="20" max="80" step="2">
+        <ion-icon size="small" slot="start" name="sunny"></ion-icon>
+        <ion-icon slot="end" name="sunny"></ion-icon>
+      </ion-range>
+    </ion-row>
+    <ion-row>
+
+      <ion-col>
+        <h5>Data</h5>
+        <h5>06/11/2019</h5>
+      </ion-col>
+      <ion-col> 
+        <h5>Durata</h5>
+        <h5>30 Minuti</h5>
+    </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <h3>Commento</h3>
+    </ion-row>
+    <ion-row>
+      <p>Il task è stato eseguito correttamente</p>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
