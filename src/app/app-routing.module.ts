@@ -22,6 +22,8 @@ const routes: Routes = [
   { path: 'storico', loadChildren: './genericPackage/page/paziente/storico/storico.module#StoricoPageModule' },
   { path: '', loadChildren: './genericPackage/page/paziente/dettagli-Task/tabs-dettagli-task/tabs-dettagli-task.module#TabsDettagliTaskPageModule' },
   { path: 'modal', loadChildren: './dottorePackage/page/new-task/modal/modal.module#ModalPageModule' },
+  { path: 'esecuzione-task', loadChildren: './genericPackage/page/paziente/esecuzione-task/esecuzione-task.module#EsecuzioneTaskPageModule' },
+  { path: 'dettagli-esecuzione-task', loadChildren: './genericPackage/page/paziente/dettagli-esecuzione-task/dettagli-esecuzione-task.module#DettagliEsecuzioneTaskPageModule' },
   
 
 ];

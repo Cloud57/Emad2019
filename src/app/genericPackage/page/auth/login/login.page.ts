@@ -31,6 +31,10 @@ export class LoginPage implements OnInit {
   loginPage(){
     this.navCtrl.navigateRoot('/');
   }
+  Page(){
+    this.navCtrl.navigateRoot('/tabs-dettagli-task/tabGuida');
+
+  }
 
 
   login(form: NgForm) {

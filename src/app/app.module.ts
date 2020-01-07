@@ -15,6 +15,9 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { RubyApiService } from './service/ruby-api.service';
 import { EnvService } from './service/env.service';
 import { AuthInterceptor} from './service/auth.interceptor'
+import { VideoPlayer } from '@ionic-native/video-player/ngx';
+
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -28,6 +31,7 @@ import { AuthInterceptor} from './service/auth.interceptor'
     RubyApiService,
     EnvService,
     ImagePicker,
+    VideoPlayer,
     File,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
