@@ -5,6 +5,7 @@
           <ion-item>
             <ion-textarea placeholder="Inserisci la diagnosi del paziente" [(ngModel)]="this.sharedService.patient.diagnosis" type="text"></ion-textarea>
           </ion-item>
+          <span *ngIf="!this.sharedService.patient.diagnosis">Campo richiesto</span>
         </ion-col></ion-row>
     </ion-grid>
      
