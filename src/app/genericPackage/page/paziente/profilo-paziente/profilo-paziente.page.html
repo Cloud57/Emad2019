@@ -32,87 +32,115 @@
 
       </ion-col>
     </ion-row>
-
   </ion-grid>
-
-  <ion-item></ion-item>
-
+  <ion-item-divider></ion-item-divider>
+ 
   <ion-grid fixed>
-    <ion-row>
-      <ion-title float-left>Diagnosi</ion-title>
-    </ion-row>
-
-    <ion-row>
-      <ion-grid>
-        <ion-row>
-          <ion-label class="dottore">Dott. Carlo - </ion-label>
-          <ion-label class="data">24/07/2020</ion-label>
-        </ion-row>
-
-        <ion-row>
-          <ion-label class="diagnosi"> Il paziente ha effettuato la terapia</ion-label>
-        </ion-row>
-
-      </ion-grid>
-    </ion-row>
+  <ion-row>
+    <ion-col size="12" class="ion-text-start">
+      <ion-label>
+        <b>Diagnosi</b>
+      </ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="ion-text-start">
+      <ion-label>Dottor. Cascone</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="ion-text-start">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <a (click)="toggle()"> {{buttonName}}</a>
+        <ng-container *ngIf="show">
+          <p>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+          </p>
+      </ng-container> 
+        
+      </p>
+    </ion-col>
+  </ion-row>
+ </ion-grid>
+ <ion-item-divider></ion-item-divider>
+ <ion-grid>
+  
+ 
+   <ion-row>
+     <ion-col size="6">
+      <ion-button shape="round" size="small">
+        <ion-icon name="warning" large></ion-icon>
+      </ion-button>
+     </ion-col>
+    
+     <ion-col size="6">
+      <ion-button shape="round" size="small">
+        <ion-icon name="paper"></ion-icon>
+      </ion-button>
+     </ion-col>
+   </ion-row>
+   <ion-row>
+    <ion-col size="6" class="ion-text-center">
+      <ion-label>Comportamenti problema</ion-label>
+    </ion-col>
+    <ion-col size="6" class="ion-text-center">
+      <ion-label>Lista task</ion-label>
+    </ion-col>
+   </ion-row>
  </ion-grid>
 
-  <ion-item></ion-item>
-
-  <ion-grid fixed>
-    <ion-row>
-      <ion-title>Alleanza</ion-title>
-    </ion-row>
-
-    <ion-row>
-
-      <ion-col size="4">
-        <ion-row>
-          <figure>
-            <img class="imgAlleanza" src="../../assets/img/profilo.png">
-            <figcaption>
-              <p class="labelAlleanza">Mamma</p>
-            </figcaption>
-          </figure>
-        </ion-row>
-
+  <ion-item-divider></ion-item-divider>
+    
+    <ion-grid>  
+      <ion-row>
+        <ion-col size="12" text-left>
+          <ion-label><b>Alleanza</b></ion-label>
+        </ion-col>
+      </ion-row>
+    <ion-row align-items-center style="margin-top:3%;">
+      <ion-col size="3">
+        
+          <ion-avatar>
+            <img src="../assets/img/francesco.png">
+          </ion-avatar>
+        
       </ion-col>
-      <ion-col size="4">
-        <ion-row>
-          <figure>
-            <img class="imgAlleanza" src="../../assets/img/profilo.png">
-            <figcaption>
-              <p class="labelAlleanza">Maestra</p>
-            </figcaption>
-          </figure>
-        </ion-row>
+      <ion-col size="3">
+        
+          <ion-avatar>
+            <img src="../assets/img/martina.png">
+          </ion-avatar>
+        
       </ion-col>
-      <ion-col size="4">
-        <ion-row>
-          <figure>
-            <img class="imgAlleanza" src="../../assets/img/profilo.png">
-            <figcaption>
-              <p class="labelAlleanza">Medico</p>
-            </figcaption>
-          </figure>
-        </ion-row>
-
-      </ion-col>
-    </ion-row>
-
-    <ion-item></ion-item>
-    <ion-row>
-      <ion-button type="submit" class="spacingButton"  (click)="TaskListPage()" >Lista Task</ion-button>
-
-    </ion-row>
-
-
-  </ion-grid>
-
-
-
-
-
-
+        <ion-col size="3"> 
+        
+          <ion-avatar>
+            <img src="../assets/img/martina.png">
+          </ion-avatar>
+        </ion-col>
+        <ion-col size="3"> 
+        
+          <ion-avatar>
+            <img src="../assets/img/martina.png">
+          </ion-avatar>
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col size="3">
+          <ion-label>Francesco</ion-label>
+        </ion-col>
+        <ion-col size="3" text-center>
+          <ion-label>Martina</ion-label>
+        </ion-col>
+        <ion-col size="3" text-center>
+          <ion-label>Francesco</ion-label>
+        </ion-col>
+        <ion-col size="3" text-center>
+          <ion-label>Martina</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
 </ion-content>

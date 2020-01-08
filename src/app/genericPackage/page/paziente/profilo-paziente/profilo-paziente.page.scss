@@ -32,6 +32,16 @@ ion-title{
    
 }
 ion-button{
-    width: 100%;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border:  1px solid blue;
+    background-color:#0D47A1;
 }
-
+ion-icon{
+    font-size: 40px;
+}
+ion-grid{
+    margin-bottom: 1%;
+    margin-top: 1%;
+}

@@ -8,7 +8,8 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./profilo-paziente.page.scss'],
 })
 export class ProfiloPazientePage implements OnInit {
-
+  public show:boolean = false;
+  public buttonName:any = 'Mostra';
   constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
@@ -16,5 +17,13 @@ export class ProfiloPazientePage implements OnInit {
   TaskListPage() {
     this.navCtrl.navigateRoot('/lista-task');
   }
+  toggle(){
+    this.show = !this.show;
 
+   
+    if(this.show)  
+      this.buttonName = "Nascondi";
+    else
+      this.buttonName = "Mostra";
+  }
 }
