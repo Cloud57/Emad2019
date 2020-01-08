@@ -1,11 +1,56 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>tabGuida</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
-<ion-button (click)="playVideoHosted()"> Video</ion-button><br>
-<p>Questo esercizio si svolge in questo modo: ............</p>
+
+
+
+
+<ion-item>
+  <ion-grid fixed>
+    <ion-row>
+      <h4>Spiegazione video</h4>
+    </ion-row>
+      <ion-row >
+        <video width="320" height="240" controls>
+          <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
+          <source src="movie.ogg" type="video/ogg">
+        
+        </video>
+      </ion-row>
+    
+  </ion-grid>
+
+  
+</ion-item>
+<ion-item>
+  <ion-grid fixed>
+    <ion-row>
+      <h4>Spiegazione testuale</h4>
+    </ion-row>
+      <ion-row >
+        <p>Questo esercizio si svolge in questo modo: ............</p>
+      </ion-row>
+    
+  </ion-grid>
+    
+    
+</ion-item>
+<ion-item>
+  <ion-grid fixed>
+    <ion-row>
+      <h4>Spiegazione audio</h4>
+    </ion-row>
+      <ion-row>
+        <audio controls>
+        <source src="horse.ogg" type="audio/ogg">
+        <source src="https://www.example.com/my_song.mp3" type="audio/mpeg">
+      
+      </audio>
+    </ion-row>
+  </ion-grid>
+  
+  
+  
+</ion-item>
 
 </ion-content>
