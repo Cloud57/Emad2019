@@ -12,4 +12,7 @@ export class ListaTaskPage implements OnInit {
   ngOnInit() {
   }
 
+  inserisciTask(){
+    
+  }
 }

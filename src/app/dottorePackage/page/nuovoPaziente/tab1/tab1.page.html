@@ -1,16 +1,17 @@
 <ion-content>
-
   <ion-grid>
         <ion-row>
           <ion-col size="6">
             <ion-item>
-              <ion-input placeholder="Nome" [(ngModel)]=" this.sharedService.patient.name" type="text"></ion-input>
+              <ion-input  placeholder="Nome" [(ngModel)]="this.sharedService.patient.name" type="text"></ion-input >
             </ion-item>
+            <span *ngIf="!this.sharedService.patient.name">Campo richiesto</span>
           </ion-col>
           <ion-col size="6">
             <ion-item>
               <ion-input placeholder="Cognome" [(ngModel)]=" this.sharedService.patient.surname" type="text"></ion-input>
             </ion-item>
+            <span *ngIf="!this.sharedService.patient.surname">Campo richiesto</span>
           </ion-col>
         </ion-row>     
      <ion-row>
@@ -18,6 +19,7 @@
         <ion-item>
           <ion-input placeholder="Indirizzo" [(ngModel)]=" this.sharedService.patient.address" type="text" name="indirizzo"></ion-input>
         </ion-item>
+        <span *ngIf="!this.sharedService.patient.address">Campo richiesto</span>
       </ion-col>
      </ion-row>   
     <ion-row><ion-col size="12">
@@ -25,6 +27,7 @@
         <ion-label color="placeholder"> Data di nascita</ion-label>
         <ion-datetime display-format="DD MM YY" [(ngModel)]="this.sharedService.patient.birth_date"placeholder="GG/MM/AA" picker-format="DD MM YY" name="dataNascita"></ion-datetime>
       </ion-item>
+      <span *ngIf="!this.sharedService.patient.birth_date">Campo richiesto</span>
     </ion-col>
   </ion-row>
   <ion-row>
@@ -48,6 +51,5 @@
       <ion-label style="margin-left: 3%;">Inserisci immagine</ion-label>
   </ion-button>
   
-  
 
-</ion-content>
+</ion-content>  
