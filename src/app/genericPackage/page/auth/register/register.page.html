@@ -1,3 +1,6 @@
+
+
+
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
@@ -6,12 +9,30 @@
     <ion-title>Registrazione</ion-title>
   </ion-toolbar>
 </ion-header>
+<!-------------------------------->
 
+ 
+
+
+
+<!--------------------------------->
 <ion-content>
-  <ion-grid>
+
+  <ion-grid fixed>
+    <ion-row><img id="blah"  width="100" height="80"/></ion-row>
+    <ion-row>
+      <ion-col size="6"><p>Inserisci l'immagine del profilo : </p></ion-col>
+      <ion-col size="6"><p><input type="file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"></p>
+      
+      </ion-col>
+    </ion-row>
+   
+  </ion-grid>
+  
+ <!-- <ion-grid>
     <ion-row>
       <ion-col >
-        <!-- More Pinterest floating gallery style -->
+        
         <div class="images">
           <div *ngFor="let img of imageResponse">
             <img src="{{img}}" alt="" srcset="">
@@ -25,7 +46,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
+-->
   
     <form #form="ngForm" (ngSubmit)="register(form)">
       <ion-item>
