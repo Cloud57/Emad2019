@@ -6,7 +6,6 @@ import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { GlobalService } from 'src/app/service/global.service';
-import { User } from 'src/app/models/user';
 
 
 @Component({
@@ -45,13 +44,7 @@ export class LoginPage implements OnInit {
     this.rubyService.login(form.value.email, form.value.password).subscribe(
       data => {
         response = data
-        var currentUser:User = new User();
-       currentUser.id=response.response.id
-       currentUser.email= response.response.email
-       currentUser.name = response.response.name
-       currentUser.surname = response.response.surname
-       currentUser.user_type = response.response.user_type
-       this.global.currentUser = currentUser;
+        this.global.setCurrentUser(response)
         this.storage.set("user", JSON.stringify(response.response));
         this.alertService.presentToast("Logged In");
         if(response.response.user_type == 2 || response.response.user_type == 1)
