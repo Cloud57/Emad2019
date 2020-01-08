@@ -27,17 +27,17 @@ export class RubyApiService {
       return this.http.post(this.env.API_URL+"/users",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
       }
 
-      new_patient(form) {
+      new_patient(form, id) {
         var register = { patient : {
           name :form.name, surname : form.surname, address : form.address,
           birth_date: form.birth_date, height: form.height,
-          weight: form.weight, diagnosis: form.diagnosis}
+          weight: form.weight, diagnosis: form.diagnosis, user_id: id}
          };
         return this.http.post(this.env.API_URL+"/patients",JSON.stringify(register));
         }
 
-        get_patients() {
-          return this.http.get(this.env.API_URL+"/patients");
+        get_patients(id) {
+          return this.http.get(this.env.API_URL+"/users/search_user?id="+id);
           }
 
 }
