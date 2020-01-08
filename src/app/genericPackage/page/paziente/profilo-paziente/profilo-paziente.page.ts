@@ -8,6 +8,9 @@ import { GlobalService } from 'src/app/service/global.service';
   styleUrls: ['./profilo-paziente.page.scss'],
 })
 export class ProfiloPazientePage implements OnInit {
+  public show:boolean = false;
+  public buttonName:any = 'Mostra';
+  
 
   constructor(private navCtrl: NavController, public global : GlobalService) { 
       console.log(this.global.params)
@@ -18,5 +21,13 @@ export class ProfiloPazientePage implements OnInit {
   TaskListPage() {
     this.navCtrl.navigateRoot('/lista-task');
   }
+  toggle(){
+    this.show = !this.show;
 
+   
+    if(this.show)  
+      this.buttonName = "Nascondi";
+    else
+      this.buttonName = "Mostra";
+  }
 }
