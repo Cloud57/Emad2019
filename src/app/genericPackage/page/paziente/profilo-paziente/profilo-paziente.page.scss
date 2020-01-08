@@ -5,6 +5,7 @@
 }
 .paziente{
     width: 50%;
+    
 }
 .dottore{
     margin-left: 4%;
@@ -14,10 +15,7 @@
     margin-left: 1%;
    
 }
-ion-title{
-    margin-bottom: 5%;
-    text-align: left;
-}
+
 .diagnosi{
    margin-left: 7%;
    margin-top: 1%;
@@ -41,7 +39,7 @@ ion-button{
 ion-icon{
     font-size: 40px;
 }
-ion-grid{
-    margin-bottom: 1%;
-    margin-top: 1%;
-}
+ion-item-divider{
+    margin-top: 0px;
+    min-height: 1px!important;
+  }

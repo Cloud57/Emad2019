@@ -10,8 +10,8 @@
 <ion-content>
   <app-ion-menu></app-ion-menu>
 
-  <ion-grid fixed>
-    <ion-row>
+  <ion-grid >
+    <ion-row justify-content-center align-items-center>
       <ion-col size="6">
         <img class="paziente" src="../../assets/img/profilo.png">
       </ion-col>
@@ -19,7 +19,7 @@
       <ion-col size="6">
         
         <ion-row>
-          <ion-label class="nome"> Mario Rossi</ion-label>
+          <ion-label > Mario Rossi</ion-label>
         </ion-row>
        
         <ion-row>
@@ -33,9 +33,9 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-item-divider></ion-item-divider>
+  <ion-item-divider style="margin-top: 3%;"></ion-item-divider>
  
-  <ion-grid fixed>
+  <ion-grid>
   <ion-row>
     <ion-col size="12" class="ion-text-start">
       <ion-label>
@@ -48,7 +48,7 @@
       <ion-label>Dottor. Cascone</ion-label>
     </ion-col>
   </ion-row>
-  <ion-row>
+  <ion-row align-items-start>
     <ion-col size="12" class="ion-text-start">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -66,8 +66,6 @@
  </ion-grid>
  <ion-item-divider></ion-item-divider>
  <ion-grid>
-  
- 
    <ion-row>
      <ion-col size="6">
       <ion-button shape="round" size="small">
@@ -91,7 +89,7 @@
    </ion-row>
  </ion-grid>
 
-  <ion-item-divider></ion-item-divider>
+  <ion-item-divider style="margin-top: 3%;"></ion-item-divider>
     
     <ion-grid>  
       <ion-row>
@@ -99,48 +97,19 @@
           <ion-label><b>Alleanza</b></ion-label>
         </ion-col>
       </ion-row>
-    <ion-row align-items-center style="margin-top:3%;">
-      <ion-col size="3">
-        
-          <ion-avatar>
+      <ion-row>
+        <ion-col >
+          <figure>
+            <img src="../assets/img/martina.png">
+            <figcaption>Martina</figcaption>
+          </figure>
+        </ion-col>
+        <ion-col>
+          <figure>
             <img src="../assets/img/francesco.png">
-          </ion-avatar>
-        
-      </ion-col>
-      <ion-col size="3">
-        
-          <ion-avatar>
-            <img src="../assets/img/martina.png">
-          </ion-avatar>
-        
-      </ion-col>
-        <ion-col size="3"> 
-        
-          <ion-avatar>
-            <img src="../assets/img/martina.png">
-          </ion-avatar>
-        </ion-col>
-        <ion-col size="3"> 
-        
-          <ion-avatar>
-            <img src="../assets/img/martina.png">
-          </ion-avatar>
-        </ion-col>
-      </ion-row>
-      <ion-row align-items-center>
-        <ion-col size="3">
-          <ion-label>Francesco</ion-label>
-        </ion-col>
-        <ion-col size="3" text-center>
-          <ion-label>Martina</ion-label>
-        </ion-col>
-        <ion-col size="3" text-center>
-          <ion-label>Francesco</ion-label>
-        </ion-col>
-        <ion-col size="3" text-center>
-          <ion-label>Martina</ion-label>
+            <figcaption>Francesco</figcaption>
+          </figure>
         </ion-col>
       </ion-row>
     </ion-grid>
-
 </ion-content>
