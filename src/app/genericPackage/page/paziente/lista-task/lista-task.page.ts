@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-lista-task',
@@ -7,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaTaskPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { 
+
+  }
 
   ngOnInit() {
+
   }
 
   inserisciTask(){
-    
+    this.navCtrl.navigateRoot('/lista-task');
   }
 }

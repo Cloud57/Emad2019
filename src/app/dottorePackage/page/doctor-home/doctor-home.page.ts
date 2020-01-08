@@ -11,7 +11,8 @@ import { GlobalService } from 'src/app/service/global.service';
 export class DoctorHomePage implements OnInit {
   public response : any = [];
   constructor(private navCtrl: NavController,
-    public rubyService: RubyApiService, private globalService:GlobalService) { }
+    public rubyService: RubyApiService, private globalService:GlobalService) {
+     }
 
   ngOnInit() {
     this.getListaPazienti()
@@ -35,7 +36,7 @@ export class DoctorHomePage implements OnInit {
 
   getListaPazienti() {
     
-    this.rubyService.get_patients().subscribe(
+    this.rubyService.get_patients(this.globalService.currentUser.id).subscribe(
       data => {
         this.response = data   
       },

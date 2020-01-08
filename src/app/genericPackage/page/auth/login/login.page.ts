@@ -5,6 +5,7 @@ import { AlertService } from 'src/app/service/alert.service';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
+import { GlobalService } from 'src/app/service/global.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     private alertService: AlertService,
     public rubyService: RubyApiService,
-    private storage: Storage
+    private storage: Storage,
+    private global: GlobalService
   ) {
   }
   ngOnInit() {
@@ -42,6 +44,7 @@ export class LoginPage implements OnInit {
     this.rubyService.login(form.value.email, form.value.password).subscribe(
       data => {
         response = data
+        this.global.setCurrentUser(response)
         this.storage.set("user", JSON.stringify(response.response));
         this.alertService.presentToast("Logged In");
         if(response.response.user_type == 2 || response.response.user_type == 1)
