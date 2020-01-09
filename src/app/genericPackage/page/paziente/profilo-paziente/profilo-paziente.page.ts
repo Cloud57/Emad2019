@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/service/global.service';
+import { Patient } from 'src/app/models/patient';
 
 @Component({
   selector: 'app-profilo-paziente',
@@ -10,12 +11,26 @@ import { GlobalService } from 'src/app/service/global.service';
 export class ProfiloPazientePage implements OnInit {
   public show:boolean = false;
   public buttonName:any = 'Mostra';
+  public paziente:Patient = new Patient();
+  public age:number;
+  constructor(private navCtrl: NavController, public global : GlobalService) { 
+      this.paziente = global.currentPatient
+      this.age = this.getAge(this.paziente.birth_date)
+  }
   
 
-  constructor(private navCtrl: NavController, public global : GlobalService) { 
-      console.log(this.global.params)
-  }
-
+  getAge(dateString) 
+{
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    {
+        age--;
+    }
+    return age;
+}
   ngOnInit() {
   }
   TaskListPage() {

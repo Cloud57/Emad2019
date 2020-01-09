@@ -50,7 +50,7 @@ export class DoctorHomePage implements OnInit {
   }
 
   openDetail(patient) {
-    this.globalService.params= patient;
+    this.globalService.currentPatient= patient;
     this.navCtrl.navigateRoot('/profilo-paziente');
   }
     
