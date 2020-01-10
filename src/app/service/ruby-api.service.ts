@@ -36,8 +36,12 @@ export class RubyApiService {
         return this.http.post(this.env.API_URL+"/patients",JSON.stringify(register));
         }
 
-        get_patients(id) {
-          return this.http.get(this.env.API_URL+"/users/search_user?id="+id);
-          }
+      get_patients(id) {
+          return this.http.get(this.env.API_URL+"/users/search_patient?id="+id);
+      }
+
+      get_tasks(id) {
+          return this.http.get(this.env.API_URL+"/patients/search_task?id="+id);
+        }
 
 }
