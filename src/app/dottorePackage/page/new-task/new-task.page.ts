@@ -27,4 +27,8 @@ export class NewTaskPage implements OnInit {
     this.sharedIService.src="";
   }
 
+  newTask(form){
+    console.log(form)
+  }
+
 }

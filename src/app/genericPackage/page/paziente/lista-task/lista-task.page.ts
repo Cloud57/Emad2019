@@ -19,7 +19,7 @@ export class ListaTaskPage implements OnInit {
   }
 
   inserisciTask(){
-    this.navCtrl.navigateRoot('/lista-task');
+    this.navCtrl.navigateRoot('/new-task');
   }
 
   getListaTask() {

@@ -5,7 +5,7 @@
       <ion-button  > <ion-icon name="arrow-round-back"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title class="ion-text-center"> Nuovo Task</ion-title>
-    <ion-button slot="end" type="submit"><ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
+    <ion-button slot="end" type="submit" [disabled]="!form.form.valid"  (click)="form.ngSubmit.emit()"><ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +14,7 @@
 
   
  
-  <form #form="ngForm" method="post" class="form">
+  <form #form="ngForm" method="post" class="form"  (ngSubmit)="newTask(form)">
     
     
     <ion-list >
@@ -25,21 +25,21 @@
         
       </button>
       <ion-item style="margin-top: 30px;">
-        <ion-input name="nameTask" placeholder="Nome task" type="text"></ion-input>
+        <ion-input name="name" ngModel placeholder="Nome task" type="text" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Durata"></ion-input>
+        <ion-input name="duration" ngModel type="text" placeholder="Durata" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-textarea placeholder="Descrizione"></ion-textarea>
+        <ion-textarea ngModel name="description" placeholder="Descrizione" required></ion-textarea>
       </ion-item>
       <ion-item>
         <ion-label color="placeholder"> Autonomia</ion-label>
-        <ion-select  interface="action-sheet">
-          <ion-select-option value="aft">AFT</ion-select-option>
-          <ion-select-option value="afp">AFP</ion-select-option>
-          <ion-select-option value="av">AV</ion-select-option>
-          <ion-select-option value="sa">SA</ion-select-option>
+        <ion-select ngModel name="autonomy" interface="action-sheet" required>
+          <ion-select-option value="0">AFT</ion-select-option>
+          <ion-select-option value="1">AFP</ion-select-option>
+          <ion-select-option value="2">AV</ion-select-option>
+          <ion-select-option value="3">SA</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-list-header>Aggiungi Materiale</ion-list-header>
