@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Patient } from '../models/patient';
+import { Task } from '../models/task';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,6 +9,7 @@ export class GlobalService {
   public params:any;
   public currentUser:User = new User();
   public currentPatient:Patient= new Patient();
+  public currentTask:Task= new Task();
   constructor() { }
 
   setCurrentUser(data){

@@ -1,7 +1,7 @@
 <ion-content>
 
-  <img class="imgTask" src="../../assets/img/profilo.png" alt="logo">
-  <H3>Passare l'aspirapolvere</H3>
+  <img class="imgTask" [src]="this.global.currentTask.icon" alt="logo">
+<H3> {{this.global.currentTask.name}}</H3>
   <p>Autonomia</p>
   <ion-item>
     <ion-range min="20" max="80" step="2">
@@ -18,7 +18,7 @@
         <ion-col size="6"><p text-center>Tempo impiegato</p></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="6"> <h4 text-center>30 Min</h4></ion-col>
+        <ion-col size="6"> <h4 text-center>{{this.global.currentTask.duration}} Min</h4></ion-col>
         <ion-col size="6"><h4 text-center>10 Min</h4></ion-col>
       </ion-row>
       <ion-row>

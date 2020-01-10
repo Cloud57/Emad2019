@@ -37,4 +37,9 @@ export class ListaTaskPage implements OnInit {
       }
     );
   }
+
+  openTask(task) {
+    this.globalService.currentTask= task;
+    this.navCtrl.navigateRoot('/tabs-dettagli-task/tabDettagli');
+  }
 }

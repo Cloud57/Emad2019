@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VideoPlayer } from '@ionic-native/video-player/ngx';
+import { GlobalService } from 'src/app/service/global.service';
 
 @Component({
   selector: 'app-tab-guida',
@@ -8,7 +9,7 @@ import { VideoPlayer } from '@ionic-native/video-player/ngx';
 })
 export class TabGuidaPage implements OnInit {
 
-  constructor(private videoPlayer: VideoPlayer) { }
+  constructor(private videoPlayer: VideoPlayer, public global: GlobalService) { }
 
   ngOnInit() {
   }

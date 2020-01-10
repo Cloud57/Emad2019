@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/service/global.service';
 
 @Component({
   selector: 'app-tab-dettagli',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabDettagliPage implements OnInit {
 
-  constructor() { }
+  constructor(public global:GlobalService) { }
 
   ngOnInit() {
   }

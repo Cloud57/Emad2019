@@ -28,7 +28,7 @@
       size-sm="6" 
       size-md="4" 
       size-lg="3" *ngFor="let task of response">
-        <ion-card [ngClass]="(task.is_task_active==true)?'active':''">
+        <ion-card [ngClass]="(task.is_task_active==true)?'active':''" (click)="openTask(task)">
           <ion-card-title *ngIf="task.is_task_active==true">
             <ion-icon name="radio-button-on" color="success"></ion-icon>
 
