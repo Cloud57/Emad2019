@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -15,7 +16,7 @@ export class RegisterPage implements OnInit {
   imageResponse: any;
   options: any;
   constructor(public imagePicker: ImagePicker, public file: File,private navCtrl: NavController,private alertService: AlertService,
-    public rubyService: RubyApiService) {}
+    public rubyService: RubyApiService, public location:Location) {}
     getImages() {
       this.options = {
         // Android only. Max images to be selected, defaults to 15. If this is set to 1, upon
@@ -51,7 +52,7 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
   loginPage(){
-    this.navCtrl.navigateRoot('/');
+    this.navCtrl.back();
   }
 
   register(form: NgForm) {

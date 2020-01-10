@@ -21,7 +21,7 @@ export class TabsPage implements OnInit {
     
 }
 homePage() {
-  this.navCtrl.navigateRoot('/doctor-home');
+  this.navCtrl.back();
 }
 save(){
   this.rubyService.new_patient(this.sharedService.patient, this.global.currentUser.id).subscribe(
