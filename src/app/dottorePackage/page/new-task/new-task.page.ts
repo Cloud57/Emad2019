@@ -1,6 +1,9 @@
+import { SharedIconService } from './shared-icon.service';
 import { ModalPage } from './modal/modal.page';
 import { ModalController } from '@ionic/angular';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-new-task',
@@ -8,20 +11,20 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./new-task.page.scss'],
 })
 export class NewTaskPage implements OnInit {
+  
 
-  constructor(private modalController: ModalController) { }
+
+  constructor(private modalController: ModalController, private sharedIService: SharedIconService) { }
   async openModal(){
-    const modal= await this.modalController.create({
-      component: ModalPage,
-      componentProps:{
-        path: 5
-      }
+    
+    const modal = await this.modalController.create({
+      component: ModalPage
     });
     return await modal.present();
-    modal.onDidDismiss()
-    .then(res => alert(JSON.stringify(res)))
+    
   }
   ngOnInit() {
+    this.sharedIService.src="";
   }
 
 }
