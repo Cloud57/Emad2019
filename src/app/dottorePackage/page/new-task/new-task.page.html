@@ -18,11 +18,11 @@
     
     
     <ion-list >
-      
-      <button class="round" float-center (click)="openModal()">
+      <img  [src]= "this.sharedIService.src" *ngIf="this.sharedIService.src"  (click)="openModal()" class="img-ico"> 
+      <button class="round" *ngIf="!this.sharedIService.src"  float-center (click)="openModal()">
         Aggiungi
         icona
-        <img src="" visible="hidden">
+        
       </button>
       <ion-item style="margin-top: 30px;">
         <ion-input name="nameTask" placeholder="Nome task" type="text"></ion-input>
@@ -34,7 +34,7 @@
         <ion-textarea placeholder="Descrizione"></ion-textarea>
       </ion-item>
       <ion-item>
-        <ion-label> Autonomia</ion-label>
+        <ion-label color="placeholder"> Autonomia</ion-label>
         <ion-select  interface="action-sheet">
           <ion-select-option value="aft">AFT</ion-select-option>
           <ion-select-option value="afp">AFP</ion-select-option>
