@@ -34,6 +34,15 @@ export class RubyApiService {
           weight: form.weight, diagnosis: form.diagnosis, user_id: id}
          };
         return this.http.post(this.env.API_URL+"/patients",JSON.stringify(register));
+      }
+
+        new_task(form, id, src) {
+          var register = { task : {
+            name :form.name, description : form.description, duration : form.duration,
+            autonomy: form.autonomy, icon: src,
+            patient_id: id}
+           };
+          return this.http.post(this.env.API_URL+"/tasks",JSON.stringify(register));
         }
 
       get_patients(id) {
