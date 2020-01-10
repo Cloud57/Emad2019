@@ -27,9 +27,9 @@
       size-xs="6" 
       size-sm="6" 
       size-md="4" 
-      size-lg="3">
-        <ion-card class="active">
-          <ion-card-title>
+      size-lg="3" *ngFor="let task of response">
+        <ion-card [ngClass]="(task.is_task_active==true)?'active':''">
+          <ion-card-title *ngIf="task.is_task_active==true">
             <ion-icon name="radio-button-on" color="success"></ion-icon>
 
           </ion-card-title>
@@ -38,34 +38,8 @@
           <ion-card-content>
             <ion-img src="https://image.freepik.com/icone-gratis/lavatrice_318-1619.jpg"></ion-img>
 
-            Lavatrice
+            {{task?.name}}
             
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col size="12" 
-      size-xs="6" 
-      size-sm="6" 
-      size-md="4" 
-      size-lg="3">
-        <ion-card>
-          <ion-card-content>
-            <ion-img src="https://image.freepik.com/icone-gratis/lavatrice_318-1619.jpg"></ion-img>
-
-            Aspirapolvere
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <ion-col size="12" 
-      size-xs="6" 
-      size-sm="6" 
-      size-md="4" 
-      size-lg="3">
-        <ion-card>
-          <ion-card-content>
-            <ion-img src="https://image.freepik.com/icone-gratis/lavatrice_318-1619.jpg"></ion-img>
-
-          Lavare i denti
           </ion-card-content>
         </ion-card>
       </ion-col>

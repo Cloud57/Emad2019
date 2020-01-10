@@ -15,7 +15,7 @@ export class ListaTaskPage implements OnInit {
   }
 
   ngOnInit() {
-
+    this.getListaTask()
   }
 
   inserisciTask(){
@@ -27,6 +27,7 @@ export class ListaTaskPage implements OnInit {
     this.rubyService.get_tasks(this.globalService.currentPatient.id).subscribe(
       data => {
         this.response = data   
+        console.log(this.response)
       },
       error => {
         console.log(error);
