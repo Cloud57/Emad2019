@@ -6,7 +6,7 @@ import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { GlobalService } from 'src/app/service/global.service';
-
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +15,14 @@ import { GlobalService } from 'src/app/service/global.service';
 })
 export class LoginPage implements OnInit {
   public users:Observable<any>
+  spinner:any;
   constructor(
     private navCtrl: NavController,
     private alertService: AlertService,
     public rubyService: RubyApiService,
     private storage: Storage,
-    private global: GlobalService
+    private global: GlobalService,
+    private loading:LoadingController
   ) {
   }
   ngOnInit() {
@@ -40,6 +42,12 @@ export class LoginPage implements OnInit {
 
 
   login(form: NgForm) {
+    this.loading.create({
+      message: "Attendi..."
+    }).then((overlay) => {
+      this.spinner = overlay
+      this.spinner.present();
+    });
     var response : any = {response : { user_type :"", auth_token : "", name: "", surname: "", email: "", telephone: ""} };
     this.rubyService.login(form.value.email, form.value.password).subscribe(
       data => {
@@ -57,7 +65,7 @@ export class LoginPage implements OnInit {
         console.log(error);
       },
       () => {
-       
+        this.spinner.dismiss();
       }
     );
   }

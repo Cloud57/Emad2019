@@ -6,6 +6,7 @@ import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { Location } from '@angular/common';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -15,8 +16,9 @@ export class RegisterPage implements OnInit {
   images: any[];
   imageResponse: any;
   options: any;
+  spinner: any;
   constructor(public imagePicker: ImagePicker, public file: File,private navCtrl: NavController,private alertService: AlertService,
-    public rubyService: RubyApiService, public location:Location) {}
+    public rubyService: RubyApiService, public location:Location, private loading:LoadingController) {}
     getImages() {
       this.options = {
         // Android only. Max images to be selected, defaults to 15. If this is set to 1, upon
@@ -56,6 +58,12 @@ export class RegisterPage implements OnInit {
   }
 
   register(form: NgForm) {
+    this.loading.create({
+      message: "Attendi..."
+    }).then((overlay) => {
+      this.spinner = overlay
+      this.spinner.present();
+    });
     console.log(form.value)
     this.rubyService.register(form.value).subscribe(
       data => {
@@ -66,7 +74,7 @@ export class RegisterPage implements OnInit {
         console.log(error);
       },
       () => {
-       
+       this.spinner.dismiss();
       }
     );
   }
