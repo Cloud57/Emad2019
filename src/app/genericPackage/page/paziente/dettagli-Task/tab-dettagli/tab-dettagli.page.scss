@@ -31,3 +31,14 @@ ion-searchbar{
 .imgTask{
     width: 20%;
 }
+ion-range{
+    background-image: linear-gradient(to right, red, orange, yellow, green);
+    height: 10px;
+    --knob-size: 30px;
+    --knob-background: white;
+    --knob-box-shadow:  10px 10px 25px 7px grey;
+    
+}
+ion-label{
+    color:black;
+}
