@@ -31,7 +31,7 @@
         <ion-input name="duration" ngModel type="text" placeholder="Durata" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-textarea ngModel name="description" placeholder="Descrizione" required></ion-textarea>
+        <ion-textarea style="margin-top: 1px!important" ngModel name="description" placeholder="Descrizione" maxlength="500" required></ion-textarea>
       </ion-item>
       <ion-item>
         <ion-label color="placeholder"> Autonomia</ion-label>
@@ -42,9 +42,9 @@
           <ion-select-option value="3">SA</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-list-header>Aggiungi Materiale</ion-list-header>
-      <ion-item>
-        <button class="round" style="margin-top:1%;width:40px;height:40px!important"> 
+      <ion-list-header style="color:#7B7B7B;">Aggiungi Materiale</ion-list-header>
+      <ion-item lines="none">
+        <button class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
           <ion-icon name="add"></ion-icon>
         </button>
       </ion-item>
