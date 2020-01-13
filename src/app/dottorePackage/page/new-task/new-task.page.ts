@@ -17,7 +17,7 @@ export class NewTaskPage implements OnInit {
   
 
 
-  constructor(private modalController: ModalController, private sharedIService: SharedIconService,private alertService: AlertService,
+  constructor(private modalController: ModalController, public sharedIService: SharedIconService,private alertService: AlertService,
     public rubyService: RubyApiService, private navCtrl: NavController, private global: GlobalService) { }
   async openModal(){
     
@@ -29,6 +29,10 @@ export class NewTaskPage implements OnInit {
   }
   ngOnInit() {
     this.sharedIService.src="";
+  }
+
+  goBack(){
+    this.navCtrl.back();
   }
 
   listOfTask(){

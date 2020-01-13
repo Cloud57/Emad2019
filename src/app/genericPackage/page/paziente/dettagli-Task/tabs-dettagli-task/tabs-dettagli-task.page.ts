@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/service/global.service';
 
 @Component({
   selector: 'app-tabs-dettagli-task',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabs-dettagli-task.page.scss'],
 })
 export class TabsDettagliTaskPage implements OnInit {
-
-  constructor() { }
+  public title:String;
+  constructor(public global:GlobalService) { 
+    this.title = global.currentTask.name;
+  }
 
   ngOnInit() {
   }

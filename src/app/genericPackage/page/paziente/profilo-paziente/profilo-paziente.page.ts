@@ -13,6 +13,7 @@ export class ProfiloPazientePage implements OnInit {
   public buttonName:any = 'Mostra';
   public paziente:Patient = new Patient();
   public age:number;
+  public title:string = "Profilo paziente"
   constructor(private navCtrl: NavController, public global : GlobalService) { 
       this.paziente = global.currentPatient
       this.age = this.getAge(this.paziente.birth_date)
