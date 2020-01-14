@@ -44,12 +44,16 @@
       </ion-item>
       <ion-list-header style="color:#7B7B7B;">Aggiungi Materiale</ion-list-header>
       <ion-item lines="none">
-        <button class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
+        <button (click)="uploadFile()" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
           <ion-icon name="add"></ion-icon>
         </button>
+        <ion-label><b>{{uploadText}}</b></ion-label>
       </ion-item>
       
+      
     </ion-list>
+
+    <ion-button (click)="AbortUpload()">cancel uploading</ion-button>
   </form>
 
 </ion-content>

@@ -16,8 +16,9 @@ import { RubyApiService } from './service/ruby-api.service';
 import { EnvService } from './service/env.service';
 import { AuthInterceptor} from './service/auth.interceptor'
 import { VideoPlayer } from '@ionic-native/video-player/ngx';
-
-
+import {FileTransfer} from '@ionic-native/file-transfer/ngx';
+import {FileChooser} from '@ionic-native/file-chooser/ngx';
+import {FilePath} from '@ionic-native/file-path/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -33,6 +34,9 @@ import { VideoPlayer } from '@ionic-native/video-player/ngx';
     ImagePicker,
     VideoPlayer,
     File,
+    FileTransfer,
+    FilePath,
+    FileChooser,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
