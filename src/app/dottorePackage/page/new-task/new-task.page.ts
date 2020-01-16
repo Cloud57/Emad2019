@@ -8,66 +8,27 @@ import { AlertService } from 'src/app/service/alert.service';
 import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/service/global.service';
 import {FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer/ngx';
-import {FileChooser} from '@ionic-native/file-chooser/ngx';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import {FilePath} from '@ionic-native/file-path/ngx';
-import {File} from '@ionic-native/file/ngx';
+
 @Component({
   selector: 'app-new-task',
   templateUrl: './new-task.page.html',
   styleUrls: ['./new-task.page.scss'],
 })
 export class NewTaskPage implements OnInit {
+  
   uploadText: any;
   downloadText: any;
   fileTransfer: FileTransferObject;
 
-
-  constructor(private modalController: ModalController,
-    private sharedIService: SharedIconService,
-    private alertService: AlertService,
-    public rubyService: RubyApiService, 
-    private navCtrl: NavController, 
-    private global: GlobalService,
-    private transfer: FileTransfer,
-    private file: File,
+  constructor(private modalController: ModalController, public sharedIService: SharedIconService,private alertService: AlertService,
+    public rubyService: RubyApiService, private navCtrl: NavController, private global: GlobalService,
+    private fileChooser: FileChooser,
     private filePath: FilePath,
-    private fileChooser: FileChooser)
-    {
+    private transfer: FileTransfer) {
       this.uploadText="";
       this.downloadText="";
-     }
-
-     uploadFile(){
-       this.fileChooser.open().then((uri)=>{
-        this.filePath.resolveNativePath(uri).then(
-          (nativepath)=>{
-            this.fileTransfer = this.transfer.create();
-            let options:FileUploadOptions={
-              fileKey:'videofile',
-              fileName: 'video.mp4',
-              chunkedMode: false,
-              headers:{},
-              mimeType:'video/mp4'
-            }
-            this.uploadText="uploading...";
-            this.fileTransfer.upload(nativepath,'your endpoint api path', options).then((data)=>{
-              alert("transfert done = "+ JSON.stringify(data));
-              this.uploadText = "";
-              
-            },(err)=>{
-              this.uploadText = "";
-            })
-          },(err)=>{
-            alert(JSON.stringify(err));
-          })
-       },(err)=>{
-        alert(JSON.stringify(err));
-      })
-     }
-
-     AbortUpload(){
-       this.fileTransfer.abort();
-       alert("upload cancel.");
      }
   async openModal(){
     
@@ -79,10 +40,6 @@ export class NewTaskPage implements OnInit {
   }
   ngOnInit() {
     this.sharedIService.src="";
-  }
-
-  goBack(){
-    this.navCtrl.back();
   }
 
   listOfTask(){
@@ -103,6 +60,44 @@ export class NewTaskPage implements OnInit {
        
       }
     );
+  }
+
+  uploadFile(){
+    this.fileChooser.open().then((uri)=>{
+     this.filePath.resolveNativePath(uri).then(
+       (nativepath)=>{
+         this.fileTransfer = this.transfer.create();
+         let options:FileUploadOptions={
+           fileKey:'videofile',
+           fileName: 'video.mp4',
+           chunkedMode: false,
+           headers:{},
+           mimeType:'video/mp4'
+         }
+         this.uploadText="uploading...";
+         this.fileTransfer.upload(nativepath,'your endpoint api path', options).then((data)=>{
+           alert("transfert done = "+ JSON.stringify(data));
+           this.uploadText = "";
+           
+         },(err)=>{
+           this.uploadText = "";
+         })
+       },(err)=>{
+         alert(JSON.stringify(err));
+       })
+    },(err)=>{
+     alert(JSON.stringify(err));
+   })
+  }
+
+  AbortUpload(){
+    this.fileTransfer.abort();
+    alert("upload cancel.");
+  }
+
+  
+  goBack(){
+    this.navCtrl.back();
   }
 
 }
