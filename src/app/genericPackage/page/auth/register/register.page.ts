@@ -71,7 +71,10 @@ export class RegisterPage implements OnInit {
         this.loginPage();
       },
       error => {
+        this.spinner.dismiss();
         console.log(error);
+        if(error.status)
+        this.alertService.presentToast("Errore nella registrazione");
       },
       () => {
        this.spinner.dismiss();

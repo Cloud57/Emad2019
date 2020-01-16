@@ -63,6 +63,7 @@ export class LoginPage implements OnInit {
       error => {
         this.alertService.presentToast("Errore nel login");
         console.log(error);
+        this.spinner.dismiss();
       },
       () => {
         this.spinner.dismiss();
