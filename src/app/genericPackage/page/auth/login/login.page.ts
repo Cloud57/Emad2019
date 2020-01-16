@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
     this.navCtrl.navigateRoot('/');
   }
   Page(){
-    this.navCtrl.navigateRoot('/tabs-dettagli-task/tabGuida');
+    this.navCtrl.navigateRoot('/new-task');
 
   }
 
