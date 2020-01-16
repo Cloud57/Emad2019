@@ -53,4 +53,9 @@ export class RubyApiService {
           return this.http.get(this.env.API_URL+"/patients/search_task?id="+id);
         }
 
+      get_users() {
+          return this.http.get(this.env.API_URL+"/users");
+      }
+
+
 }
