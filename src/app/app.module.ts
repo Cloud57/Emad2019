@@ -19,6 +19,7 @@ import { VideoPlayer } from '@ionic-native/video-player/ngx';
 import {FileTransfer} from '@ionic-native/file-transfer/ngx';
 import {FileChooser} from '@ionic-native/file-chooser/ngx';
 import {FilePath} from '@ionic-native/file-path/ngx';
+import {Chooser} from '@ionic-native/chooser/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -35,6 +36,7 @@ import {FilePath} from '@ionic-native/file-path/ngx';
     VideoPlayer,
     File,
     FileTransfer,
+    Chooser,
     FilePath,
     FileChooser,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

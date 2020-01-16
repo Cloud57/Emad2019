@@ -7,6 +7,7 @@ import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx'
 import { File } from '@ionic-native/file/ngx';
 import { Location } from '@angular/common';
 import { LoadingController } from '@ionic/angular';
+import {Chooser, ChooserResult} from '@ionic-native/chooser/ngx';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -17,8 +18,20 @@ export class RegisterPage implements OnInit {
   imageResponse: any;
   options: any;
   spinner: any;
-  constructor(public imagePicker: ImagePicker, public file: File,private navCtrl: NavController,private alertService: AlertService,
+  constructor(public imagePicker: ImagePicker, private chooser:Chooser,public file: File,private navCtrl: NavController,private alertService: AlertService,
     public rubyService: RubyApiService, public location:Location, private loading:LoadingController) {}
+    
+    fileObj:ChooserResult;
+    PickFile(){
+      this.chooser.getFile("image/jpeg").then((value:ChooserResult)=>{
+        this.fileObj = value;
+      },(err)=>{
+        alert(JSON.stringify(err));
+      })
+    }
+    
+    
+    
     getImages() {
       this.options = {
         // Android only. Max images to be selected, defaults to 15. If this is set to 1, upon
