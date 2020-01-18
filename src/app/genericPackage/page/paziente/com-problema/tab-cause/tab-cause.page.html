@@ -5,18 +5,20 @@
         <ion-label>Antecedente </ion-label>
       
         <ion-item>
-          <ion-input placeholder='Descrizione eventuale comportamento precedente' type="text"></ion-input>
+          <ion-input name="antecedent" [(ngModel)]="this.shared.problem.antecedent" placeholder='Descrizione eventuale comportamento precedente' type="text"></ion-input>
         </ion-item>
 
         <ion-label>Comportamento </ion-label>
       
         <ion-item>
-          <ion-input placeholder='Descrizione eventuale situazione verificatasi' type="text"></ion-input>
+          <ion-input  name="behavior" [(ngModel)]="this.shared.problem.behavior" placeholder='Descrizione eventuale situazione verificatasi' type="text"></ion-input>
         </ion-item>
+
+
         <ion-label>Conseguenza</ion-label>
       
         <ion-item>
-          <ion-input placeholder='Descrizione eventuali conseguenze' type="text"></ion-input>
+          <ion-input name="consequence"  [(ngModel)]="this.shared.problem.consequence"  placeholder='Descrizione eventuali conseguenze' type="text"></ion-input>
         </ion-item>
         
         

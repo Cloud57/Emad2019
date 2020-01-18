@@ -37,6 +37,10 @@ export class ProfiloPazientePage implements OnInit {
   TaskListPage() {
     this.navCtrl.navigateRoot('/lista-task');
   }
+
+  ProblemBehPage() {
+    this.navCtrl.navigateRoot('/com-problema');
+  }
   toggle(){
     this.show = !this.show;
 

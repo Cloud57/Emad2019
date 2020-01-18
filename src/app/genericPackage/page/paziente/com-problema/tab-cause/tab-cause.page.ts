@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewProbBehSharedService } from '../new-prob-beh-shared.service';
 
 @Component({
   selector: 'app-tab-cause',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabCausePage implements OnInit {
 
-  constructor() { }
+  constructor(public shared: NewProbBehSharedService) { }
 
   ngOnInit() {
   }
