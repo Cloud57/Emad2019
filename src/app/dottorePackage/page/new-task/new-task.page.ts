@@ -18,16 +18,18 @@ import {FilePath} from '@ionic-native/file-path/ngx';
 })
 export class NewTaskPage implements OnInit {
   
-  uploadText: any;
+  uploadVideoText: any;
+  uploadAudioText: any;
   downloadText: any;
-  fileTransfer: FileTransferObject;
-
+  fileTransferVideo: FileTransferObject;
+  fileTransferAudio: FileTransferObject;
   constructor(private modalController: ModalController, public sharedIService: SharedIconService,private alertService: AlertService,
     public rubyService: RubyApiService, private navCtrl: NavController, private global: GlobalService,
     private fileChooser: FileChooser,
     private filePath: FilePath,
     private transfer: FileTransfer) {
-      this.uploadText="";
+      this.uploadVideoText="";
+      this.uploadAudioText="";
       this.downloadText="";
      }
   async openModal(){
@@ -62,11 +64,11 @@ export class NewTaskPage implements OnInit {
     );
   }
 
-  uploadFile(){
+  uploadVideo(){
     this.fileChooser.open().then((uri)=>{
      this.filePath.resolveNativePath(uri).then(
        (nativepath)=>{
-         this.fileTransfer = this.transfer.create();
+         this.fileTransferVideo = this.transfer.create();
          let options:FileUploadOptions={
            fileKey:'videofile',
            fileName: 'video.mp4',
@@ -74,13 +76,40 @@ export class NewTaskPage implements OnInit {
            headers:{},
            mimeType:'video/mp4'
          }
-         this.uploadText="uploading...";
-         this.fileTransfer.upload(nativepath,'your endpoint api path', options).then((data)=>{
+         this.uploadVideoText="uploading...";
+         this.fileTransferVideo.upload(nativepath,'your endpoint api path', options).then((data)=>{
            alert("transfert done = "+ JSON.stringify(data));
-           this.uploadText = "";
+           this.uploadVideoText = "";
            
          },(err)=>{
-           this.uploadText = "";
+           this.uploadVideoText = "";
+         })
+       },(err)=>{
+         alert(JSON.stringify(err));
+       })
+    },(err)=>{
+     alert(JSON.stringify(err));
+   })
+  }
+  uploadAudio(){
+    this.fileChooser.open().then((uri)=>{
+     this.filePath.resolveNativePath(uri).then(
+       (nativepath)=>{
+         this.fileTransferAudio = this.transfer.create();
+         let options:FileUploadOptions={
+           fileKey:'audiofile',
+           fileName: 'audio.mp3',
+           chunkedMode: false,
+           headers:{},
+           mimeType:'audio/mpeg'
+         }
+         this.uploadAudioText="uploading...";
+         this.fileTransferAudio.upload(nativepath,'your endpoint api path', options).then((data)=>{
+           alert("transfert done = "+ JSON.stringify(data));
+           this.uploadAudioText = "";
+           
+         },(err)=>{
+           this.uploadAudioText = "";
          })
        },(err)=>{
          alert(JSON.stringify(err));
@@ -90,8 +119,12 @@ export class NewTaskPage implements OnInit {
    })
   }
 
-  AbortUpload(){
-    this.fileTransfer.abort();
+  AbortUploadAudio(){
+    this.fileTransferAudio.abort();
+    alert("upload cancel.");
+  }
+  AbortUploadVideo(){
+    this.fileTransferVideo.abort();
     alert("upload cancel.");
   }
 

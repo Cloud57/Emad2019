@@ -42,18 +42,26 @@
           <ion-select-option value="3">SA</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-list-header style="color:#7B7B7B;">Aggiungi Materiale</ion-list-header>
+      <ion-list-header style="color:#7B7B7B;">Aggiungi Materiale Video</ion-list-header>
       <ion-item lines="none">
-        <button (click)="uploadFile()" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
+        <button (click)="uploadVideo()" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
           <ion-icon name="add"></ion-icon>
         </button>
-        <ion-label><b>{{uploadText}}</b></ion-label>
+        <ion-label><b>{{uploadVideoText}}</b></ion-label>
+      </ion-item>
+
+      <ion-list-header style="color:#7B7B7B;">Aggiungi Materiale Audio</ion-list-header>
+      <ion-item lines="none">
+        <button (click)="uploadAudio()" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
+          <ion-icon name="add"></ion-icon>
+        </button>
+        <ion-label><b>{{uploadAudioText}}</b></ion-label>
       </ion-item>
       
       
     </ion-list>
 
-    <ion-button (click)="AbortUpload()">cancel uploading</ion-button>
+    <!--<ion-button (click)="AbortUpload()">cancel uploading</ion-button>-->
   </form>
 
 </ion-content>
