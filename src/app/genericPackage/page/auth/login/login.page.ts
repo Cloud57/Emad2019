@@ -32,6 +32,9 @@ export class LoginPage implements OnInit {
  registerPage() {
     this.navCtrl.navigateRoot('/register');
   }
+  recoveryPassword(){
+    this.navCtrl.navigateRoot('/password-recovery');
+  }
   loginPage(){
     this.navCtrl.navigateRoot('/');
   }
