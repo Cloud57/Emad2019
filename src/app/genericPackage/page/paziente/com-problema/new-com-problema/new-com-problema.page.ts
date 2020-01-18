@@ -4,6 +4,7 @@ import { NewProbBehSharedService } from '../new-prob-beh-shared.service';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { GlobalService } from 'src/app/service/global.service';
 import { AlertService } from 'src/app/service/alert.service';
+import { Problem_behaviour } from 'src/app/models/Problem_behaviour';
 
 @Component({
   selector: 'app-new-com-problema',
@@ -16,6 +17,7 @@ export class NewComProblemaPage implements OnInit {
     private global:GlobalService, private alertService:AlertService) { }
 
   ngOnInit() {
+    this.sharedService.problem = new Problem_behaviour()
   }
   comProblemaPage() {
     this.navCtrl.navigateRoot('/com-problema');

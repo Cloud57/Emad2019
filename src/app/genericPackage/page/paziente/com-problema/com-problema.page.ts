@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { GlobalService } from 'src/app/service/global.service';
 
+
 @Component({
   selector: 'app-com-problema',
   templateUrl: './com-problema.page.html',
@@ -13,6 +14,7 @@ export class ComProblemaPage implements OnInit {
   title="Comportamento problema"
   constructor(private navCtrl: NavController, private rubyService:RubyApiService,
               private globalService: GlobalService) { }
+
 
   ngOnInit() {
     this.getListaProblem()

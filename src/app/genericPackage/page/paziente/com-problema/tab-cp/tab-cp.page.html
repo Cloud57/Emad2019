@@ -5,7 +5,9 @@
         <ion-label>Nome comportamento </ion-label>
       
         <ion-item>
-          <ion-input name="name"  [(ngModel)]="this.shared.problem.name" placeholder='Nome comportamento' type="text"></ion-input>
+          <ion-select placeholder="Tipologia" interface="popover" required name="name" [(ngModel)]="this.shared.problem.name">
+          <ion-select-option *ngFor="let item of type; index as i" [value]="i" >{{item}}</ion-select-option>
+          </ion-select>
         </ion-item>
         <span *ngIf="!this.shared.problem.name">Campo richiesto</span>
         

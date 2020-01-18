@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { ComProblemaPage } from './com-problema.page';
 import { UiComponentsModule } from '../../../ui-components/ui-components.module';
+import { TransformTypePipe } from './transform-type.pipe';
 
 
 const routes: Routes = [
@@ -24,6 +25,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ComProblemaPage]
+  declarations: [ComProblemaPage, TransformTypePipe]
 })
 export class ComProblemaPageModule {}

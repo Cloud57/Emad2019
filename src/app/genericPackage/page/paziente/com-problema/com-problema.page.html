@@ -25,7 +25,7 @@
       <ion-row>
         <ion-col>
           <div>
-          <h1>{{problem.name}}</h1>
+          <h1>{{problem.name | transformType}}</h1>
           </div>
         </ion-col>
         <ion-col>
@@ -51,7 +51,9 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <div>2 al girno</div>
+          <div *ngIf="problem.frequency == 1">Una volta</div>
+          <div *ngIf="problem.frequency == 2">Più volte</div>
+          <div *ngIf="problem.frequency == 3">Spesso</div>
         </ion-col>
         <ion-col col-6>
           <ion-icon name="radio-button-on" color="success"  *ngIf="problem.intensity == 1"></ion-icon>
@@ -62,7 +64,9 @@
           <ion-icon name="radio-button-on" *ngIf="problem.intensity != 3"></ion-icon>
         </ion-col>
         <ion-col>
-          <div>tra 2 e 5</div>
+          <div *ngIf="problem.duration == 1">Meno di 1 minuto</div>
+          <div *ngIf="problem.duration == 2">Tra i 2 e i 5 minuti</div>
+          <div *ngIf="problem.duration == 3">Più di 5 minuti</div>
         </ion-col>
       </ion-row>
 
