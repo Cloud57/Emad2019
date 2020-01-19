@@ -5,18 +5,23 @@
         <ion-label>Nome comportamento </ion-label>
       
         <ion-item>
-          <ion-input placeholder='Nome comportamento' type="text"></ion-input>
+          <ion-select placeholder="Tipologia" interface="popover" required name="name" [(ngModel)]="this.shared.problem.name">
+          <ion-select-option *ngFor="let item of type; index as i" [value]="i" >{{item}}</ion-select-option>
+          </ion-select>
         </ion-item>
+        <span *ngIf="!this.shared.problem.name">Campo richiesto</span>
         
         <ion-label>Data</ion-label>
         <ion-item >
-            
-          <ion-input type="date" placeholder="gg/mm/aaaa"></ion-input>
+          <ion-datetime name="date"  display-format="DD MM YY" [(ngModel)]="this.shared.problem.date" placeholder="GG/MM/AA" picker-format="DD MM YY" name="dataNascita"></ion-datetime>
         </ion-item>
+        <span *ngIf="!this.shared.problem.date">Campo richiesto</span>
+
         <ion-label>Descrizione Comportamaneto</ion-label>
         <ion-item>
-          <ion-textarea placeholder="Inserisci una descrizione..." type="text"></ion-textarea>
+          <ion-textarea name="desctiption"  [(ngModel)]="this.shared.problem.description" placeholder="Inserisci una descrizione..." type="text"></ion-textarea>
         </ion-item>
+        
         
       
         

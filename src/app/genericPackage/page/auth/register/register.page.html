@@ -11,13 +11,12 @@
 </ion-header>
 <!-------------------------------->
 
- 
 
 
 
-<!--------------------------------->
+
 <ion-content>
-
+<!-------------------------------
   <ion-grid fixed>
     <ion-row><img id="blah"  width="100" height="80"/></ion-row>
     <ion-row>
@@ -28,25 +27,23 @@
     </ion-row>
    
   </ion-grid>
-  
- <!-- <ion-grid>
+-->
+ <ion-grid>
     <ion-row>
       <ion-col >
+        <div *ngIf="fileObj">
+          <img src={{fileObj.dataURI}}/>
         
-        <div class="images">
-          <div *ngFor="let img of imageResponse">
-            <img src="{{img}}" alt="" srcset="">
-          </div>
         </div>
+       
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col text-center>
-        <ion-button (click)="getImages()">Inserisci immagine profilo</ion-button>
+        <ion-button (click)="PickFile()">Inserisci immagine profilo</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
--->
   
     <form #form="ngForm" (ngSubmit)="register(form)">
       <ion-item>

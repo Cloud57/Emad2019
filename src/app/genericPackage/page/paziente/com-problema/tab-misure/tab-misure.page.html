@@ -3,76 +3,77 @@
       
         
     <ion-list>
-        <ion-radio-group>
+        <ion-radio-group name="frquency"  [(ngModel)]="this.shared.problem.frequency" name="frquency"  [(ngModel)]="this.shared.problem.frequency">
           <ion-list-header>
            Frequenza
           </ion-list-header>
       
           <ion-item>
             <ion-label>1 al giorno</ion-label>
-            <ion-radio slot="start"></ion-radio>
+            <ion-radio slot="start" value="1"></ion-radio>
           </ion-item>
       
           <ion-item>
             <ion-label>2 al giorno</ion-label>
-            <ion-radio slot="start"></ion-radio>
+            <ion-radio slot="start" value="2"></ion-radio>
           </ion-item>
       
           <ion-item>
             <ion-label>3 al giorno</ion-label>
-            <ion-radio slot="start"></ion-radio>
+            <ion-radio slot="start" value="3"></ion-radio>
           </ion-item>
+          <span *ngIf="!this.shared.problem.frequency">Campo richiesto</span>
       
           
           
         </ion-radio-group>
       </ion-list>
       <ion-list>
-          <ion-radio-group>
+          <ion-radio-group name="intensity"  [(ngModel)]="this.shared.problem.intensity">
             <ion-list-header>
              Intensità
             </ion-list-header>
         
             <ion-item>
               <ion-label>Bassa</ion-label>
-              <ion-radio slot="start"></ion-radio>
+              <ion-radio slot="start"  value="1"></ion-radio>
             </ion-item>
         
             <ion-item>
               <ion-label>Media</ion-label>
-              <ion-radio slot="start"></ion-radio>
+              <ion-radio slot="start"  value="2"></ion-radio>
             </ion-item>
         
             <ion-item>
               <ion-label>Alta</ion-label>
-              <ion-radio slot="start" ></ion-radio>
+              <ion-radio slot="start"  value="3"></ion-radio>
             </ion-item>
-        
+            <span *ngIf="!this.shared.problem.intensity">Campo richiesto</span>
             
             
           </ion-radio-group>
         </ion-list>
         <ion-list>
-            <ion-radio-group>
+            <ion-radio-group name="duration"  [(ngModel)]="this.shared.problem.duration">
               <ion-list-header>
                Durata
               </ion-list-header>
           
               <ion-item>
                 <ion-label>Meno di 1 minuto</ion-label>
-                <ion-radio slot="start"></ion-radio>
+                <ion-radio slot="start"  value="1"></ion-radio>
               </ion-item>
           
               <ion-item>
                 <ion-label>tra i 2 e i 5 minuti</ion-label>
-                <ion-radio slot="start"></ion-radio>
+                <ion-radio slot="start" value="2"></ion-radio>
               </ion-item>
           
               <ion-item>
                 <ion-label>più di 5 min</ion-label>
-                <ion-radio slot="start"></ion-radio>
+                <ion-radio slot="start" value="3"></ion-radio>
               </ion-item>
-          
+              <span *ngIf="!this.shared.problem.duration">Campo richiesto</span>
               
               
             </ion-radio-group>

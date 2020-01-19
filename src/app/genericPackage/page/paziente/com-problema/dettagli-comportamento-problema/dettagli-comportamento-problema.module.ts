@@ -2,18 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
+import { UiComponentsModule } from '../../../../ui-components/ui-components.module';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ComProblemaPage } from './com-problema.page';
-import { UiComponentsModule } from '../../../ui-components/ui-components.module';
-import { TransformTypePipe } from './transform-type.pipe';
-
+import { DettagliComportamentoProblemaPage } from './dettagli-comportamento-problema.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ComProblemaPage
+    component: DettagliComportamentoProblemaPage
   }
 ];
 
@@ -21,10 +19,10 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    UiComponentsModule,
     IonicModule,
+    UiComponentsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ComProblemaPage, TransformTypePipe]
+  declarations: [DettagliComportamentoProblemaPage]
 })
-export class ComProblemaPageModule {}
+export class DettagliComportamentoProblemaPageModule {}

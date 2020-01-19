@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NewProbBehSharedService } from '../new-prob-beh-shared.service';
+import { Problem_behaviour } from 'src/app/models/Problem_behaviour';
 
 @Component({
   selector: 'app-tab-cp',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tab-cp.page.scss'],
 })
 export class TabCpPage implements OnInit {
-
-  constructor() { }
+  public type: string[]
+  constructor(public shared:NewProbBehSharedService) { }
 
   ngOnInit() {
+    this.type = Problem_behaviour.TYPE_BEHAVIOR
   }
 
 }

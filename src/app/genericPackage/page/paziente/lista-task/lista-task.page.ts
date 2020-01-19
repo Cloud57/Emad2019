@@ -10,6 +10,7 @@ import { RubyApiService } from 'src/app/service/ruby-api.service';
 })
 export class ListaTaskPage implements OnInit {
   public response : any = [];
+  public title = "Lista task"
   constructor(private navCtrl: NavController, private globalService: GlobalService, private rubyService: RubyApiService) { 
 
   }

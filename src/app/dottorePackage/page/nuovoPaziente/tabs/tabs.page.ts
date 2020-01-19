@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { AlertService } from 'src/app/service/alert.service';
 import { GlobalService } from 'src/app/service/global.service';
+import { Patient } from 'src/app/models/patient';
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.page.html',
@@ -13,7 +14,9 @@ export class TabsPage implements OnInit {
    
   constructor(private navCtrl: NavController, private sharedService: SharedNewPazienteService,
               private rubyService: RubyApiService, private alertService: AlertService,
-              private global: GlobalService) { }
+              private global: GlobalService) { 
+                sharedService.patient = new Patient();
+              }
 
   ngOnInit() {
   }
@@ -21,7 +24,7 @@ export class TabsPage implements OnInit {
     
 }
 homePage() {
-  this.navCtrl.back();
+  this.navCtrl.navigateRoot('/doctor-home');
 }
 save(){
   this.rubyService.new_patient(this.sharedService.patient, this.global.currentUser.id).subscribe(
