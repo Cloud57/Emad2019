@@ -38,6 +38,7 @@ export class DoctorHomePage implements OnInit {
     
     this.rubyService.get_patients(this.globalService.currentUser.id).subscribe(
       data => {
+        console.log(data);
         this.response = data   
       },
       error => {
@@ -50,7 +51,8 @@ export class DoctorHomePage implements OnInit {
   }
 
   openDetail(patient) {
-    this.globalService.currentPatient= patient;
+    this.globalService.currentPatient= patient.patient;
+    this.globalService.currentPatient.user_in_alliance= patient.user_in_alliance;
     this.navCtrl.navigateRoot('/profilo-paziente');
   }
     

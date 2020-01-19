@@ -24,6 +24,11 @@ export class ComProblemaPage implements OnInit {
     this.navCtrl.navigateRoot('/new-com-problema');
   }
 
+  openProblem(problem) {
+    this.globalService.currentProblem=problem
+    this.navCtrl.navigateRoot('/dettagli-comportamento-problema');
+  }
+
   getListaProblem() {
     
     this.rubyService.get_problem(this.globalService.currentPatient.id).subscribe(

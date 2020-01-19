@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { EnvService } from './env.service';
 import { Storage } from '@ionic/storage';
+import { Alliance } from 'src/app/models/alliance';
 
 @Injectable({
   providedIn: 'root'
@@ -55,8 +56,19 @@ export class RubyApiService {
           return this.http.post(this.env.API_URL+"/problem_behaviors",JSON.stringify(register));
         }
 
+        new_alliance(allianceForm:Alliance[],patientID) {
+          var ids: number[] = [];
+          for(let item of allianceForm){
+            ids.push(item.user_id)
+          }
+          var register = { alliance : {
+            user_ids :ids, patient_id : patientID}
+           };
+          return this.http.post(this.env.API_URL+"/alliances",JSON.stringify(register));
+        }
+
       get_patients(id) {
-          return this.http.get(this.env.API_URL+"/users/search_patient?id="+id);
+          return this.http.get(this.env.API_URL+"/users/search_patient.json?id="+id);
       }
 
       get_tasks(id) {

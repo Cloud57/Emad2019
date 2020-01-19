@@ -27,13 +27,30 @@ homePage() {
   this.navCtrl.navigateRoot('/doctor-home');
 }
 save(){
+  var response : any = {id : "" };
   this.rubyService.new_patient(this.sharedService.patient, this.global.currentUser.id).subscribe(
     data => {
       this.alertService.presentToast("Paziente inserito");  
-      this.homePage();
+      response = data;
+      this.insertAlliance(response.id)
     },
     error => {
       this.alertService.presentToast("Errore nell'inserimento paziente");
+      console.log(error);
+    },
+    () => {
+     
+    }
+  );
+}
+
+insertAlliance(patientID) {
+  this.rubyService.new_alliance(this.sharedService.alliance,patientID).subscribe(
+    data => {
+      this.homePage();
+    },
+    error => {
+      this.homePage();
       console.log(error);
     },
     () => {

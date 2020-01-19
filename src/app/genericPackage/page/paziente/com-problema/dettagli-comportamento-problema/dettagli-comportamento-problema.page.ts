@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/models/patient';
 import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/service/global.service';
+import { Problem_behaviour } from 'src/app/models/Problem_behaviour';
+
 @Component({
   selector: 'app-dettagli-comportamento-problema',
   templateUrl: './dettagli-comportamento-problema.page.html',
@@ -16,11 +18,11 @@ export class DettagliComportamentoProblemaPage implements OnInit {
   public buttonName1:any = 'Mostra';
   public buttonName2:any = 'Mostra';
   public buttonName3:any = 'Mostra';
-  public paziente:Patient = new Patient();
+  public problem:Problem_behaviour = new Problem_behaviour();
   
   public title:string = "Dettagli Comportamento Problema"
   constructor(private navCtrl: NavController, public global : GlobalService) { 
-    this.paziente = global.currentPatient
+    this.problem = global.currentProblem;
 
   }
 

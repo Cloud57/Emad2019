@@ -88,16 +88,10 @@
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col >
+        <ion-col *ngFor="let user of paziente.user_in_alliance">
           <figure>
             <img src="../assets/img/martina.png">
-            <figcaption>Martina</figcaption>
-          </figure>
-        </ion-col>
-        <ion-col>
-          <figure>
-            <img src="../assets/img/francesco.png">
-            <figcaption>Francesco</figcaption>
+            <figcaption>{{user.name}}</figcaption>
           </figure>
         </ion-col>
       </ion-row>
