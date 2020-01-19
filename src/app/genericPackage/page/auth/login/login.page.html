@@ -19,14 +19,16 @@
       
       <ion-input required type="password" placeholder="Password" ngModel name="password"></ion-input>
     </ion-item>
-    <p text-center class="grayText">Password dimenticata?</p>
+    <ion-row align-items-center>
+      <ion-col size="12">
+        <a text-center (click)="recoveryPassword()">Password dimenticata?</a>
+      </ion-col>
+      
+    </ion-row>
+    
     <ion-button  [disabled]="!form.form.valid" type="submit">Login</ion-button>
 </form>
 
-  <!--ion-button  (click)="registerPage()" class="facebookButton"><ion-icon name="logo-facebook"></ion-icon>
-       Facebook
-      </ion-button-->
-  
-  <p text-center (click)="registerPage()">Non hai un account? <b>Registrati</b></p>
-  <ion-button (click)="Page()">Vai</ion-button>
+  <p text-center >Non sei registrato? <a (click)="registerPage()">Registrati</a></p>
+  <ion-button (click)="Page()">vai</ion-button>
 </ion-content>

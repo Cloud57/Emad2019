@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'modal', loadChildren: './dottorePackage/page/new-task/modal/modal.module#ModalPageModule' },
   { path: 'esecuzione-task', loadChildren: './genericPackage/page/paziente/esecuzione-task/esecuzione-task.module#EsecuzioneTaskPageModule' },
   { path: 'dettagli-esecuzione-task', loadChildren: './genericPackage/page/paziente/dettagli-esecuzione-task/dettagli-esecuzione-task.module#DettagliEsecuzioneTaskPageModule' },
+  { path: 'password-recovery', loadChildren: './genericPackage/page/auth/login/password-recovery/password-recovery.module#PasswordRecoveryPageModule' },
   { path: 'dettagli-comportamento-problema', loadChildren: './genericPackage/page/paziente/com-problema/dettagli-comportamento-problema/dettagli-comportamento-problema.module#DettagliComportamentoProblemaPageModule' },
   
 

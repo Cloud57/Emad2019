@@ -15,5 +15,10 @@ export class PazientePage implements OnInit {
   TaskListPage() {
     this.navCtrl.navigateRoot('/lista-task');
   }
-
+  alleanzaPage(){
+    this.navCtrl.navigateRoot('alleanza');
+  }
+  comportamentiProblemaPage(){
+    
+  }
 }
