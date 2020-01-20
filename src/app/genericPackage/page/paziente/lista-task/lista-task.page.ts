@@ -40,7 +40,8 @@ export class ListaTaskPage implements OnInit {
   }
 
   openTask(task) {
-    this.globalService.currentTask= task;
+    this.globalService.currentTask= task.task;
+    this.globalService.currentTask.reports = task.reports
     this.navCtrl.navigateRoot('/tabs-dettagli-task/tabDettagli');
   }
 }

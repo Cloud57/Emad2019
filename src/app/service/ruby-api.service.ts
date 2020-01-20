@@ -72,7 +72,7 @@ export class RubyApiService {
       }
 
       get_tasks(id) {
-          return this.http.get(this.env.API_URL+"/patients/search_task?id="+id);
+          return this.http.get(this.env.API_URL+"/patients/search_task.json?id="+id);
         }
 
       get_problem(id) {

@@ -1,3 +1,5 @@
+import { Reports } from './reports'
+
 export class Task {
     name:String
     description:String
@@ -5,4 +7,5 @@ export class Task {
     autonomy:number
     icon:String
     patient_id:number
+    reports: any[]
 }

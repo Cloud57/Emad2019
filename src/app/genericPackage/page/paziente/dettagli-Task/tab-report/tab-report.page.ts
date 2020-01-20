@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { GlobalService } from 'src/app/service/global.service';
 
 @Component({
   selector: 'app-tab-report',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabReportPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl:NavController, public global:GlobalService) { }
 
   ngOnInit() {
   }
-
+  inserisciReport(){
+    this.navCtrl.navigateRoot('/esecuzione-task');
+  }
 }

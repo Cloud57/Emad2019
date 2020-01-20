@@ -20,7 +20,7 @@
   <ion-router-outlet id="content1" main></ion-router-outlet>
   
 <ion-list>
-  <ion-item *ngFor="let paziente of response" (click)="openDetail(paziente)">
+  <ion-item *ngFor="let item of response" (click)="openDetail(item)">
     <ion-grid>
       <ion-row  align-items-center>
         <ion-col size="2">
@@ -28,9 +28,9 @@
         </ion-col>
         <ion-col size="8" offset="1">
           <ion-label>
-            <b>{{paziente?.patient.name}} {{paziente?.patient.surname}}</b>
+            <b>{{item?.patient.name}} {{item?.patient.surname}}</b>
           </ion-label>
-          <ion-label>Diagnosi: {{paziente?.patient.diagnosis}}</ion-label> 
+          <ion-label>Diagnosi: {{item?.patient.diagnosis}}</ion-label> 
 
         </ion-col>
       </ion-row>
