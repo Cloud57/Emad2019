@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/service/global.service';
 
 @Component({
   selector: 'app-dettagli-esecuzione-task',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dettagli-esecuzione-task.page.scss'],
 })
 export class DettagliEsecuzioneTaskPage implements OnInit {
-
-  constructor() { }
+  title = "Report del task"
+  constructor(public global:GlobalService) { }
 
   ngOnInit() {
   }

@@ -67,6 +67,15 @@ export class RubyApiService {
           return this.http.post(this.env.API_URL+"/alliances",JSON.stringify(register));
         }
 
+      new_Report(form, id_user,id_task) {
+          var register = { report : {
+            description : form.description, duration : form.duration,
+            date_execution: form.date_execution, is_executed: form.is_executed,
+            task_id: id_task, user_id: id_user}
+           };
+          return this.http.post(this.env.API_URL+"/reports.json",JSON.stringify(register));
+        }
+
       get_patients(id) {
           return this.http.get(this.env.API_URL+"/users/search_patient.json?id="+id);
       }
@@ -84,5 +93,8 @@ export class RubyApiService {
           return this.http.get(this.env.API_URL+"/users");
       }
 
+      get_report(id) {
+        return this.http.get(this.env.API_URL+"/tasks/search_report.json?id="+id);
+      }
 
 }

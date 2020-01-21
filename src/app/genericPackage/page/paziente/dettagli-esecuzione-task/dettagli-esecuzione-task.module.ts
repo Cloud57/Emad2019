@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { DettagliEsecuzioneTaskPage } from './dettagli-esecuzione-task.page';
-
+import { UiComponentsModule } from '../../../ui-components/ui-components.module';
 const routes: Routes = [
   {
     path: '',
@@ -19,6 +19,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    UiComponentsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [DettagliEsecuzioneTaskPage]
