@@ -1,0 +1,47 @@
+<ion-header>
+  <app-toolbar [title]="title"></app-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-ion-menu></app-ion-menu>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <ion-row>
+          <img class="imgProfilo" src="../../assets/img/profilo.png">
+        </ion-row>
+        
+      </ion-col>
+      <ion-col>
+        <ion-row>
+          <h1>
+            {{this.caregiver.name}} {{this.caregiver.surname}}
+          </h1>
+        </ion-row>
+        <ion-row>
+          <ion-item-divider>
+
+          </ion-item-divider>
+          
+          
+        </ion-row>
+        <ion-row>
+         <h5> Email : <ion-label>{{this.caregiver.email}}</ion-label></h5>
+        </ion-row>
+        <ion-row>
+          <h5>Tipo di utente :<ion-label>  {{this.caregiver.user_type}}</ion-label></h5>
+        </ion-row>
+        <ion-row>
+          <ion-item-divider>
+
+          </ion-item-divider>
+        </ion-row>
+        <ion-row>
+          <ion-button>LogOut </ion-button>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
