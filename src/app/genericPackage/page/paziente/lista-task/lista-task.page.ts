@@ -11,6 +11,8 @@ import { RubyApiService } from 'src/app/service/ruby-api.service';
 export class ListaTaskPage implements OnInit {
   public response : any = [];
   public title = "Lista task"
+  originalItems : any =[]
+  searchText = "";
   constructor(private navCtrl: NavController, private globalService: GlobalService, private rubyService: RubyApiService) { 
 
   }
@@ -28,6 +30,7 @@ export class ListaTaskPage implements OnInit {
     this.rubyService.get_tasks(this.globalService.currentPatient.id).subscribe(
       data => {
         this.response = data   
+        this.originalItems = data
         console.log(this.response)
       },
       error => {
@@ -43,5 +46,24 @@ export class ListaTaskPage implements OnInit {
     this.globalService.currentTask= task.task;
     this.globalService.currentTask.reports = task.reports
     this.navCtrl.navigateRoot('/tabs-dettagli-task/tabDettagli');
+  }
+
+  prepareSearchData(){
+    this.response = []
+    this.response = this.originalItems
+  }
+
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.prepareSearchData();
+  
+    // set val to the value of the searchbar
+    const val = ev.target.value;
+    // if the value is an empty string don't filter the items
+    if (val &&val.trim() != '') {
+    this.response = this.response.filter((item) => {
+      return (item.task.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+    })
+    }
   }
 }

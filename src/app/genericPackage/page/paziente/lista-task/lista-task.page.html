@@ -6,8 +6,7 @@
   <app-ion-menu></app-ion-menu>
   <ion-router-outlet id="content1" main></ion-router-outlet>
 
-<ion-searchbar placeholder="Ricerca Task"></ion-searchbar>
-
+  <ion-searchbar name="searchText" [(ngModel)]="this.searchText" placeholder="Ricerca Task" type="text" debounce="200" (ionChange)="getItems($event)"></ion-searchbar>
 
   <ion-grid fixed>
     <ion-row>
