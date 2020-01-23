@@ -58,10 +58,8 @@ export class LoginPage implements OnInit {
         this.global.setCurrentUser(response)
         this.storage.set("user", JSON.stringify(response.response));
         this.alertService.presentToast("Logged In");
-        if(response.response.user_type == 2 || response.response.user_type == 1)
-          this.navCtrl.navigateRoot('doctor-home');
-        else
-          this.navCtrl.navigateRoot('paziente-home');        
+        this.navCtrl.navigateRoot('doctor-home');
+          
       },
       error => {
         this.alertService.presentToast("Errore nel login");

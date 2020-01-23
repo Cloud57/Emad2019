@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/service/global.service';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
+import { Task } from 'src/app/models/task';
 
 @Component({
   selector: 'app-lista-task',
@@ -9,11 +10,11 @@ import { RubyApiService } from 'src/app/service/ruby-api.service';
   styleUrls: ['./lista-task.page.scss'],
 })
 export class ListaTaskPage implements OnInit {
-  public response : any = [];
   public title = "Lista task"
-  originalItems : any =[]
+  originalItems : Task[] =[]
+  filterItems : Task[] =[]
   searchText = "";
-  constructor(private navCtrl: NavController, private globalService: GlobalService, private rubyService: RubyApiService) { 
+  constructor(private navCtrl: NavController, public globalService: GlobalService, private rubyService: RubyApiService) { 
 
   }
 
@@ -29,9 +30,15 @@ export class ListaTaskPage implements OnInit {
     
     this.rubyService.get_tasks(this.globalService.currentPatient.id).subscribe(
       data => {
-        this.response = data   
-        this.originalItems = data
-        console.log(this.response)
+        let response : any = [];
+        response = data  
+        this.globalService.currentPatient.tasks = []
+        for(let item of response){
+          this.globalService.currentPatient.tasks.push(item.task)
+        }
+        
+        this.originalItems = this.globalService.currentPatient.tasks
+        this.filterItems = this.globalService.currentPatient.tasks
       },
       error => {
         console.log(error);
@@ -43,14 +50,13 @@ export class ListaTaskPage implements OnInit {
   }
 
   openTask(task) {
-    this.globalService.currentTask= task.task;
-    this.globalService.currentTask.reports = task.reports
+    this.globalService.currentTask= task;
     this.navCtrl.navigateRoot('/tabs-dettagli-task/tabDettagli');
   }
 
   prepareSearchData(){
-    this.response = []
-    this.response = this.originalItems
+    this.filterItems = []
+    this.filterItems = this.originalItems
   }
 
   getItems(ev: any) {
@@ -61,8 +67,8 @@ export class ListaTaskPage implements OnInit {
     const val = ev.target.value;
     // if the value is an empty string don't filter the items
     if (val &&val.trim() != '') {
-    this.response = this.response.filter((item) => {
-      return (item.task.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+    this.filterItems = this.filterItems.filter((item) => {
+      return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
     })
     }
   }

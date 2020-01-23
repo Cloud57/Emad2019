@@ -25,12 +25,10 @@
     </ion-col>
     <ion-col size="6" align-self-center>
       <ion-row>
-        <ion-label>Mario Rossi</ion-label>
+        <ion-label>Nome: {{this.global.currentPatient.name}} {{this.global.currentPatient.surname}}</ion-label>
       </ion-row>
-      <ion-row>
-        <ion-label>Alleanza:</ion-label>
-      </ion-row>
-      <ion-row>Diagnosi: </ion-row>
+    
+      <ion-row>Diagnosi: {{this.global.currentPatient.diagnosis}} </ion-row>
     </ion-col>
     </ion-row>
   </ion-grid>
@@ -38,29 +36,11 @@
 <!-- tasks-->
   <ion-grid style="margin-bottom: 2%;" fixed >
     <ion-row align-items-center justify-content-start >
-      <ion-col>
-        <ion-card color="primary" align-items-center class="card">
+      <ion-col *ngFor="let item of this.global.currentPatient.tasks | slice:0:3;">
+        <ion-card color="primary" align-items-center class="card" (click)="openTask(item)">
           <ion-card-content>
-            <div><img class="img-card" src="../../assets/img/profilo.png" alt="logo"></div>
-           Passare l'aspirapolvere
-          </ion-card-content>
-      </ion-card>
-      </ion-col>
-      <ion-col >
-        <ion-card color="primary" align-items-center class="card">
-          <ion-card-content>
-            <div><img class="img-card" src="../../assets/img/profilo.png" alt="logo"></div>
-           Passare l'aspirapolvere
-          </ion-card-content>
-      </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row  align-items-center justify-content-start >
-      <ion-col  >
-        <ion-card color="primary" align-items-center class="card">
-          <ion-card-content>
-            <div><img class="img-card" src="../../assets/img/profilo.png" alt="logo"></div>
-           Passare l'aspirapolvere
+            <div><img class="img-card" [src]=item.icon alt="logo"></div>
+           {{item.name}}
           </ion-card-content>
       </ion-card>
       </ion-col>

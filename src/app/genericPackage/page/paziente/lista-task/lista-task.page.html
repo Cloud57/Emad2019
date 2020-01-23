@@ -14,18 +14,18 @@
       size-xs="6" 
       size-sm="6" 
       size-md="4" 
-      size-lg="3" *ngFor="let item of response">
-        <ion-card [ngClass]="(item.task.is_task_active==true)?'active':''" (click)="openTask(item)">
-          <ion-card-title *ngIf="item.task.is_task_active==true">
+      size-lg="3" *ngFor="let item of filterItems">
+        <ion-card [ngClass]="(item.is_task_active==true)?'active':''" (click)="openTask(item)">
+          <ion-card-title *ngIf="item.is_task_active==true">
             <ion-icon name="radio-button-on" color="success"></ion-icon>
 
           </ion-card-title>
          
           
           <ion-card-content>
-            <ion-img [src]=item.task.icon></ion-img>
+            <ion-img [src]=item.icon></ion-img>
 
-            {{item.task?.name}}
+            {{item?.name}}
             
           </ion-card-content>
         </ion-card>

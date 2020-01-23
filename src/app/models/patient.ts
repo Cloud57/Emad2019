@@ -1,4 +1,5 @@
 import { User } from './user';
+import { Task } from './task';
 
 export class Patient {
     id: number;
@@ -13,4 +14,5 @@ export class Patient {
     created_at: string;
     updated_at: string;
     user_in_alliance: User[]
+    tasks: Task[]
 }

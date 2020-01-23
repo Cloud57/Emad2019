@@ -79,6 +79,9 @@ export class RubyApiService {
       get_patients(id) {
           return this.http.get(this.env.API_URL+"/users/search_patient.json?id="+id);
       }
+      get_patients_alliance(id) {
+        return this.http.get(this.env.API_URL+"/users/search_patient_alliance.json?id="+id);
+    }
 
       get_tasks(id) {
           return this.http.get(this.env.API_URL+"/patients/search_task.json?id="+id);

@@ -11,11 +11,14 @@ import { GlobalService } from 'src/app/service/global.service';
 export class DoctorHomePage implements OnInit {
   public response : any = [];
   constructor(private navCtrl: NavController,
-    public rubyService: RubyApiService, private globalService:GlobalService) {
+    public rubyService: RubyApiService, public globalService:GlobalService) {
      }
 
   ngOnInit() {
-    this.getListaPazienti()
+    if(this.globalService.currentUser.user_type >1)
+      this.getListaPazientiForMedico()
+    else
+    this.getListaPazientiForCaregiver()
   }
   loginPage() {
     this.navCtrl.navigateRoot('/');
@@ -34,7 +37,7 @@ export class DoctorHomePage implements OnInit {
     this.navCtrl.navigateRoot('/doctor-home');
   }
 
-  getListaPazienti() {
+  getListaPazientiForMedico() {
     
     this.rubyService.get_patients(this.globalService.currentUser.id).subscribe(
       data => {
@@ -50,10 +53,31 @@ export class DoctorHomePage implements OnInit {
     );
   }
 
-  openDetail(patient) {
-    this.globalService.currentPatient= patient.patient;
-    this.globalService.currentPatient.user_in_alliance= patient.user_in_alliance;
-    this.navCtrl.navigateRoot('/profilo-paziente');
-  }
+  getListaPazientiForCaregiver() {
     
+    this.rubyService.get_patients_alliance(this.globalService.currentUser.id).subscribe(
+      data => {
+        console.log(data);
+        this.response = data   
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+       
+      }
+    );
+  }
+
+  openDetail(patient) {
+    console.log(this.globalService.currentUser)
+    if(this.globalService.currentUser.user_type >1) {
+      this.globalService.currentPatient= patient.patient;
+      this.globalService.currentPatient.user_in_alliance= patient.user_in_alliance;
+      this.navCtrl.navigateRoot('/profilo-paziente');
+    } else {
+      this.globalService.currentPatient= patient.patient;
+      this.navCtrl.navigateRoot('/paziente-home');
+    }
+  }
 }

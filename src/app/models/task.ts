@@ -9,4 +9,5 @@ export class Task {
     icon:String
     patient_id:number
     reports: any[]
+    is_task_active:boolean
 }

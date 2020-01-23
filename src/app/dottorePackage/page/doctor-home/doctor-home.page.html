@@ -36,8 +36,9 @@
       </ion-row>
     </ion-grid>
   </ion-item>
+  
 </ion-list>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="this.globalService.currentUser.user_type > 1">
     <ion-fab-button color="primary" (click)="inserisciPaziente()">
       <ion-icon name="add" color="secondary" ></ion-icon>
     </ion-fab-button>

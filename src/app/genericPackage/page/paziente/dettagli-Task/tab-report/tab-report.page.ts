@@ -20,7 +20,7 @@ export class TabReportPage implements OnInit {
   }
 
   openReport(report){
-    this.global.currentReport= report;
+    this.global.currentReport= report.report;
     this.navCtrl.navigateRoot('/dettagli-esecuzione-task');
   }
 
