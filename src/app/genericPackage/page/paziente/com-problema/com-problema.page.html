@@ -7,18 +7,39 @@
 
 <ion-content>
 
-  <app-ion-menu></app-ion-menu>
+  
 
   <ion-router-outlet id="content1" main></ion-router-outlet>
 
 
 <ion-item>
   <ion-searchbar placeholder="Ricerca Comportamento"></ion-searchbar>
-  <ion-button>
-      <ion-icon slot="icon-only" name="options"></ion-icon>
+  <ion-button (click)="openModal()">
+      <ion-icon slot="icon-only" name="options" ></ion-icon>
     </ion-button>
   </ion-item>
 
+<ion-row [ngSwitch]="sharedFilterService.filter">
+  <ion-col size="4">
+    <ion-chip color="primary" *ngSwitchCase="'frequenza'" >
+      <ion-label>Frequenza: </ion-label>
+      <ion-icon name="close"></ion-icon>
+    </ion-chip>
+  </ion-col>
+  <ion-col size="4">
+    <ion-chip color="primary" *ngSwitchCase="'intensita'">
+      <ion-label>Intensita':  </ion-label>
+      <ion-icon name="close"></ion-icon>
+    </ion-chip>
+  </ion-col>
+  <ion-col size="4">
+    <ion-chip color="primary"  *ngSwitchCase="'durata'">
+      <ion-label>Durata:</ion-label> 
+      <ion-icon name="close"></ion-icon>
+    </ion-chip>
+  </ion-col>
+</ion-row>
+  <ion-card *ngFor="let problem of response">
 
   <ion-card *ngFor="let problem of response" (click)=openProblem(problem)>
     <ion-card-header>

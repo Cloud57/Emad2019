@@ -1,3 +1,4 @@
+import { ModalFiltriPage } from './modal-filtri/modal-filtri.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -25,6 +26,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ComProblemaPage, TransformTypePipe]
+  declarations: [ComProblemaPage, TransformTypePipe,ModalFiltriPage],
+  entryComponents:[ModalFiltriPage]
 })
 export class ComProblemaPageModule {}
