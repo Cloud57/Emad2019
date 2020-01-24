@@ -4,6 +4,8 @@ import { User } from '../models/user';
 import { Patient } from '../models/patient';
 import { Task } from '../models/task';
 import { filter } from 'rxjs/operators';
+import { Problem_behaviour } from '../models/Problem_behaviour';
+import { Reports } from '../models/reports';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +15,8 @@ export class GlobalService {
   public currentPatient:Patient= new Patient();
   public currentTask:Task= new Task();
   public currentFilter= new Filter();
+  public currentProblem:Problem_behaviour= new Problem_behaviour();
+  public currentReport:Reports= new Reports();
   constructor() { }
 
   setCurrentUser(data){

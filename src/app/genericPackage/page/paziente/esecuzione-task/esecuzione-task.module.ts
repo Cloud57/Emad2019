@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
+import { UiComponentsModule } from '../../../ui-components/ui-components.module';
 
 import { EsecuzioneTaskPage } from './esecuzione-task.page';
 
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    UiComponentsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [EsecuzioneTaskPage]

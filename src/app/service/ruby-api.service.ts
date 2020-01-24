@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { EnvService } from './env.service';
 import { Storage } from '@ionic/storage';
+import { Alliance } from 'src/app/models/alliance';
 
 @Injectable({
   providedIn: 'root'
@@ -55,12 +56,32 @@ export class RubyApiService {
           return this.http.post(this.env.API_URL+"/problem_behaviors",JSON.stringify(register));
         }
 
+        new_alliance(allianceForm:Alliance[],patientID) {
+          var ids: number[] = [];
+          for(let item of allianceForm){
+            ids.push(item.user_id)
+          }
+          var register = { alliance : {
+            user_ids :ids, patient_id : patientID}
+           };
+          return this.http.post(this.env.API_URL+"/alliances",JSON.stringify(register));
+        }
+
+      new_Report(form, id_user,id_task) {
+          var register = { report : {
+            description : form.description, duration : form.duration,
+            date_execution: form.date_execution, is_executed: form.is_executed,
+            task_id: id_task, user_id: id_user}
+           };
+          return this.http.post(this.env.API_URL+"/reports.json",JSON.stringify(register));
+        }
+
       get_patients(id) {
-          return this.http.get(this.env.API_URL+"/users/search_patient?id="+id);
+          return this.http.get(this.env.API_URL+"/users/search_patient.json?id="+id);
       }
 
       get_tasks(id) {
-          return this.http.get(this.env.API_URL+"/patients/search_task?id="+id);
+          return this.http.get(this.env.API_URL+"/patients/search_task.json?id="+id);
         }
 
       get_problem(id) {
@@ -72,5 +93,8 @@ export class RubyApiService {
           return this.http.get(this.env.API_URL+"/users");
       }
 
+      get_report(id) {
+        return this.http.get(this.env.API_URL+"/tasks/search_report.json?id="+id);
+      }
 
 }

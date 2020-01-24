@@ -61,22 +61,22 @@ export class Tab4Page implements OnInit {
 
 
 getItems(ev: any) {
-// Reset items back to all of the items
-this.prepareSearchData();
+  // Reset items back to all of the items
+  this.prepareSearchData();
 
-// set val to the value of the searchbar
-const val = ev.target.value;
-if(val == ""){
-  this.isItemAvailable=false;
-  return
-}
-// if the value is an empty string don't filter the items
-if (val && val.trim() != '') {
-this.isItemAvailable = true;
-this.items = this.items.filter((item) => {
-return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
-})
-}
+  // set val to the value of the searchbar
+  const val = ev.target.value;
+  if(val == ""){
+    this.isItemAvailable=false;
+    return
+  }
+  // if the value is an empty string don't filter the items
+  if (val && val.trim() != '') {
+  this.isItemAvailable = true;
+  this.items = this.items.filter((item) => {
+    return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+  })
+  }
 }
 
 }

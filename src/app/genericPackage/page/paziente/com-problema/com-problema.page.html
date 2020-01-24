@@ -40,6 +40,8 @@
   </ion-col>
 </ion-row>
   <ion-card *ngFor="let problem of response">
+
+  <ion-card *ngFor="let problem of response" (click)=openProblem(problem)>
     <ion-card-header>
       <ion-row>
         <ion-col>

@@ -1,3 +1,5 @@
+import { User } from './user';
+
 export class Patient {
     id: number;
     name: string;
@@ -10,5 +12,5 @@ export class Patient {
     user_id: number;
     created_at: string;
     updated_at: string;
-
+    user_in_alliance: User[]
 }
