@@ -10,6 +10,7 @@ import { GlobalService } from 'src/app/service/global.service';
 })
 export class DoctorHomePage implements OnInit {
   public response : any = [];
+  title = "Lista pazienti"
   constructor(private navCtrl: NavController,
     public rubyService: RubyApiService, public globalService:GlobalService) {
      }

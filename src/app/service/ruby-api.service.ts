@@ -21,7 +21,7 @@ export class RubyApiService {
 
     register(form) {
       var register = {user : {
-        name :form.name, surname : form.surname, email : form.email,
+        name :form.name, surname : form.surname, email : form.email.toLowerCase(),
         password: form.password, password_confirmation: form.password_confirmation,
         telephone: form.telephone, user_type:form.user_type}
        };
