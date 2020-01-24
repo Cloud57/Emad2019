@@ -1,33 +1,32 @@
 <ion-content>
     
       
-        
-    <ion-list>
-        <ion-radio-group name="frquency"  [(ngModel)]="this.shared.problem.frequency" name="frquency"  [(ngModel)]="this.shared.problem.frequency">
+         <!--<ion-list>
+   
+      <ion-radio-group name="frquency"  [(ngModel)]="this.shared.problem.frequency" name="frquency"  [(ngModel)]="this.shared.problem.frequency">
           <ion-list-header>
            Frequenza
           </ion-list-header>
-      
-          <ion-item>
+        
+          <ion-item slot="start">
             <ion-label>1 al giorno</ion-label>
-            <ion-radio slot="start" value="1"></ion-radio>
+            <ion-radio mode="ios" slot="start" value="1" color="primary"></ion-radio>
           </ion-item>
       
           <ion-item>
             <ion-label>2 al giorno</ion-label>
-            <ion-radio slot="start" value="2"></ion-radio>
+            <ion-radio mode="ios" slot="start" value="2" color="primary"></ion-radio>
           </ion-item>
       
-          <ion-item>
-            <ion-label>3 al giorno</ion-label>
-            <ion-radio slot="start" value="3"></ion-radio>
+          <ion-item slot="end">
+            <ion-label >3 al giorno</ion-label>
+            <ion-radio mode="ios" slot="start" value="3" color="primary"></ion-radio>
           </ion-item>
           <span *ngIf="!this.shared.problem.frequency">Campo richiesto</span>
-      
-          
-          
         </ion-radio-group>
+        
       </ion-list>
+    
       <ion-list>
           <ion-radio-group name="intensity"  [(ngModel)]="this.shared.problem.intensity">
             <ion-list-header>
@@ -77,8 +76,35 @@
               
               
             </ion-radio-group>
-          </ion-list>
+          </ion-list>-->  
+    
+      <ion-list>
+        <ion-item>
+          <ion-label>Frequenza</ion-label>
+          <ion-select>
+            <ion-select-option value="1">1 al giorno</ion-select-option>
+            <ion-select-option value="2">2 al giorno</ion-select-option>
+            <ion-select-option value="3">3 al giorno</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Intensita'</ion-label>
+          <ion-select >
+            <ion-select-option value="bassa">Bassa</ion-select-option>
+            <ion-select-option value="media">Media</ion-select-option>
+            <ion-select-option value="alta">Alta</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Frequenza</ion-label>
+          <ion-select >
+            <ion-select-option value="1">1 minuto</ion-select-option>
+            <ion-select-option value="2">tra 2 e 5 minuti</ion-select-option>
+            <ion-select-option value="3">piu' di 5 minuti</ion-select-option>
+          </ion-select>
+        </ion-item>
       
+      </ion-list>
 
 
 </ion-content>
