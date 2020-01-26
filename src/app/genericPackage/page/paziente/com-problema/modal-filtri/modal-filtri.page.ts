@@ -1,6 +1,5 @@
 import { GlobalService } from './../../../../../service/global.service';
 import { NgForm } from '@angular/forms';
-import { SharedFilterService } from './../shared-filter.service';
 import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { runInThisContext } from 'vm';
@@ -13,14 +12,15 @@ import { Problem_behaviour } from 'src/app/models/Problem_behaviour';
 })
 export class ModalFiltriPage implements OnInit {
   public type: string[]
-  constructor(private modalController: ModalController, public sharedValueFilter: SharedFilterService, public global:GlobalService) { }
+  public intensity: string[]
+  constructor(private modalController: ModalController, public global:GlobalService) { }
 
   ngOnInit() {
     this.type = Problem_behaviour.TYPE_BEHAVIOR
+    this.intensity = Problem_behaviour.INTENSITY_BEHAVIOR
   }
  
   async closeModal(form: NgForm){
-    console.log(form.value);
     await this.modalController.dismiss();
   }
 

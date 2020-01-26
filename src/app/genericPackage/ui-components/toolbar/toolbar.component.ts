@@ -9,10 +9,12 @@ import { GlobalService } from 'src/app/service/global.service';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-  @Input() title:string;
-  @Input() leftIcon:number;
-  @Input() rightIcon:number;
-  constructor(private location:Location, private navCtrl : NavController, private globalService: GlobalService) { }
+  @Input() title:string="";
+  @Input() noLeftIcon:boolean=false;
+  @Input() noRightIcon:boolean=false;
+  constructor(private location:Location, private navCtrl : NavController, private globalService: GlobalService) { 
+    console.log(this.noLeftIcon)
+  }
 
   ngOnInit() {}
 

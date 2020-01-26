@@ -3,45 +3,46 @@
 </ion-header>
 
 
-
-
 <ion-content>
 
-  
-
-  <ion-router-outlet id="content1" main></ion-router-outlet>
-
-
-<ion-item>
-  <ion-searchbar placeholder="Ricerca Comportamento"></ion-searchbar>
-  <ion-button (click)="openModal()">
+<ion-grid>  
+  <ion-row>
+    <ion-col >
+<ion-item >
+ 
+  <ion-button float-right (click)="openModal()">
       <ion-icon slot="icon-only" name="options" ></ion-icon>
     </ion-button>
+ 
   </ion-item>
+</ion-col>
+</ion-row>
 
-<ion-row [ngSwitch]="sharedFilterService.filter">
-  <ion-col size="4">
-    <ion-chip color="primary" *ngSwitchCase="'frequenza'" >
-      <ion-label>Frequenza: </ion-label>
+  </ion-grid>
+
+<ion-row >
+  <ion-col size="4" *ngIf="this.globalService.currentFilter.type != null">
+    <ion-chip color="primary" (click)="deleteFilter(0)" >
+      <ion-label>Tipologia: {{this.globalService.currentFilter.type | transformType}}</ion-label>
+      <ion-icon name="close" ></ion-icon>
+    </ion-chip>
+  </ion-col>
+  <ion-col size="4" *ngIf="this.globalService.currentFilter.date != null">
+    <ion-chip color="primary"  (click)="deleteFilter(1)">
+      <ion-label>Data: {{this.globalService.currentFilter.date | date: 'dd/MM/yyyy'}}</ion-label>
       <ion-icon name="close"></ion-icon>
     </ion-chip>
   </ion-col>
-  <ion-col size="4">
-    <ion-chip color="primary" *ngSwitchCase="'intensita'">
-      <ion-label>Intensita':  </ion-label>
-      <ion-icon name="close"></ion-icon>
-    </ion-chip>
-  </ion-col>
-  <ion-col size="4">
-    <ion-chip color="primary"  *ngSwitchCase="'durata'">
-      <ion-label>Durata:</ion-label> 
-      <ion-icon name="close"></ion-icon>
+  <ion-col size="4" *ngIf="this.globalService.currentFilter.intesity != null">
+    <ion-chip color="primary"  (click)="deleteFilter(2)">
+      <ion-label>Intensità: {{this.globalService.currentFilter.intesity | transformIntensity}}</ion-label> 
+      <ion-icon name="close" ></ion-icon>
     </ion-chip>
   </ion-col>
 </ion-row>
   
 
-  <ion-card *ngFor="let problem of response" (click)=openProblem(problem)>
+  <ion-card *ngFor="let problem of filterItems" (click)=openProblem(problem)>
     <ion-card-header>
       <ion-row>
         <ion-col>
