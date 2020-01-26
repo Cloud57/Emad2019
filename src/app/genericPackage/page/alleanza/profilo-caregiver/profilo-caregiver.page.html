@@ -27,18 +27,23 @@
           
         </ion-row>
         <ion-row>
-         <h5> Email : <ion-label>{{this.caregiver.email}}</ion-label></h5>
+         <h5> Email: <ion-label>{{this.caregiver.email}}</ion-label></h5>
         </ion-row>
         <ion-row>
-          <h5>Tipo di utente :<ion-label>  {{this.caregiver.user_type}}</ion-label></h5>
+          <h5>Tipo di utente: <ion-label>{{role[this.caregiver.user_type]}}</ion-label></h5>
         </ion-row>
+
+        <ion-row>
+          <h5>telefono: <ion-label>{{this.caregiver.telephone}}</ion-label></h5>
+        </ion-row>
+
         <ion-row>
           <ion-item-divider>
 
           </ion-item-divider>
         </ion-row>
         <ion-row>
-          <ion-button>LogOut </ion-button>
+          <ion-button (click)="logout()">Logout </ion-button>
         </ion-row>
       </ion-col>
     </ion-row>

@@ -8,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { ComProblemaPage } from './com-problema.page';
 import { UiComponentsModule } from '../../../ui-components/ui-components.module';
-import { TransformTypePipe } from './transform-type.pipe';
+import { PipesModule } from 'src/app/genericPackage/pipe/pipes/pipes.module';
 
 
 const routes: Routes = [
@@ -23,10 +23,11 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     UiComponentsModule,
+    PipesModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ComProblemaPage, TransformTypePipe,ModalFiltriPage],
+  declarations: [ComProblemaPage,ModalFiltriPage],
   entryComponents:[ModalFiltriPage]
 })
 export class ComProblemaPageModule {}

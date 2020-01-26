@@ -15,7 +15,7 @@ export class RubyApiService {
 
 
   login(emailInput,passwordInput) {
-    var login = {email :emailInput, password : passwordInput};
+    var login = {email :emailInput.toLowerCase(), password : passwordInput};
     return this.http.post(this.env.API_URL+"/authenticate",JSON.stringify(login), {headers: {'Content-Type': 'application/json'}});
     }
 

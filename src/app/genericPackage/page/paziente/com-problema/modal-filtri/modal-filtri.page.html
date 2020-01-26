@@ -18,18 +18,12 @@
   <ion-item>
     <ion-label>Tipologia</ion-label>
     <ion-select  placeholder="Selezionane una" ngModel name="type">
-      <ion-select-option value="rr">Rifiutare richieste</ion-select-option>
-      <ion-select-option value="ir">Ignorare Richieste</ion-select-option>
-      <ion-select-option value="tv">Togliersi i vestiti in pubblico</ion-select-option>
-      <ion-select-option value="ea">Essere aggressivo</ion-select-option>
-      <ion-select-option value="a">Autolesionismo</ion-select-option>
-      <ion-select-option value="d">Dondolarsi</ion-select-option>
-      <ion-select-option value="sm">Sfarfallamento delle mani</ion-select-option>
+      <ion-select-option *ngFor="let item of type; index as i" [value]="i" >{{item}}</ion-select-option>
     </ion-select>
   </ion-item>
   <!--frequenza-->
   
-    <ion-radio-group name="frequency">
+    <ion-radio-group ngModel name="frequency">
       <ion-list-header>
         <ion-label> Frequenza</ion-label>
       </ion-list-header>
@@ -53,7 +47,7 @@
       </ion-item>
     </ion-radio-group>
  <!--intensità-->
- <ion-radio-group>
+ <ion-radio-group ngModel name="intensity">
   <ion-list-header>
     <ion-label> Intensita'</ion-label>
   </ion-list-header>
@@ -79,7 +73,7 @@
 
  
     <!--durata-->
-    <ion-radio-group>
+    <ion-radio-group ngModel name="duration">
       <ion-list-header>
         <ion-label> Durata</ion-label>
       </ion-list-header>

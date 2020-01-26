@@ -7,6 +7,7 @@ import { UiComponentsModule } from '../../../../ui-components/ui-components.modu
 import { IonicModule } from '@ionic/angular';
 
 import { DettagliComportamentoProblemaPage } from './dettagli-comportamento-problema.page';
+import { PipesModule } from 'src/app/genericPackage/pipe/pipes/pipes.module';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    PipesModule,
     UiComponentsModule,
     RouterModule.forChild(routes)
   ],

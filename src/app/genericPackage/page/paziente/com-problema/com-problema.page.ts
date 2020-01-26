@@ -30,7 +30,7 @@ export class ComProblemaPage implements OnInit {
 
   }
   newCompProblema() {
-    this.navCtrl.navigateRoot('/new-com-problema');
+    this.navCtrl.navigateRoot('/new-com-problema/tabCp');
   }
 
   openProblem(problem) {

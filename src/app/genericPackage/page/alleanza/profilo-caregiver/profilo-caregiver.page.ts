@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {User} from 'src/app/models/user';
 import { GlobalService } from 'src/app/service/global.service';
 import { NavController } from '@ionic/angular';
-  import { from } from 'rxjs';
 @Component({
   selector: 'app-profilo-caregiver',
   templateUrl: './profilo-caregiver.page.html',
@@ -11,6 +10,7 @@ import { NavController } from '@ionic/angular';
 export class ProfiloCaregiverPage implements OnInit {
   public title:string = "Profilo Caregiver"
   public age:number;
+  public role:string[] = ["Caregiver", "Terapista", "Medico"]
   public caregiver:User = new User();
 
   constructor(private navCtrl: NavController, public global : GlobalService)
@@ -21,4 +21,8 @@ export class ProfiloCaregiverPage implements OnInit {
   ngOnInit() {
   }
 
+  logout(){
+    this.global.currentUser = new User()
+    this.navCtrl.navigateRoot('/');
+  }
 }
