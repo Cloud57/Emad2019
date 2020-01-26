@@ -16,6 +16,7 @@ export class GlobalService {
   public currentFilter= new Filter();
   public currentProblem:Problem_behaviour= new Problem_behaviour();
   public currentReport:Reports= new Reports();
+  public modify = false
   constructor() { }
 
   setCurrentUser(data){

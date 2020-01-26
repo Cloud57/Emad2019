@@ -11,7 +11,7 @@ import { Patient } from 'src/app/models/patient';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
-   
+   public title:string
   constructor(private navCtrl: NavController, private sharedService: SharedNewPazienteService,
               private rubyService: RubyApiService, private alertService: AlertService,
               private global: GlobalService) { 
@@ -19,29 +19,52 @@ export class TabsPage implements OnInit {
               }
 
   ngOnInit() {
+    if(this.global.modify){
+      this.title = "Modifica paziente"
+      this.sharedService.patient = this.global.currentPatient
+    } else {
+      this.title = "Nuovo paziente"
+    }
+
   }
   ionChange(myTabs) {
     
 }
 homePage() {
-  this.navCtrl.navigateRoot('/doctor-home');
+  this.navCtrl.back()
 }
 save(){
-  var response : any = {id : "" };
-  this.rubyService.new_patient(this.sharedService.patient, this.global.currentUser.id).subscribe(
-    data => {
-      this.alertService.presentToast("Paziente inserito");  
-      response = data;
-      this.insertAlliance(response.id)
-    },
-    error => {
-      this.alertService.presentToast("Errore nell'inserimento paziente");
-      console.log(error);
-    },
-    () => {
-     
-    }
-  );
+  if(!this.global.modify) {
+    var response : any = {id : "" };
+    this.rubyService.new_patient(this.sharedService.patient, this.global.currentUser.id).subscribe(
+      data => {
+        this.alertService.presentToast("Paziente inserito");  
+        response = data;
+        this.insertAlliance(response.id)
+      },
+      error => {
+        this.alertService.presentToast("Errore nell'inserimento paziente");
+        console.log(error);
+      },
+      () => {
+      
+      }
+    );
+  } else {
+    this.rubyService.mod_patient(this.sharedService.patient, this.global.currentUser.id, this.global.currentPatient.id).subscribe(
+      data => {
+        this.alertService.presentToast("Paziente modificato");  
+        response = data;
+      },
+      error => {
+        this.alertService.presentToast("Errore nella modifica del paziente");
+        console.log(error);
+      },
+      () => {
+      
+      }
+    );
+  }
 }
 
 insertAlliance(patientID) {

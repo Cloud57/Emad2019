@@ -29,6 +29,7 @@ export class DoctorHomePage implements OnInit {
       .open();
   }
   inserisciPaziente() {
+    this.globalService.modify = false;
     this.navCtrl.navigateRoot('/tabs/tab1');
   }
   ComProblema() {

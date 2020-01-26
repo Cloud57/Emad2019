@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/service/global.service';
 import { Patient } from 'src/app/models/patient';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-profilo-paziente',
@@ -14,7 +15,7 @@ export class ProfiloPazientePage implements OnInit {
   public paziente:Patient = new Patient();
   public age:number;
   public title:string = "Profilo paziente"
-  constructor(private navCtrl: NavController, public global : GlobalService) { 
+  constructor(private location:Location, private navCtrl: NavController, public global : GlobalService) { 
       this.paziente = global.currentPatient
       this.age = this.getAge(this.paziente.birth_date)
   }
@@ -49,5 +50,14 @@ export class ProfiloPazientePage implements OnInit {
       this.buttonName = "Nascondi";
     else
       this.buttonName = "Mostra";
+  }
+
+  goBack(){
+    this.location.back();
+  }
+
+  modify(){
+    this.global.modify=true
+    this.navCtrl.navigateRoot('/tabs/tab1');
   }
 }
