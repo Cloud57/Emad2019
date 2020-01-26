@@ -30,6 +30,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
         // YOU CAN ALSO DO THIS
         // const token = this.authenticationService.getToke()
+        if(request.url.includes("authenticate")){
+            request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
+            return next.handle(request)
+            
+        } else
         return from(this.storage.get(TOKEN_KEY))
             .pipe(
                 switchMap(token => {
