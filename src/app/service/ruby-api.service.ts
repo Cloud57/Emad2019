@@ -76,15 +76,16 @@ export class RubyApiService {
           return this.http.post(this.env.API_URL+"/alliances",JSON.stringify(register));
         }
 
-        mod_alliance(allianceForm:Alliance[],patientID,allianceID) {
+        mod_alliance(allianceForm:Alliance[],allianceID) {
           var ids: number[] = [];
           for(let item of allianceForm){
             ids.push(item.user_id)
           }
           var register = { alliance : {
-            user_ids :ids, patient_id : patientID}
+            user_ids :ids}
            };
-          return this.http.post(this.env.API_URL+"/alliances/"+allianceID,JSON.stringify(register));
+           console.log(register)
+          return this.http.put(this.env.API_URL+"/alliances/"+allianceID,JSON.stringify(register));
         }
 
       new_Report(form, id_user,id_task) {
@@ -115,6 +116,10 @@ export class RubyApiService {
       get_users() {
           return this.http.get(this.env.API_URL+"/users");
       }
+
+      get_patient(id) {
+        return this.http.get(this.env.API_URL+"/patients/"+id+".json");
+    }
 
       get_report(id) {
         return this.http.get(this.env.API_URL+"/tasks/search_report.json?id="+id);

@@ -1,3 +1,4 @@
+import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/service/global.service';
@@ -15,8 +16,10 @@ export class ProfiloPazientePage implements OnInit {
   public paziente:Patient = new Patient();
   public age:number;
   public title:string = "Profilo paziente"
-  constructor(private location:Location, private navCtrl: NavController, public global : GlobalService) { 
+  public response;
+  constructor(private location:Location, private navCtrl: NavController, public global : GlobalService, public rubyService:RubyApiService) { 
       this.paziente = global.currentPatient
+      this.paziente.user_in_alliance = global.currentPatient.user_in_alliance
       this.age = this.getAge(this.paziente.birth_date)
   }
   
@@ -34,6 +37,14 @@ export class ProfiloPazientePage implements OnInit {
     return age;
 }
   ngOnInit() {
+    console.log(this.paziente.user_in_alliance);
+    
+    if(this.global.modify){
+      this.global.modify=false
+      this.getPazienteUpdated()
+    }
+
+    console.log(this.paziente.user_in_alliance);
   }
   TaskListPage() {
     this.navCtrl.navigateRoot('/lista-task');
@@ -59,5 +70,24 @@ export class ProfiloPazientePage implements OnInit {
   modify(){
     this.global.modify=true
     this.navCtrl.navigateRoot('/tabs/tab1');
+  }
+
+  getPazienteUpdated() {
+    
+    this.rubyService.get_patient(this.global.currentPatient.id).subscribe(
+      data => {
+        console.log(data);
+        this.response = data   
+        this.global.currentPatient = this.response.patient
+        this.paziente = this.response.patient
+        this.paziente.user_in_alliance = this.response.user_in_alliance
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+       
+      }
+    );
   }
 }

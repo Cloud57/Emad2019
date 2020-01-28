@@ -20,7 +20,7 @@ export class NewComProblemaPage implements OnInit {
     this.sharedService.problem = new Problem_behaviour()
   }
   comProblemaPage() {
-    this.navCtrl.navigateRoot('/com-problema');
+    this.navCtrl.back()
   }
 
   saveComProblema() {

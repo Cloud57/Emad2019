@@ -76,6 +76,7 @@ export class DoctorHomePage implements OnInit {
     if(this.globalService.currentUser.user_type >1) {
       this.globalService.currentPatient= patient.patient;
       this.globalService.currentPatient.user_in_alliance= patient.user_in_alliance;
+      this.globalService.currentPatient.alliance= patient.alliance;
       this.navCtrl.navigateRoot('/profilo-paziente');
     } else {
       this.globalService.currentPatient= patient.patient;

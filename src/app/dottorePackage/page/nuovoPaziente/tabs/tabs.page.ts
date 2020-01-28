@@ -55,6 +55,7 @@ save(){
       data => {
         this.alertService.presentToast("Paziente modificato");  
         response = data;
+        this.modifyAlliance(this.global.currentPatient.alliance.id)
       },
       error => {
         this.alertService.presentToast("Errore nella modifica del paziente");
@@ -69,6 +70,22 @@ save(){
 
 insertAlliance(patientID) {
   this.rubyService.new_alliance(this.sharedService.alliance,patientID).subscribe(
+    data => {
+      this.homePage();
+    },
+    error => {
+      this.homePage();
+      console.log(error);
+    },
+    () => {
+     
+    }
+  );
+}
+
+modifyAlliance(allianceID) {
+  console.log(allianceID)
+  this.rubyService.mod_alliance(this.sharedService.alliance,allianceID).subscribe(
     data => {
       this.homePage();
     },
