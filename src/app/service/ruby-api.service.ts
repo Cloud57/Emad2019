@@ -46,13 +46,22 @@ export class RubyApiService {
         return this.http.put(this.env.API_URL+"/patients/"+patientID,JSON.stringify(register));
       }
 
-        new_task(form, id, src) {
+        new_task(form, autonomy, id, src) {
           var register = { task : {
             name :form.name, description : form.description, duration : form.duration,
-            autonomy: form.autonomy, icon: src,
+            autonomy: autonomy, icon: src,
             patient_id: id}
            };
           return this.http.post(this.env.API_URL+"/tasks",JSON.stringify(register));
+        }
+
+        mod_task(form,autonomy ,id, src, taskId) {
+          var register = { task : {
+            name :form.name, description : form.description, duration : form.duration,
+            autonomy: autonomy, icon: src,
+            patient_id: id}
+           };
+          return this.http.put(this.env.API_URL+"/tasks/"+taskId,JSON.stringify(register));
         }
 
         new_prom_beh(form, id) {

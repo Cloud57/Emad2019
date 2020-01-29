@@ -23,6 +23,7 @@ export class ListaTaskPage implements OnInit {
   }
 
   inserisciTask(){
+    this.globalService.modify=false;
     this.navCtrl.navigateRoot('/new-task');
   }
 

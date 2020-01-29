@@ -6,7 +6,7 @@ export class Task {
     description:String
     duration:number
     autonomy:number
-    icon:String
+    icon:string
     patient_id:number
     reports: any[]
     is_task_active:boolean

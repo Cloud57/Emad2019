@@ -1,7 +1,18 @@
 <ion-header>
-  <app-toolbar [title]="title"></app-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="secondary" defaultHref="home" (click)="goBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+          
+          <ion-title style="text-align:center;" >{{title}}</ion-title>
+          <ion-icon name="create" (click)="modify()"></ion-icon>
+      </ion-row>
+       
+  </ion-grid> 
+  </ion-toolbar>
 </ion-header>
-
 <ion-content>
   
   <ion-router-outlet id="content1" main></ion-router-outlet>

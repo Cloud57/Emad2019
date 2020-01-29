@@ -4,8 +4,8 @@
     <ion-buttons slot="start">
       <ion-back-button color="secondary" defaultHref="home" (click)="goBack()"></ion-back-button>
     </ion-buttons>
-    <ion-title style="text-align:center;"> Nuovo Task</ion-title>
-    <ion-button slot="end" type="submit" [disabled]="!form.form.valid"  (click)="form.ngSubmit.emit()"><ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
+  <ion-title style="text-align:center;">{{title}}</ion-title>
+    <ion-button slot="end" type="submit" [disabled]="!form.valid && this.autonomy == undefined"  (click)="form.ngSubmit.emit()"><ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +14,7 @@
 
   
  
-  <form #form="ngForm" method="post" class="form"  (ngSubmit)="newTask(form)">
+  <form #form="ngForm" [formGroup]="taskForm" method="post" class="form" (ngSubmit)="sendTask(form)">
     
     
     <ion-list >
@@ -25,17 +25,17 @@
         
       </button>
       <ion-item style="margin-top: 30px;">
-        <ion-input name="name" ngModel placeholder="Nome task" type="text" required></ion-input>
+        <ion-input name="name" formControlName="name" placeholder="Nome task" type="text" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input name="duration" ngModel type="text" placeholder="Durata" required></ion-input>
+        <ion-input name="duration" formControlName="duration"  type="text" placeholder="Durata" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-textarea style="margin-top: 1px!important" ngModel name="description" placeholder="Descrizione" maxlength="500" required></ion-textarea>
+        <ion-textarea style="margin-top: 1px!important" formControlName="description"  name="description" placeholder="Descrizione" maxlength="500" required></ion-textarea>
       </ion-item>
       <ion-item>
         <ion-label color="placeholder"> Autonomia</ion-label>
-        <ion-select ngModel name="autonomy" interface="action-sheet" required>
+        <ion-select [(ngModel)]="autonomy"  name="autonomy" interface="action-sheet" [ngModelOptions]="{standalone: true}" required>
           <ion-select-option value="0">AFT</ion-select-option>
           <ion-select-option value="1">AFP</ion-select-option>
           <ion-select-option value="2">AV</ion-select-option>

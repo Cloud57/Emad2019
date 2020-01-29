@@ -10,6 +10,7 @@ import { GlobalService } from 'src/app/service/global.service';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-new-task',
@@ -17,20 +18,43 @@ import { FilePath } from '@ionic-native/file-path/ngx';
   styleUrls: ['./new-task.page.scss'],
 })
 export class NewTaskPage implements OnInit {
-
+  taskForm: FormGroup;
   uploadVideoText: any;
   uploadAudioText: any;
   downloadText: any;
   fileTransferVideo: FileTransferObject;
   fileTransferAudio: FileTransferObject;
+  title: string;
+  autonomy: string;
   constructor(private modalController: ModalController, public sharedIService: SharedIconService, private alertService: AlertService,
     public rubyService: RubyApiService, private navCtrl: NavController, private global: GlobalService,
     private fileChooser: FileChooser,
     private filePath: FilePath,
-    private transfer: FileTransfer) {
+    private transfer: FileTransfer,
+    private fb:FormBuilder) {
+    this.taskForm = fb.group({
+      name: ['', Validators.required],
+      duration: ['', Validators.required],
+      description: ['', Validators.required]
+      });
     this.uploadVideoText = "";
     this.uploadAudioText = "";
     this.downloadText = "";
+    if(this.global.modify){
+      this.title = "Modifica task"
+      this.sharedIService.src = this.global.currentTask.icon
+      this.taskForm.setValue({
+        name: this.global.currentTask.name,
+        duration: this.global.currentTask.duration,
+        description: this.global.currentTask.description
+      })
+      this.autonomy = this.global.currentTask.autonomy+""
+    } else {
+      this.title = "Nuovo task"
+      this.sharedIService.src = "";
+
+    }
+
   }
   async openModal() {
 
@@ -41,19 +65,39 @@ export class NewTaskPage implements OnInit {
 
   }
   ngOnInit() {
-    this.sharedIService.src = "";
   }
 
   listOfTask() {
     this.navCtrl.navigateRoot('/lista-task');
   }
 
-  newTask(form: NgForm) {
+  sendTask(form: NgForm) {
     console.log(form)
-    this.rubyService.new_task(form.value, this.global.currentPatient.id, this.sharedIService.src).subscribe(
+    if(!this.global.modify){
+      this.rubyService.new_task(form.value, this.autonomy, this.global.currentPatient.id, this.sharedIService.src).subscribe(
+        data => {
+          this.alertService.presentToast("Task creato");
+          this.listOfTask();
+        },
+        error => {
+          console.log(error);
+        },
+        () => {
+
+        }
+      );
+   } else {
+    this.rubyService.mod_task(form.value, Number(this.autonomy), this.global.currentPatient.id, this.sharedIService.src, this.global.currentTask.id).subscribe(
       data => {
-        this.alertService.presentToast("Task creato");
-        this.listOfTask();
+        this.alertService.presentToast("Task modificato");
+        this.global.currentTask.name = form.value.name
+        this.global.currentTask.description = form.value.description
+        this.global.currentTask.duration = form.value.duration
+        this.global.currentTask.icon = this.sharedIService.src
+        this.global.currentTask.autonomy = Number(this.autonomy)
+        console.log(Number(this.autonomy));
+        
+        this.navCtrl.back()
       },
       error => {
         console.log(error);
@@ -62,6 +106,7 @@ export class NewTaskPage implements OnInit {
 
       }
     );
+   }
   }
 
   uploadVideo() {
