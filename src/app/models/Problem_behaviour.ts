@@ -1,10 +1,10 @@
 export class Problem_behaviour {
-    id: number;
+    id: string;
     name: string;
     description: string;
-    frequency: number;
-    intensity: number;
-    duration: number;
+    frequency: string;
+    intensity: string;
+    duration: string;
     antecedent: string;
     behavior: string;
     consequence: string;

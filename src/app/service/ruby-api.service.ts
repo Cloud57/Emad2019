@@ -74,6 +74,16 @@ export class RubyApiService {
           return this.http.post(this.env.API_URL+"/problem_behaviors",JSON.stringify(register));
         }
 
+        mod_prom_beh(form, id, problemId) {
+          var register = { problem_behavior : {
+            name :form.name, description : form.description, frequency : form.frequency,
+            intensity: form.intensity, duration: form.duration, antecedent : form.antecedent,
+            behavior: form.behavior, consequence: form.consequence, date : form.date,
+            patient_id: id}
+           };
+          return this.http.put(this.env.API_URL+"/problem_behaviors/"+problemId,JSON.stringify(register));
+        }
+
         new_alliance(allianceForm:Alliance[],patientID) {
           var ids: number[] = [];
           for(let item of allianceForm){

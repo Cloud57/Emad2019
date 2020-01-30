@@ -20,7 +20,7 @@ export class DettagliComportamentoProblemaPage implements OnInit {
   public buttonName3:any = 'Mostra';
   public problem:Problem_behaviour = new Problem_behaviour();
   
-  public title:string = "Dettagli Comportamento Problema"
+  public title:string = "Comportamento Problema"
   constructor(private navCtrl: NavController, public global : GlobalService) { 
     this.problem = global.currentProblem;
 
@@ -65,6 +65,15 @@ export class DettagliComportamentoProblemaPage implements OnInit {
       this.buttonName3 = "Nascondi";
     else
       this.buttonName3 = "Mostra";
+  }
+
+  goBack(){
+    this.navCtrl.back();
+  }
+
+  modify(){
+    this.global.modify=true
+    this.navCtrl.navigateRoot('/new-com-problema/tabCp');
   }
 
 

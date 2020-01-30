@@ -1,5 +1,5 @@
 export class Filter {
-    type:number = null
+    type:string = null
     date:string = null
-    intesity:number = null
+    intesity:string = null
 }

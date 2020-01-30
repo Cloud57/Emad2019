@@ -1,13 +1,12 @@
 
 <ion-content>
-    <form #form="ngForm" method="post">
       <ion-list>
         
       
         <ion-item>
           
-          <ion-select class="select-left" placeholder="Tipologia" interface="popover" required name="name" [(ngModel)]="this.shared.problem.name">
-          <ion-select-option *ngFor="let item of type; index as i" [value]="i" >{{item}}</ion-select-option>
+          <ion-select class="select-left" placeholder="Tipologia" name="name" [(ngModel)]="this.shared.problem.name" [selectedText]="type[this.shared.problem.name]">
+            <ion-select-option *ngFor="let item of type; index as i" [value]="i" >{{item}}</ ion-select-option>
           </ion-select>
         </ion-item>
         <span *ngIf="!this.shared.problem.name">Campo richiesto</span>
@@ -28,7 +27,6 @@
       
         
       
-        
-      </form>
+    
 
 </ion-content>

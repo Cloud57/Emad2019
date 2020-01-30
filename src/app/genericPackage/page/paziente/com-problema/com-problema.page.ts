@@ -39,10 +39,13 @@ export class ComProblemaPage implements OnInit {
 
   }
   newCompProblema() {
+    this.globalService.modify=false
     this.navCtrl.navigateRoot('/new-com-problema/tabCp');
   }
 
   openProblem(problem) {
+    console.log(problem);
+    
     this.globalService.currentProblem=problem
     this.navCtrl.navigateRoot('/dettagli-comportamento-problema');
   }
