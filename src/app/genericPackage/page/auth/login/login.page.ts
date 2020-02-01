@@ -50,25 +50,26 @@ export class LoginPage implements OnInit {
     }).then((overlay) => {
       this.spinner = overlay
       this.spinner.present();
+      var response : any = {response : { user_type :"", auth_token : "", name: "", surname: "", email: "", telephone: ""} };
+      this.rubyService.login(form.value.email, form.value.password).subscribe(
+        data => {
+          response = data
+          this.global.setCurrentUser(response)
+          this.storage.set("user", JSON.stringify(response.response));
+          this.alertService.presentToast("Logged In");
+          this.navCtrl.navigateRoot('doctor-home');
+            
+        },
+        error => {
+          this.alertService.presentToast("Errore nel login");
+          console.log(error);
+          this.spinner.dismiss();
+        },
+        () => {
+          this.spinner.dismiss();
+        }
+      );
     });
-    var response : any = {response : { user_type :"", auth_token : "", name: "", surname: "", email: "", telephone: ""} };
-    this.rubyService.login(form.value.email, form.value.password).subscribe(
-      data => {
-        response = data
-        this.global.setCurrentUser(response)
-        this.storage.set("user", JSON.stringify(response.response));
-        this.alertService.presentToast("Logged In");
-        this.navCtrl.navigateRoot('doctor-home');
-          
-      },
-      error => {
-        this.alertService.presentToast("Errore nel login");
-        console.log(error);
-        this.spinner.dismiss();
-      },
-      () => {
-        this.spinner.dismiss();
-      }
-    );
+  
   }
 }
