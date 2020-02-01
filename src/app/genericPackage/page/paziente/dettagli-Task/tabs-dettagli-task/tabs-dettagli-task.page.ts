@@ -20,7 +20,7 @@ export class TabsDettagliTaskPage implements OnInit {
   }
 
   goBack(){
-    this.location.back();
+    this.navCtrl.navigateRoot('/lista-task');
   }
 
   modify(){

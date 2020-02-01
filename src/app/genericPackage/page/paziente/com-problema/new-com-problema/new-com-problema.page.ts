@@ -28,7 +28,10 @@ export class NewComProblemaPage implements OnInit {
     }
   }
   comProblemaPage() {
-    this.navCtrl.back()
+  if(this.global.modify)
+    this.navCtrl.navigateRoot('/dettagli-comportamento-problema');
+  else
+    this.navCtrl.navigateRoot('/com-problema');
   }
 
   saveComProblema() {

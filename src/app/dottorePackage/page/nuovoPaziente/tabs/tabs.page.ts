@@ -31,7 +31,10 @@ export class TabsPage implements OnInit {
     
 }
 homePage() {
-  this.navCtrl.back()
+  if(this.global.modify)
+    this.navCtrl.navigateRoot('/profilo-paziente');
+  else
+    this.navCtrl.navigateRoot('/doctor-home');
 }
 save(){
   if(!this.global.modify) {
