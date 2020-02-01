@@ -26,6 +26,8 @@ export class NewTaskPage implements OnInit {
   fileTransferAudio: FileTransferObject;
   title: string;
   autonomy: string;
+  private fileVideoToUpload: any
+  private videoBlob: Blob
   constructor(private modalController: ModalController, public sharedIService: SharedIconService, private alertService: AlertService,
     public rubyService: RubyApiService, private navCtrl: NavController, private global: GlobalService,
     private fileChooser: FileChooser,
@@ -74,7 +76,7 @@ export class NewTaskPage implements OnInit {
   sendTask(form: NgForm) {
     console.log(form)
     if(!this.global.modify){
-      this.rubyService.new_task(form.value, this.autonomy, this.global.currentPatient.id, this.sharedIService.src).subscribe(
+      this.rubyService.new_task(form.value, this.autonomy, this.global.currentPatient.id, this.sharedIService.src,this.videoBlob, this.fileVideoToUpload.name).subscribe(
         data => {
           this.alertService.presentToast("Task creato");
           this.listOfTask();
@@ -113,6 +115,16 @@ export class NewTaskPage implements OnInit {
     this.fileChooser.open().then((uri) => {
       this.filePath.resolveNativePath(uri).then(
         (nativepath) => {
+          this.fileVideoToUpload = nativepath
+          const reader = new FileReader();
+          reader.onload = () => {
+            this.videoBlob = new Blob([reader.result], {
+                type: this.fileVideoToUpload.type
+            });
+            
+        };
+        reader.readAsArrayBuffer(this.fileVideoToUpload);
+          /*
           this.fileTransferVideo = this.transfer.create();
           let options: FileUploadOptions = {
             fileKey: 'videofile',
@@ -128,7 +140,7 @@ export class NewTaskPage implements OnInit {
 
           }, (err) => {
             this.uploadVideoText = "";
-          })
+          }) */
         }, (err) => {
           alert(JSON.stringify(err));
         })

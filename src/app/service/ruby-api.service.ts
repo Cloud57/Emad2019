@@ -46,13 +46,17 @@ export class RubyApiService {
         return this.http.put(this.env.API_URL+"/patients/"+patientID,JSON.stringify(register));
       }
 
-        new_task(form, autonomy, id, src) {
-          var register = { task : {
-            name :form.name, description : form.description, duration : form.duration,
-            autonomy: autonomy, icon: src,
-            patient_id: id}
-           };
-          return this.http.post(this.env.API_URL+"/tasks",JSON.stringify(register));
+      new_task(form, autonomy, id, src,imgBlob, filename) {
+          const formData = new FormData();
+          formData.append('task[name]', form.name);
+          formData.append('task[description]', form.description);
+          formData.append('task[duration]', form.duration);
+          formData.append('task[autonomy]', autonomy);
+          formData.append('task[is_task_active]',  "true");
+          formData.append('task[patient_id]',  id);
+          formData.append('task[icon]', src)
+          formData.append('media_files[]', imgBlob,filename);
+          return this.http.post(this.env.API_URL+"/tasks",formData,{headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
         }
 
         mod_task(form,autonomy ,id, src, taskId) {
