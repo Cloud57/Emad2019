@@ -16,6 +16,7 @@ export class TabReportPage implements OnInit {
     this.getListaReport()
   }
   inserisciReport(){
+    this.global.modify=false
     this.navCtrl.navigateRoot('/esecuzione-task');
   }
 

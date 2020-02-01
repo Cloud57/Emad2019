@@ -4,14 +4,14 @@
     <ion-buttons slot="start">
       <ion-back-button color="secondary" defaultHref="home" (click)="goBack()"></ion-back-button>
     </ion-buttons>
-    <ion-title style="text-align:center;"> Inserisci Report</ion-title>
-    <ion-button slot="end" type="submit" [disabled]="!form.form.valid"  (click)="form.ngSubmit.emit()"><ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
+  <ion-title style="text-align:center;"> {{title}}</ion-title>
+    <ion-button slot="end" type="submit" [disabled]="!form.valid"  (click)="form.ngSubmit.emit()"><ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   
-  <form #form="ngForm" method="post" class="form"  (ngSubmit)="newReport(form)">
+  <form #form="ngForm" [formGroup]="reportForm" method="post" class="form"  (ngSubmit)="newReport(form)">
     
   <ion-grid>
     <ion-row align-items-center>
@@ -23,7 +23,7 @@
 
     <ion-row>
       <ion-col>
-      <ion-radio-group name="is_executed" ngModel required>
+      <ion-radio-group name="is_executed"  formControlName="is_executed" >
         <ion-list-header>
          Il task è stato eseguito correttamente?
         </ion-list-header>
@@ -47,11 +47,11 @@
 
       <ion-col>
         <h5>Data</h5>
-        <ion-datetime display-format="DD/MM/YY" ngModel placeholder="GG/MM/AA" picker-format="DD MM YY" name="date_execution"></ion-datetime>
+        <ion-datetime display-format="DD/MM/YY"  formControlName="date_execution" placeholder="GG/MM/AA" picker-format="DD MM YY" name="date_execution"></ion-datetime>
       </ion-col>
       <ion-col> 
         <h5>Durata</h5>
-        <ion-input type="number" ngModel name="duration" placeholder="Durata" required></ion-input>
+        <ion-input type="number" formControlName="duration" name="duration" placeholder="Durata" ></ion-input>
       </ion-col>
     </ion-row>
 
@@ -59,7 +59,7 @@
       <h3>Commento</h3>
     </ion-row>
     <ion-row>
-      <ion-textarea placeholder="Inserisci il testo" ngModel name="description" required></ion-textarea>
+      <ion-textarea placeholder="Inserisci il testo" formControlName="description" name="description"></ion-textarea>
     </ion-row>
   </ion-grid>
 </form>

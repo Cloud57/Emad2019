@@ -116,6 +116,14 @@ export class RubyApiService {
           return this.http.post(this.env.API_URL+"/reports.json",JSON.stringify(register));
         }
 
+      mod_Report(form, idReport) {
+        var register = { report : {
+          description : form.description, duration : form.duration,
+          date_execution: form.date_execution, is_executed: form.is_executed}
+         };
+        return this.http.put(this.env.API_URL+"/reports/"+idReport+".json",JSON.stringify(register));
+      }
+
       get_patients(id) {
           return this.http.get(this.env.API_URL+"/users/search_patient.json?id="+id);
       }

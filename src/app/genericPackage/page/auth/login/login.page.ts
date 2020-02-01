@@ -56,8 +56,11 @@ export class LoginPage implements OnInit {
           response = data
           this.global.setCurrentUser(response)
           this.storage.set("user", JSON.stringify(response.response));
-          this.alertService.presentToast("Logged In");
-          this.navCtrl.navigateRoot('doctor-home');
+            setTimeout(() =>{
+             this.alertService.presentToast("Logged In");
+            this.navCtrl.navigateRoot('doctor-home');
+          }, 500);
+        
             
         },
         error => {

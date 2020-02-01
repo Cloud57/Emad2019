@@ -39,6 +39,8 @@ export class AuthInterceptor implements HttpInterceptor {
             .pipe(
                 switchMap(token => {
                     token = JSON.parse(token).auth_token
+
+                    
                     if (token) {
                         request = request.clone({ headers: request.headers.set('Authorization', token) });
                     }

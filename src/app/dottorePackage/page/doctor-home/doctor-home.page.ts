@@ -19,7 +19,7 @@ export class DoctorHomePage implements OnInit {
     if(this.globalService.currentUser.user_type >1)
       this.getListaPazientiForMedico()
     else
-    this.getListaPazientiForCaregiver()
+      this.getListaPazientiForCaregiver()
   }
   loginPage() {
     this.navCtrl.navigateRoot('/');
