@@ -88,7 +88,7 @@ export class NewTaskPage implements OnInit {
       this.spinner.present();
       console.log(form)
       if(!this.global.modify){
-        this.rubyService.new_task(form.value, this.autonomy, this.global.currentPatient.id, this.sharedIService.src,this.videoBlob, this.fileVideoToUpload).subscribe(
+        this.rubyService.new_task(form.value, this.autonomy, this.global.currentPatient.id, this.sharedIService.src,this.videoBlob, this.fileVideoToUpload, this.audioBlob, this.fileAudioToUpload).subscribe(
           data => {
             this.alertService.presentToast("Task creato");
             this.listOfTask();
