@@ -16,9 +16,9 @@ export class TabGuidaPage implements OnInit {
   ngOnInit() {
     if(this.global.currentTask.media_files.length > 0){
       for(let media of this.global.currentTask.media_files)
-        if(media.includes("mp4"))
+        if(media.media.includes("mp4"))
           this.videoUrl = this.env.API_URL+  media.media
-        else if(media.includes("aac"))
+        else if(media.media.includes("aac"))
           this.audioUrl = this.env.API_URL+  media.media
     }
       console.log("video "+ this.videoUrl);
