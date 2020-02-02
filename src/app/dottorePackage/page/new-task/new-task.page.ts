@@ -1,6 +1,6 @@
 import { SharedIconService } from './shared-icon.service';
 import { ModalPage } from './modal/modal.page';
-import { ModalController } from '@ionic/angular';
+import { ModalController, LoadingController } from '@ionic/angular';
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
@@ -32,13 +32,15 @@ export class NewTaskPage implements OnInit {
   public fileAudioToUpload: any
   public videoBlob: Blob = null;
   public audioBlob: Blob = null;
+  spinner:any;
   constructor(private modalController: ModalController, public sharedIService: SharedIconService, private alertService: AlertService,
     public rubyService: RubyApiService, private navCtrl: NavController, private global: GlobalService,
     private fileChooser: FileChooser,
     private filePath: FilePath,
     private file:File,
     private fb:FormBuilder,
-    private changeRef: ChangeDetectorRef) {
+    private changeRef: ChangeDetectorRef,
+    private loading: LoadingController) {
     this.taskForm = fb.group({
       name: ['', Validators.required],
       duration: ['', Validators.required],
@@ -79,41 +81,49 @@ export class NewTaskPage implements OnInit {
   }
 
   sendTask(form: NgForm) {
-    console.log(form)
-    if(!this.global.modify){
-      this.rubyService.new_task(form.value, this.autonomy, this.global.currentPatient.id, this.sharedIService.src,this.videoBlob, this.fileVideoToUpload).subscribe(
+    this.loading.create({
+      message: "Attendi..."
+    }).then((overlay) => {  
+      this.spinner = overlay
+      this.spinner.present();
+      console.log(form)
+      if(!this.global.modify){
+        this.rubyService.new_task(form.value, this.autonomy, this.global.currentPatient.id, this.sharedIService.src,this.videoBlob, this.fileVideoToUpload, this.audioBlob, this.fileAudioToUpload).subscribe(
+          data => {
+            this.alertService.presentToast("Task creato");
+            this.listOfTask();
+          },
+          error => {
+            console.log(error);
+            this.spinner.dismiss();
+          },
+          () => {
+            this.spinner.dismiss();
+          }
+        );
+    } else {
+      this.rubyService.mod_task(form.value, Number(this.autonomy), this.global.currentPatient.id, this.sharedIService.src, this.global.currentTask.id).subscribe(
         data => {
-          this.alertService.presentToast("Task creato");
-          this.listOfTask();
+          this.alertService.presentToast("Task modificato");
+          this.global.currentTask.name = form.value.name
+          this.global.currentTask.description = form.value.description
+          this.global.currentTask.duration = form.value.duration
+          this.global.currentTask.icon = this.sharedIService.src
+          this.global.currentTask.autonomy = Number(this.autonomy)
+          
+          this.navCtrl.back()
         },
         error => {
           console.log(error);
+          this.spinner.dismiss();
         },
         () => {
-
+          this.spinner.dismiss();
         }
       );
-   } else {
-    this.rubyService.mod_task(form.value, Number(this.autonomy), this.global.currentPatient.id, this.sharedIService.src, this.global.currentTask.id).subscribe(
-      data => {
-        this.alertService.presentToast("Task modificato");
-        this.global.currentTask.name = form.value.name
-        this.global.currentTask.description = form.value.description
-        this.global.currentTask.duration = form.value.duration
-        this.global.currentTask.icon = this.sharedIService.src
-        this.global.currentTask.autonomy = Number(this.autonomy)
-        console.log(Number(this.autonomy));
-        
-        this.navCtrl.back()
-      },
-      error => {
-        console.log(error);
-      },
-      () => {
+    }
 
-      }
-    );
-   }
+  });
   }
 
   loadVideo(video: Blob, file: any){
@@ -172,6 +182,8 @@ export class NewTaskPage implements OnInit {
         (nativepath) => {
           this.file.resolveLocalFilesystemUrl(nativepath).then((entry:any) =>{
             entry.file(file => {
+              this.uploadAudioText = "Audio in caricamento..."
+              this.changeRef.detectChanges();
               const reader = new FileReader();
               reader.onload = () => {
                 this.audioBlob = new Blob([reader.result], {
@@ -179,6 +191,7 @@ export class NewTaskPage implements OnInit {
                 });
                 this.uploadAudioText = file.name
                 this.fileAudioToUpload = file.name
+                this.changeRef.detectChanges();
             };
             reader.readAsArrayBuffer(file);
             })

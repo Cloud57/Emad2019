@@ -14,7 +14,7 @@
 
   
  
-  <form #form="ngForm" [formGroup]="taskForm" method="post" class="form" (ngSubmit)="sendTask(form)">
+ 
     
     
     <ion-list >
@@ -24,6 +24,7 @@
         icona
         
       </button>
+      <form #form="ngForm" [formGroup]="taskForm" method="post" class="form" (ngSubmit)="sendTask(form)">
       <ion-item style="margin-top: 30px;">
         <ion-input name="name" formControlName="name" placeholder="Nome task" type="text" required></ion-input>
       </ion-item>
@@ -42,6 +43,8 @@
           <ion-select-option value="3">SA</ion-select-option>
         </ion-select>
       </ion-item>
+      </form>
+
       <ion-list-header style="color:#7B7B7B;">Aggiungi Materiale Video</ion-list-header>
       <ion-label *ngIf="videoBlob"><b>{{uploadVideoText}}</b></ion-label>
       <ion-item lines="none">
@@ -59,10 +62,9 @@
         </button>
       </ion-item>
       
-      
     </ion-list>
 
     <!--<ion-button (click)="AbortUpload()">cancel uploading</ion-button>-->
-  </form>
+
 
 </ion-content>

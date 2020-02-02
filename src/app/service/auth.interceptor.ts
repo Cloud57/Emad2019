@@ -46,10 +46,6 @@ export class AuthInterceptor implements HttpInterceptor {
                     }
                     console.log(request.headers);
                     
-                    if (!request.headers.has('Content-Type')) {
-                        
-                        //request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
-                    }
 
                     if (this.debug) {
                         request = request.clone({ url: this.url + request.url + '?XDEBUG_SESSION_START=1'});
