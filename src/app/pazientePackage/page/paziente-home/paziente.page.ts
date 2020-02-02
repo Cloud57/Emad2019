@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/service/global.service';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
@@ -9,7 +9,10 @@ import { RubyApiService } from 'src/app/service/ruby-api.service';
   styleUrls: ['./paziente.page.scss'],
 })
 export class PazientePage implements OnInit {
-
+  @Input() noLeftIcon:boolean=false;
+  @Input() noRightIcon:boolean=false;
+  
+    title:string="Profilo Paziente";
   constructor(private navCtrl: NavController, public global: GlobalService, private rubyService: RubyApiService) { }
 
   ngOnInit() {
@@ -22,9 +25,14 @@ export class PazientePage implements OnInit {
     this.navCtrl.navigateRoot('alleanza');
   }
   comportamentiProblemaPage(){
-    
+    this.navCtrl.navigateRoot('/com-problema');
   }
-
+  openProfile(){
+    this.navCtrl.navigateRoot('profilo-caregiver');
+  }
+ goBack(){
+   this.navCtrl.navigateRoot('doctor-home');
+ }
   getListaTask() {
     
     this.rubyService.get_tasks(this.global.currentPatient.id).subscribe(

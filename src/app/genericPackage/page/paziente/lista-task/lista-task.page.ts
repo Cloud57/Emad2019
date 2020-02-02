@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/service/global.service';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
@@ -10,7 +10,10 @@ import { Task } from 'src/app/models/task';
   styleUrls: ['./lista-task.page.scss'],
 })
 export class ListaTaskPage implements OnInit {
-  public title = "Lista task"
+  
+  @Input() noLeftIcon:boolean=false;
+  @Input() noRightIcon:boolean=false;
+  public title = "Lista task";
   originalItems : Task[] =[]
   filterItems : Task[] =[]
   searchText = "";
@@ -61,7 +64,12 @@ export class ListaTaskPage implements OnInit {
     this.filterItems = []
     this.filterItems = this.originalItems
   }
-
+  openProfile(){
+    this.navCtrl.navigateRoot('/profilo-caregiver');
+  }
+  goBack(){
+    this.navCtrl.navigateRoot('/paziente-home');
+  }
   getItems(ev: any) {
     // Reset items back to all of the items
     this.prepareSearchData();

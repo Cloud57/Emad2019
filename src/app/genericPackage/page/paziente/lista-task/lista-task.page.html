@@ -1,5 +1,25 @@
 <ion-header>
-  <app-toolbar [title]="title"></app-toolbar>
+  <ion-toolbar color="primary">
+
+    <ion-grid>
+      <ion-row justify-content-center align-items-center>
+        <ion-col>
+          <ion-buttons >
+            <ion-back-button color="secondary" defaultHref="home" (click)="goBack()"
+              [ngClass]="[noLeftIcon ? 'notVisible' : '']"></ion-back-button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col>
+          <ion-title style="text-align:center;">{{title}}</ion-title>
+        </ion-col>
+        <ion-col>
+          <img class="imgProfilo" src="../../assets/img/profilo.png" (click)="openProfile()"
+            >
+        </ion-col>
+      </ion-row>
+  
+    </ion-grid>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>

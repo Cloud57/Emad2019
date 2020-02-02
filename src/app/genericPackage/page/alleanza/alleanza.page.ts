@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alleanza.page.scss'],
 })
 export class AlleanzaPage implements OnInit {
-
+public title:string="Alleanza";
   constructor() { }
 
   ngOnInit() {

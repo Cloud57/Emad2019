@@ -16,7 +16,7 @@ export class ModalPage implements OnInit {
    shoppingCart: "../assets/img/icon-modal/shopping-cart.png",
    study: "../assets/img/icon-modal/study.png",
    toothbrush: "../assets/img/icon-modal/toothbrush.png",
-
+   generic:"../assets/img/icon-modal/generic.png"
 
 
  };

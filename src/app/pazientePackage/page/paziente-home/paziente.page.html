@@ -1,40 +1,46 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button autoHide="false"></ion-menu-button>
-    </ion-buttons>
+
     <ion-grid>
-      <ion-row>   
-          <ion-title style="text-align:center;" >THEA</ion-title>
-          <img class="imgProfilo" src="../../assets/img/profilo.png">
+      <ion-row justify-content-center align-items-center>
+        <ion-col>
+          <ion-buttons (click)="goBack()">
+            <ion-back-button color="secondary" defaultHref="paziente-home" 
+              [ngClass]="[noLeftIcon ? 'notVisible' : '']"></ion-back-button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col>
+          <ion-title style="text-align:center;">{{title}}</ion-title>
+        </ion-col>
+        <ion-col>
+          <img class="imgProfilo" src="../../assets/img/profilo.png" (click)="openProfile()"
+            >
+        </ion-col>
       </ion-row>
-       
-  </ion-grid> 
+  
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
-  <app-ion-menu></app-ion-menu>
-  <ion-router-outlet id="content1" main></ion-router-outlet>
-  <!--bio profilo-->
-  <ion-grid  style="margin-bottom:2%;">
-    <ion-row align-items-center justify-content-center>
-      <ion-col size="6" align-self-center>
-        <img float-right class="img-home" src="../../assets/img/profilo.png" alt="logo">
-    </ion-col>
-    <ion-col size="6" align-self-center>
-      <ion-row>
-        <ion-label>Nome: {{this.global.currentPatient.name}} {{this.global.currentPatient.surname}}</ion-label>
-      </ion-row>
-    
-      <ion-row>Diagnosi: {{this.global.currentPatient.diagnosis}} </ion-row>
-    </ion-col>
+  <ion-grid>
+    <ion-row justify-content-center align-items-center class="ion-margin-top">
+      <ion-col size="12">
+        <img class="imgProfilo" src="../../assets/img/profilo.png" width="100" height="100">
+      </ion-col>
     </ion-row>
-  </ion-grid>
-  <ion-title type="large">LE ATTIVITA' DI MARIO</ion-title>
-<!-- tasks-->
-  <ion-grid style="margin-bottom: 2%;" fixed >
+    <ion-row>
+      <ion-col size="12">
+          <ion-label class="text-center">
+            <b> {{this.global.currentPatient.name}} {{this.global.currentPatient.surname}} </b>
+          </ion-label>
+      </ion-col>
+    </ion-row>
+    <!--task-->
+    <ion-row class="ion-margin-top">
+      <ion-title style="text-transform: uppercase;"> LE ATTIVITA' DI {{this.global.currentPatient.name}}</ion-title>
+    </ion-row>
     <ion-row align-items-center justify-content-start >
       <ion-col *ngFor="let item of this.global.currentPatient.tasks | slice:0:3;">
         <ion-card color="primary" align-items-center class="card" (click)="openTask(item)">
@@ -44,22 +50,15 @@
           </ion-card-content>
       </ion-card>
       </ion-col>
-      <ion-col >
-        <ion-card color="primary"  class="card" (click)="TaskListPage()" style="height: 101.5px; width: 145px; ">
-          <ion-card-content style="padding-top: 30%;">
-            <ion-label text-center >Tutte le altre</ion-label>
-
-          </ion-card-content>
-      </ion-card>
+      <ion-col class="text-center">
+        <a (click)="TaskListPage()" color="primary"> Mostra le altre</a>
       </ion-col>
     </ion-row>
-  </ion-grid>
-
-<!-- bottoni comportamento alleanza-->
-  <ion-grid  style="margin-top: 2%;" >
+    <ion-item-divider></ion-item-divider>
+    <!--alleanza-->
     <ion-row>
       <ion-col size="6">
-       <ion-button shape="round" size="small">
+       <ion-button shape="round" size="small" (click)="comportamentiProblemaPage()">
          <ion-icon name="warning" large></ion-icon>
        </ion-button>
       </ion-col>
@@ -71,10 +70,10 @@
       </ion-col>
     </ion-row>
     <ion-row>
-     <ion-col size="6" class="ion-text-center">
+     <ion-col size="6" class="ion-text-center" (click)="comportamentiProblemaPage()">
        <ion-label>Comportamenti problema</ion-label>
      </ion-col>
-     <ion-col size="6" class="ion-text-center">
+     <ion-col size="6" class="ion-text-center" (click)="alleanzaPage()">
        <ion-label>Alleanza</ion-label>
      </ion-col>
     </ion-row>
