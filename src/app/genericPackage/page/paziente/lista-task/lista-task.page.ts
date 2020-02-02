@@ -33,9 +33,11 @@ export class ListaTaskPage implements OnInit {
       data => {
         let response : any = [];
         response = data  
+        console.log(response);
+        
         this.globalService.currentPatient.tasks = []
         for(let item of response){
-          this.globalService.currentPatient.tasks.push(item.task)
+          this.globalService.currentPatient.tasks.push(item)
         }
         
         this.originalItems = this.globalService.currentPatient.tasks

@@ -10,4 +10,5 @@ export class Task {
     patient_id:number
     reports: any[]
     is_task_active:boolean
+    media_files: any[]
 }

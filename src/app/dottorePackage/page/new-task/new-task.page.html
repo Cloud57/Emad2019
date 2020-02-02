@@ -43,19 +43,20 @@
         </ion-select>
       </ion-item>
       <ion-list-header style="color:#7B7B7B;">Aggiungi Materiale Video</ion-list-header>
+      <ion-label *ngIf="videoBlob"><b>{{uploadVideoText}}</b></ion-label>
       <ion-item lines="none">
         <button (click)="uploadVideo()" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
           <ion-icon name="add"></ion-icon>
         </button>
-        <ion-label><b>{{uploadVideoText}}</b></ion-label>
+
       </ion-item>
 
       <ion-list-header style="color:#7B7B7B;">Aggiungi Materiale Audio</ion-list-header>
+      <ion-label *ngIf="audioBlob"><b>{{uploadAudioText}}</b></ion-label>
       <ion-item lines="none">
         <button (click)="uploadAudio()" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
           <ion-icon name="add"></ion-icon>
         </button>
-        <ion-label><b>{{uploadAudioText}}</b></ion-label>
       </ion-item>
       
       
