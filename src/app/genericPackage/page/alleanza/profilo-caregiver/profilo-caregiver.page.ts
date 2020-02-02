@@ -25,4 +25,9 @@ export class ProfiloCaregiverPage implements OnInit {
     this.global.currentUser = new User()
     this.navCtrl.navigateRoot('/');
   }
+  home(){
+    this.global.currentUser = new User()
+    this.navCtrl.navigateRoot('/doctor-home');
+  }
+
 }

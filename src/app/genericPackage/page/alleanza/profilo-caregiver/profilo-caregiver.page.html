@@ -5,7 +5,8 @@
 <ion-content>
   <app-ion-menu></app-ion-menu>
 
-  <ion-grid fixed>
+  <ion-grid >
+    <!--
     <ion-row>
       <ion-col>
         <ion-row>
@@ -14,10 +15,9 @@
         
       </ion-col>
       <ion-col>
+        
         <ion-row>
-          <h1>
-            {{this.caregiver.name}} {{this.caregiver.surname}}
-          </h1>
+         
         </ion-row>
         <ion-row>
           <ion-item-divider>
@@ -43,9 +43,48 @@
           </ion-item-divider>
         </ion-row>
         <ion-row>
-          <ion-button (click)="logout()">Logout </ion-button>
+          <ion-col size="6">
+            <ion-button (click)="home()">Home </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button (click)="logout()">Logout </ion-button>
+          </ion-col>
+          
         </ion-row>
       </ion-col>
+    </ion-row>
+    -->
+    <ion-row justify-content-center align-items-center class="ion-margin-top">
+      <ion-col size="12">
+        <img class="imgProfilo" src="../../assets/img/profilo.png" width="100" height="100">
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-margin-top">
+      <ion-col size="12">
+        <h1 class="text-center">
+          <b> {{this.caregiver.name}} {{this.caregiver.surname}}</b> 
+        </h1>
+        <ion-list>
+          <ion-item lines="none">
+            <h5> Email: <ion-label>{{this.caregiver.email}}</ion-label></h5>
+          </ion-item>
+          <ion-item lines="none">
+            <h5>Tipo di utente: <ion-label>{{role[this.caregiver.user_type]}}</ion-label></h5>
+          </ion-item>
+          <ion-item lines="none">
+            <h5>Telefono: <ion-label>{{this.caregiver.telephone}}</ion-label></h5>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-margin-top">
+      <ion-col size="6">
+        <ion-button (click)="home()">Home </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button (click)="logout()">Logout </ion-button>
+      </ion-col>
+      
     </ion-row>
   </ion-grid>
 
