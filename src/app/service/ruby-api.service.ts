@@ -46,7 +46,7 @@ export class RubyApiService {
         return this.http.put(this.env.API_URL+"/patients/"+patientID,JSON.stringify(register));
       }
 
-      new_task(form, autonomy, id, src,imgBlob, filename) {
+      new_task(form, autonomy, id, src,imgBlob, filenameVideo, audioBlob, filenameAudio) {
           let formData = new FormData();
           formData.append('task[name]', form.name);
           formData.append('task[description]', form.description);
@@ -60,17 +60,24 @@ export class RubyApiService {
           });
           
           if(imgBlob != null)
-            formData.append('media_files[]', imgBlob,filename);
+            formData.append('media_files[]', imgBlob,filenameVideo);
+          if(audioBlob != null)
+            formData.append('media_files[]', audioBlob,filenameAudio);
           return this.http.post(this.env.API_URL+"/tasks",formData);
         }
 
         mod_task(form,autonomy ,id, src, taskId) {
-          var register = { task : {
-            name :form.name, description : form.description, duration : form.duration,
-            autonomy: autonomy, icon: src,
-            patient_id: id}
-           };
-          return this.http.put(this.env.API_URL+"/tasks/"+taskId,JSON.stringify(register));
+           let formData = new FormData();
+           formData.append('task[name]', form.name);
+           formData.append('task[description]', form.description);
+           formData.append('task[duration]', form.duration);
+           formData.append('task[autonomy]', autonomy);
+           formData.append('task[patient_id]',  id);
+           formData.append('task[icon]', src)
+           formData.forEach((value,key) => {
+             console.log(key+" "+value)
+           });
+          return this.http.put(this.env.API_URL+"/tasks/"+taskId,formData);
         }
 
         new_prom_beh(form, id) {

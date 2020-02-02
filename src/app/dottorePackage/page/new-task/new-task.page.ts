@@ -110,7 +110,6 @@ export class NewTaskPage implements OnInit {
           this.global.currentTask.duration = form.value.duration
           this.global.currentTask.icon = this.sharedIService.src
           this.global.currentTask.autonomy = Number(this.autonomy)
-          console.log(Number(this.autonomy));
           
           this.navCtrl.back()
         },
