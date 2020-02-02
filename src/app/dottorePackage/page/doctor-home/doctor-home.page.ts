@@ -16,7 +16,7 @@ export class DoctorHomePage implements OnInit {
      }
 
   ngOnInit() {
-    if(this.globalService.currentUser.user_type >1)
+    if(this.globalService.currentUser.user_type >0)
       this.getListaPazientiForMedico()
     else
       this.getListaPazientiForCaregiver()
@@ -73,7 +73,7 @@ export class DoctorHomePage implements OnInit {
 
   openDetail(patient) {
     console.log(this.globalService.currentUser)
-    if(this.globalService.currentUser.user_type >1) {
+    if(this.globalService.currentUser.user_type >0) {
       this.globalService.currentPatient= patient.patient;
       this.globalService.currentPatient.user_in_alliance= patient.user_in_alliance;
       this.globalService.currentPatient.alliance= patient.alliance;

@@ -68,7 +68,10 @@ export class ListaTaskPage implements OnInit {
     this.navCtrl.navigateRoot('/profilo-caregiver');
   }
   goBack(){
-    this.navCtrl.navigateRoot('/paziente-home');
+    if(this.globalService.currentUser.user_type ==0)
+        this.navCtrl.navigateRoot('/paziente-home');
+    else
+        this.navCtrl.navigateRoot('/profilo-paziente');
   }
   getItems(ev: any) {
     // Reset items back to all of the items

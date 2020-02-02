@@ -64,7 +64,8 @@ export class ProfiloPazientePage implements OnInit {
   }
 
   goBack(){
-    this.location.back();
+    if(this.global.currentUser.user_type >0)
+      this.navCtrl.navigateRoot('/doctor-home');
   }
 
   modify(){

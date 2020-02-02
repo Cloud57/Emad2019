@@ -35,7 +35,8 @@
       size-sm="6" 
       size-md="4" 
       size-lg="3" *ngFor="let item of filterItems">
-        <ion-card [ngClass]="(item.is_task_active==true)?'active':''" (click)="openTask(item)">
+       <!--<ion-card [ngClass]="(item.is_task_active==true)?'active':''" (click)="openTask(item)">--> 
+        <ion-card (click)="openTask(item)">
           <ion-card-title *ngIf="item.is_task_active==true">
             <ion-icon name="radio-button-on" color="success"></ion-icon>
 
@@ -54,7 +55,7 @@
     </ion-row>
   </ion-grid>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab *ngIf="this.globalService.currentUser.user_type > 0" vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="primary" (click)="inserisciTask()">
       <ion-icon name="add" color="secondary" ></ion-icon>
     </ion-fab-button>
