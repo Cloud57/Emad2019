@@ -34,7 +34,7 @@ export class PazientePage implements OnInit {
         console.log(response)
         this.global.currentPatient.tasks = []
         for(let item of response){
-          this.global.currentPatient.tasks.push(item.task)
+          this.global.currentPatient.tasks.push(item)
         }
         
       },

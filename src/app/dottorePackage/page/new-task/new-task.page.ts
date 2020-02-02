@@ -11,6 +11,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { File } from '@ionic-native/file/ngx';
 
 @Component({
   selector: 'app-new-task',
@@ -26,21 +27,23 @@ export class NewTaskPage implements OnInit {
   fileTransferAudio: FileTransferObject;
   title: string;
   autonomy: string;
-  private fileVideoToUpload: any
-  private videoBlob: Blob
+  public fileVideoToUpload: any
+  public fileAudioToUpload: any
+  public videoBlob: Blob = null;
+  public audioBlob: Blob = null;
   constructor(private modalController: ModalController, public sharedIService: SharedIconService, private alertService: AlertService,
     public rubyService: RubyApiService, private navCtrl: NavController, private global: GlobalService,
     private fileChooser: FileChooser,
     private filePath: FilePath,
-    private transfer: FileTransfer,
+    private file:File,
     private fb:FormBuilder) {
     this.taskForm = fb.group({
       name: ['', Validators.required],
       duration: ['', Validators.required],
       description: ['', Validators.required]
       });
-    this.uploadVideoText = "";
-    this.uploadAudioText = "";
+    this.uploadVideoText = "Carica un file video";
+    this.uploadAudioText = "Carica un file Audio";
     this.downloadText = "";
     if(this.global.modify){
       this.title = "Modifica task"
@@ -76,7 +79,7 @@ export class NewTaskPage implements OnInit {
   sendTask(form: NgForm) {
     console.log(form)
     if(!this.global.modify){
-      this.rubyService.new_task(form.value, this.autonomy, this.global.currentPatient.id, this.sharedIService.src,this.videoBlob, this.fileVideoToUpload.name).subscribe(
+      this.rubyService.new_task(form.value, this.autonomy, this.global.currentPatient.id, this.sharedIService.src,this.videoBlob, this.fileVideoToUpload).subscribe(
         data => {
           this.alertService.presentToast("Task creato");
           this.listOfTask();
@@ -111,19 +114,28 @@ export class NewTaskPage implements OnInit {
    }
   }
 
+  loadVideo(video: Blob, file: any){
+    this.videoBlob = video
+    this.uploadVideoText = file.name
+    this.fileVideoToUpload = file.name
+  }
+
   uploadVideo() {
-    this.fileChooser.open().then((uri) => {
+    this.fileChooser.open({ "mime": "video/mp4" }).then((uri) => {
       this.filePath.resolveNativePath(uri).then(
         (nativepath) => {
-          this.fileVideoToUpload = nativepath
-          const reader = new FileReader();
-          reader.onload = () => {
-            this.videoBlob = new Blob([reader.result], {
-                type: this.fileVideoToUpload.type
-            });
-            
-        };
-        reader.readAsArrayBuffer(this.fileVideoToUpload);
+          this.file.resolveLocalFilesystemUrl(nativepath).then((entry:any) =>{
+            entry.file(file => {
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                this.loadVideo(new Blob([reader.result], {
+                  type: file.type
+              }), file)
+            };
+            reader.readAsArrayBuffer(file);
+            })
+          })
+
           /*
           this.fileTransferVideo = this.transfer.create();
           let options: FileUploadOptions = {
@@ -149,24 +161,21 @@ export class NewTaskPage implements OnInit {
     })
   }
   uploadAudio() {
-    this.fileChooser.open().then((uri) => {
+    this.fileChooser.open({ "mime": "audio/aac" }).then((uri) => {
       this.filePath.resolveNativePath(uri).then(
         (nativepath) => {
-          this.fileTransferAudio = this.transfer.create();
-          let options: FileUploadOptions = {
-            fileKey: 'audiofile',
-            fileName: 'audio.mp3',
-            chunkedMode: false,
-            headers: {},
-            mimeType: 'audio/mpeg'
-          }
-          this.uploadAudioText = "uploading...";
-          this.fileTransferAudio.upload(nativepath, 'your endpoint api path', options).then((data) => {
-            alert("transfert done = " + JSON.stringify(data));
-            this.uploadAudioText = "";
-
-          }, (err) => {
-            this.uploadAudioText = "";
+          this.file.resolveLocalFilesystemUrl(nativepath).then((entry:any) =>{
+            entry.file(file => {
+              const reader = new FileReader();
+              reader.onload = () => {
+                this.audioBlob = new Blob([reader.result], {
+                    type: file.type
+                });
+                this.uploadAudioText = file.name
+                this.fileAudioToUpload = file.name
+            };
+            reader.readAsArrayBuffer(file);
+            })
           })
         }, (err) => {
           alert(JSON.stringify(err));
