@@ -12,6 +12,7 @@ import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { File } from '@ionic-native/file/ngx';
+import { ChangeDetectorRef } from '@angular/core'
 
 @Component({
   selector: 'app-new-task',
@@ -36,7 +37,8 @@ export class NewTaskPage implements OnInit {
     private fileChooser: FileChooser,
     private filePath: FilePath,
     private file:File,
-    private fb:FormBuilder) {
+    private fb:FormBuilder,
+    private changeRef: ChangeDetectorRef) {
     this.taskForm = fb.group({
       name: ['', Validators.required],
       duration: ['', Validators.required],
@@ -118,6 +120,7 @@ export class NewTaskPage implements OnInit {
     this.videoBlob = video
     this.uploadVideoText = file.name
     this.fileVideoToUpload = file.name
+    this.changeRef.detectChanges();
   }
 
   uploadVideo() {
@@ -126,11 +129,14 @@ export class NewTaskPage implements OnInit {
         (nativepath) => {
           this.file.resolveLocalFilesystemUrl(nativepath).then((entry:any) =>{
             entry.file(file => {
+              this.uploadVideoText = "Video in caricamento..."
+              this.changeRef.detectChanges();
               const reader = new FileReader();
               reader.onload = (e) => {
                 this.loadVideo(new Blob([reader.result], {
                   type: file.type
               }), file)
+
             };
             reader.readAsArrayBuffer(file);
             })
