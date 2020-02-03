@@ -100,7 +100,8 @@
       "cordova-plugin-file": {},
       "com.moust.cordova.videoplayer": {},
       "cordova-plugin-filechooser": {},
-      "cordova-plugin-filepath": {}
+      "cordova-plugin-filepath": {},
+      "cordova-plugin-chooser": {}
     },
     "platforms": [
       "browser",

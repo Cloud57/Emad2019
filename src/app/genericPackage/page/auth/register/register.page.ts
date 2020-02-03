@@ -8,6 +8,10 @@ import { File } from '@ionic-native/file/ngx';
 import { Location } from '@angular/common';
 import { LoadingController } from '@ionic/angular';
 import {Chooser, ChooserResult} from '@ionic-native/chooser/ngx';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
+import { ChangeDetectorRef } from '@angular/core'
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -18,52 +22,50 @@ export class RegisterPage implements OnInit {
   imageResponse: any;
   options: any;
   spinner: any;
+  public imageBlob: Blob = null;
+  public fileObj:ChooserResult
+  private imageName:any
   constructor(public imagePicker: ImagePicker, private chooser:Chooser,public file: File,private navCtrl: NavController,private alertService: AlertService,
-    public rubyService: RubyApiService, public location:Location, private loading:LoadingController) {}
-    
-    fileObj:ChooserResult;
-    PickFile(){
+    public rubyService: RubyApiService, public location:Location, private loading:LoadingController,
+    private fileChooser: FileChooser,  private changeRef: ChangeDetectorRef,
+    private filePath: FilePath) {}
+
+     PickFile(){
       this.chooser.getFile("image/jpeg").then((value:ChooserResult)=>{
         this.fileObj = value;
+        this.getImages(this.fileObj)
       },(err)=>{
         alert(JSON.stringify(err));
       })
     }
+	
+    getImages(fileObj:ChooserResult) {
+      console.log(fileObj);
+      console.log(fileObj.uri);
+      
+        this.filePath.resolveNativePath(fileObj.uri).then(
+          (nativepath) => {
+            console.log(nativepath);
+            
+            this.file.resolveLocalFilesystemUrl(nativepath).then((entry:any) =>{
+              entry.file(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                this.imageBlob =new Blob([reader.result], {
+                  type: file.type
+              });
+                this.imageName = file.name 
+              };
+              reader.readAsArrayBuffer(file);
+              })
+            })
+
+          }, (err) => {
+            alert(JSON.stringify(err));
+          })
+      }
     
-    
-    
-    getImages() {
-      this.options = {
-        // Android only. Max images to be selected, defaults to 15. If this is set to 1, upon
-        // selection of a single image, the plugin will return it.
-        maximumImagesCount: 1,
-    
-        // max width and height to allow the images to be.  Will keep aspect
-        // ratio no matter what.  So if both are 800, the returned image
-        // will be at most 800 pixels wide and 800 pixels tall.  If the width is
-        // 800 and height 0 the image will be 800 pixels wide if the source
-        // is at least that wide.
-        //width: 800,
-       // height: 800,
-    
-        // quality of resized image, defaults to 100
-        //quality: 70,
-    
-        // output type, defaults to FILE_URIs.
-        // available options are
-        // window.imagePicker.OutputType.FILE_URI (0) or
-        // window.imagePicker.OutputType.BASE64_STRING (1)
-        outputType: 1
-      };
-      this.imageResponse = [];
-      this.imagePicker.getPictures(this.options).then((results) => {
-        for (var i = 0; i < results.length; i++) {
-          this.imageResponse.push('data:image/jpeg;base64,' + results[i]);
-        }
-      }, (err) => {
-        alert(err);
-      });
-    }
+
   ngOnInit() {
   }
   loginPage(){
@@ -78,7 +80,7 @@ export class RegisterPage implements OnInit {
       this.spinner.present();
     });
     console.log(form.value)
-    this.rubyService.register(form.value).subscribe(
+    this.rubyService.register(form.value,this.imageName, this.imageBlob).subscribe(
       data => {
         this.alertService.presentToast("Registrazione completata");
         this.loginPage();

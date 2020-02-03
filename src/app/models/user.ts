@@ -5,4 +5,5 @@ export class User {
     email: string;
     telephone: string;
     user_type: number;
+    profile_pic: string
 }

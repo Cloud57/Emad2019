@@ -12,8 +12,9 @@
         <ion-title style="text-align:center;">{{title}}</ion-title>
       </ion-col>
       <ion-col>
-        <img class="imgProfilo" src="../../assets/img/profilo.png" (click)="openProfile()"
-          [ngClass]="[noRightIcon ? 'notVisible' : '']">
+        <ion-avatar>
+        <img class="imgProfilo" [src]="this.globalService.currentUser.profile_pic" (click)="openProfile()"
+          [ngClass]="[noRightIcon ? 'notVisible' : '']"></ion-avatar>
       </ion-col>
     </ion-row>
 

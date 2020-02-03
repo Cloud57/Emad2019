@@ -19,14 +19,19 @@ export class RubyApiService {
     return this.http.post(this.env.API_URL+"/authenticate",JSON.stringify(login), {headers: {'Content-Type': 'application/json'}});
     }
 
-    register(form) {
-      var register = {user : {
-        name :form.name, surname : form.surname, email : form.email.toLowerCase(),
-        password: form.password, password_confirmation: form.password_confirmation,
-        telephone: form.telephone, user_type:form.user_type}
-       };
-      return this.http.post(this.env.API_URL+"/users",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
-      }
+    register(form, imageName, imageBlob) {
+      let formData = new FormData();
+      formData.append('user[name]', form.name);
+      formData.append('user[surname]', form.surname);
+      formData.append('user[email]', form.email.toLowerCase());
+      formData.append('user[password]', form.password);
+      formData.append('user[password_confirmation]', form.password_confirmation);
+      formData.append('user[telephone]', form.telephone);
+      formData.append('user[user_type]',  form.user_type);
+      if(imageBlob != null)
+        formData.append('profile_pic', imageBlob,imageName)
+      return this.http.post(this.env.API_URL+"/users",formData);  
+    }
 
       new_patient(form, id) {
         var register = { patient : {

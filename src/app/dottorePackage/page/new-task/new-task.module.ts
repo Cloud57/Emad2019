@@ -1,4 +1,3 @@
-import { ModalPage } from './modal/modal.page';
 import { UiComponentsModule } from './../../../genericPackage/ui-components/ui-components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,7 +22,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [NewTaskPage, ModalPage],
-  entryComponents:[ModalPage]
+  declarations: [NewTaskPage ],
+  entryComponents:[]
 })
 export class NewTaskPageModule {}

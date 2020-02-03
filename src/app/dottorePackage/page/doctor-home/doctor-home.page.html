@@ -26,7 +26,7 @@
   </ion-item>
   
 </ion-list>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="this.globalService.currentUser.user_type > 0">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="this.globalService.currentUser.user_type == 0">
     <ion-fab-button color="primary" (click)="inserisciPaziente()">
       <ion-icon name="add" color="secondary" ></ion-icon>
     </ion-fab-button>
