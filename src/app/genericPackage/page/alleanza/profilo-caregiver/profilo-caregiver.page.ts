@@ -8,7 +8,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./profilo-caregiver.page.scss'],
 })
 export class ProfiloCaregiverPage implements OnInit {
-  public title:string = "Profilo Caregiver"
+  public title:string = "Profilo Utente"
   public age:number;
   public role:string[] = ["Caregiver", "Terapista", "Medico"]
   public caregiver:User = new User();
