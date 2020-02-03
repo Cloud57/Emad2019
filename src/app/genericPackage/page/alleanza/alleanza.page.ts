@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/service/global.service';
 
 @Component({
   selector: 'app-alleanza',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlleanzaPage implements OnInit {
 public title:string="Alleanza";
-  constructor() { }
-
+  constructor(public global:GlobalService) { }
+  public role:string[] = ["Caregiver", "Terapista", "Medico"]
   ngOnInit() {
+    console.log(this.global.currentPatient);
+     
   }
 
 }

@@ -1,5 +1,26 @@
 <ion-header>
-  <app-toolbar [title]="title"></app-toolbar>
+  <ion-toolbar color="primary">
+
+    <ion-grid>
+      <ion-row justify-content-center align-items-center>
+        <ion-col>
+          <ion-buttons >
+            <ion-back-button color="secondary" defaultHref="home" (click)="goBack()"></ion-back-button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col>
+          <ion-title style="text-align:center;">{{title}}</ion-title>
+        </ion-col>
+        <ion-col>
+          <ion-avatar >
+            <img [src]="this.globalService.currentUser.profile_pic" (click)="openProfile()">
+          </ion-avatar>
+          
+        </ion-col>
+      </ion-row>
+  
+    </ion-grid>
+  </ion-toolbar>
 </ion-header>
 
 

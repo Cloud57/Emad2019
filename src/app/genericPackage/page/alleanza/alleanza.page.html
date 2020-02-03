@@ -1,6 +1,6 @@
 <ion-header>
   <!--toolbar-->
-  <app-toolbar [title]="title" [noRightIcon]=true></app-toolbar>
+  <app-toolbar [title]="title"></app-toolbar>
 </ion-header>
 
 <ion-content>
@@ -11,15 +11,14 @@
   <ion-list>
     <ion-item>
       <ion-grid>
-        <ion-row  align-items-center> 
+        <ion-row  align-items-center *ngFor="let item of this.global.currentPatient.users_in_alliance"> 
           <ion-col class="justify-content-around" size="2">
             <img  src="../../assets/img/martina.png">
           </ion-col>
           <ion-col size="7" offset="1">
-            <ion-label> <b>Martina Bianchi</b> </ion-label>
-            <p>
-              Terapista <br>
-              Tel: 3334546657 
+            <ion-label> <b>{{item.name}} {{item.surname}}</b> </ion-label>
+            <p> {{role[item.user_type]}} <br>
+              Tel: {{item.telephone}}
             </p>
           </ion-col>
           <ion-col  size="2">
@@ -31,31 +30,7 @@
         </ion-row >
      </ion-grid>  
     </ion-item>
-    <ion-item>
-      <ion-grid>
-        <ion-row  align-items-center>
-          <ion-col size="2">
-            <img src="../../assets/img/francesco.png" >
-          </ion-col>
-          <ion-col size="7" offset="1" >
-            <ion-label>Francesco Cascone</ion-label>
-            <p>Medico <br>
-               Tel:3336644433
-            </p>
-          </ion-col>
-          <ion-col size="2">
-            <ion-buttons float-right style="text-align:right;">
-              <img src="../../assets/img/whatsapp.png" height="50" width="50" >
-             </ion-buttons>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
     
   </ion-list>
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button color="primary" href="">
-    <ion-icon name="add" color="secondary" ></ion-icon>
-  </ion-fab-button>
-</ion-fab>
+
 </ion-content>

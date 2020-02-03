@@ -33,6 +33,12 @@ export class RubyApiService {
       return this.http.post(this.env.API_URL+"/users",formData);  
     }
 
+    mod_utente(imageName, imageBlob, id) {
+      let formData = new FormData();
+      formData.append('profile_pic', imageBlob,imageName)
+      return this.http.post(this.env.API_URL+"/users/"+id,formData);  
+    }
+
       new_patient(form, id,imageName, imageBlob) {
         let formData = new FormData();
         formData.append('patient[name]', form.name);

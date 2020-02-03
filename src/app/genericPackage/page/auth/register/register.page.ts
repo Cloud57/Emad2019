@@ -77,23 +77,24 @@ export class RegisterPage implements OnInit {
     }).then((overlay) => {
       this.spinner = overlay
       this.spinner.present();
+      console.log(form.value)
+      this.rubyService.register(form.value,this.imageName, this.imageBlob).subscribe(
+        data => {
+          this.alertService.presentToast("Registrazione completata");
+          this.loginPage();
+        },
+        error => {
+          this.spinner.dismiss();
+          console.log(error);
+          if(error.status)
+          this.alertService.presentToast("Errore nella registrazione");
+        },
+        () => {
+         this.spinner.dismiss();
+        }
+      );
     });
-    console.log(form.value)
-    this.rubyService.register(form.value,this.imageName, this.imageBlob).subscribe(
-      data => {
-        this.alertService.presentToast("Registrazione completata");
-        this.loginPage();
-      },
-      error => {
-        this.spinner.dismiss();
-        console.log(error);
-        if(error.status)
-        this.alertService.presentToast("Errore nella registrazione");
-      },
-      () => {
-       this.spinner.dismiss();
-      }
-    );
+   
   }
 
   

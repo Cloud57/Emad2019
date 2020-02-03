@@ -18,7 +18,7 @@ export class Tab4Page implements OnInit {
     this.sharedService.alliance = [];
     this.sharedService.alliance.push(new Alliance(this.global.currentUser.id, 1, this.global.currentUser.email))
     if(this.global.modify){
-      for(let user of this.global.currentPatient.user_in_alliance)
+      for(let user of this.global.currentPatient.users_in_alliance)
         if(user.id != this.global.currentUser.id)
           this.sharedService.alliance.push(new Alliance(user.id, 0, user.email))
     }

@@ -25,6 +25,16 @@ export class ComProblemaPage implements OnInit {
   ngOnInit() {
     this.getListaProblem()
   }
+
+  openProfile(){
+    this.navCtrl.navigateRoot('/profilo-caregiver');
+  }
+  goBack(){
+    if(this.globalService.currentUser.user_type ==0)
+        this.navCtrl.navigateRoot('/paziente-home');
+    else
+        this.navCtrl.navigateRoot('/profilo-paziente');
+  }
   async openModal() {
 
     const modal = await this.modalController.create({

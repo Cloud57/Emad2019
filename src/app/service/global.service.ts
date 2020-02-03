@@ -27,8 +27,9 @@ export class GlobalService {
     this.currentUser.surname = data.response.surname
     this.currentUser.user_type = data.response.user_type
     this.currentUser.telephone = data.response.telephone
-    if(data.profile_pic != undefined){
-      this.currentUser.profile_pic = this.env + data.profile_pic
+    
+    if(data.response.profile_pic != undefined){
+      this.currentUser.profile_pic = this.env.API_URL + data.response.profile_pic
     } else {
       this.currentUser.profile_pic = "../../assets/img/profilo.png"
     }

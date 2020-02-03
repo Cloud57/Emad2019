@@ -13,10 +13,14 @@ export class PazientePage implements OnInit {
   @Input() noRightIcon:boolean=false;
   
     title:string="Profilo Paziente";
-  constructor(private navCtrl: NavController, public global: GlobalService, private rubyService: RubyApiService) { }
+  constructor(private navCtrl: NavController, public global: GlobalService, private rubyService: RubyApiService) { 
+
+    
+  }
 
   ngOnInit() {
     this.getListaTask()
+    console.log(this.global.currentPatient);
   }
   TaskListPage() {
     this.navCtrl.navigateRoot('/lista-task');

@@ -15,7 +15,7 @@ export class Patient {
     created_at: string;
     updated_at: string;
     profile_pic: string;
-    user_in_alliance: User[]
+    users_in_alliance: User[]
     alliance: Alliance;
     tasks: Task[]
 }

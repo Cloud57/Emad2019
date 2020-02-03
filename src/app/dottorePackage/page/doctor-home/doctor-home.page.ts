@@ -82,12 +82,19 @@ export class DoctorHomePage implements OnInit {
   openDetail(patient) {
     console.log(this.globalService.currentUser)
     if(this.globalService.currentUser.user_type ==2) {
+      console.log(patient);
+      
       this.globalService.currentPatient= patient.patient;
-      this.globalService.currentPatient.user_in_alliance= patient.user_in_alliance;
+      this.globalService.currentPatient.users_in_alliance= patient.users_in_alliance;
       this.globalService.currentPatient.alliance= patient.alliance;
+
       this.navCtrl.navigateRoot('/profilo-paziente');
     } else {
+      console.log(patient);
+      console.log(patient.users_in_alliance);
       this.globalService.currentPatient= patient.patient;
+      this.globalService.currentPatient.users_in_alliance= patient.users_in_alliance;
+      console.log(this.globalService.currentPatient);
       this.navCtrl.navigateRoot('/paziente-home');
     }
   }
