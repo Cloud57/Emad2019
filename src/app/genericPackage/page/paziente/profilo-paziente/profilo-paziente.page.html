@@ -7,7 +7,7 @@
       <ion-row>
           
           <ion-title style="text-align:center;" >{{title}}</ion-title>
-          <ion-icon name="create" (click)="modify()"></ion-icon>
+          <ion-icon *ngIf="this.global.currentUser.user_type > 0" name="create" (click)="modify()"></ion-icon>
       </ion-row>
        
   </ion-grid> 
@@ -60,20 +60,20 @@
     <ion-col size="12" class="ion-text-start">
       <p>
         {{this.paziente.diagnosis }}
-        <a (click)="toggle()"> {{buttonName}}</a>
+        <!--a (click)="toggle()"> {{buttonName}}</a>
         <ng-container *ngIf="show">
           <p>
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
           </p>
-      </ng-container> 
+      </ng-container --> 
         
       </p>
     </ion-col>
   </ion-row>
  </ion-grid>
- <ion-item-divider></ion-item-divider>
- <ion-grid>
+ <ion-item-divider *ngIf="this.global.currentUser.user_type > 0"></ion-item-divider>
+ <ion-grid *ngIf="this.global.currentUser.user_type > 0">
    <ion-row>
      <ion-col size="6">
       <ion-button shape="round" size="small" (click)="ProblemBehPage()">
@@ -97,9 +97,9 @@
    </ion-row>
  </ion-grid>
 
-  <ion-item-divider style="margin-top: 3%;"></ion-item-divider>
+  <ion-item-divider *ngIf="this.global.currentUser.user_type > 0" style="margin-top: 3%;"></ion-item-divider>
     
-    <ion-grid>  
+    <ion-grid *ngIf="this.global.currentUser.user_type > 0">  
       <ion-row>
         <ion-col size="12" text-left>
           <ion-label><b>Alleanza</b></ion-label>

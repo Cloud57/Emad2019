@@ -25,7 +25,7 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row justify-content-center align-items-center class="ion-margin-top">
+    <ion-row justify-content-center align-items-center class="ion-margin-top" (click)="openProfilePaziente()">
       <ion-col size="12">
         <img class="imgProfilo" src="../../assets/img/profilo.png" width="100" height="100">
       </ion-col>
@@ -42,19 +42,25 @@
       <ion-title style="text-transform: uppercase;"> LE ATTIVITA' DI {{this.global.currentPatient.name}}</ion-title>
     </ion-row>
     <ion-row align-items-center justify-content-start >
-      <ion-col *ngFor="let item of this.global.currentPatient.tasks | slice:0:3;">
-        <ion-card color="primary" align-items-center class="card" (click)="openTask(item)">
+      <ion-col size="6" *ngFor="let item of this.global.currentPatient.tasks | slice:0:3;">
+        <ion-card align-items-center class="card" (click)="openTask(item)">
           <ion-card-content>
             <div><img class="img-card" [src]=item.icon alt="logo"></div>
            {{item.name}}
           </ion-card-content>
       </ion-card>
       </ion-col>
+      <ion-col size="6">
+        <ion-card align-items-center class="card" (click)="TaskListPage()">
+          <ion-card-content>
+            <a  color="primary"> Mostra la lista</a>
+          </ion-card-content>
+      </ion-card>
+      </ion-col>
       <ion-col class="text-center">
-        <a (click)="TaskListPage()" color="primary"> Mostra le altre</a>
+        
       </ion-col>
     </ion-row>
-    <ion-item-divider></ion-item-divider>
     <!--alleanza-->
     <ion-row>
       <ion-col size="6">

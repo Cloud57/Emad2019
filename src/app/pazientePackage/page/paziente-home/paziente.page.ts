@@ -30,6 +30,10 @@ export class PazientePage implements OnInit {
   openProfile(){
     this.navCtrl.navigateRoot('profilo-caregiver');
   }
+
+  openProfilePaziente(){
+    this.navCtrl.navigateRoot('profilo-paziente');
+  }
  goBack(){
    this.navCtrl.navigateRoot('doctor-home');
  }
