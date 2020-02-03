@@ -63,7 +63,7 @@ export class NewTaskPage implements OnInit {
       this.sharedIService.src = "";
 
     }
-
+    console.log(this.sharedIService.src);
   }
   async openModal() {
 
@@ -88,6 +88,14 @@ export class NewTaskPage implements OnInit {
       this.spinner.present();
       console.log(form)
       if(!this.global.modify){
+        if (this.sharedIService.src=="")
+        { 
+          this.sharedIService.src="../assets/img/icon-modal/generic.png" 
+          this.global.currentTask.icon = this.sharedIService.src
+        }
+      else{
+        this.global.currentTask.icon = this.sharedIService.src
+      } 
         this.rubyService.new_task(form.value, this.autonomy, this.global.currentPatient.id, this.sharedIService.src,this.videoBlob, this.fileVideoToUpload, this.audioBlob, this.fileAudioToUpload).subscribe(
           data => {
             this.alertService.presentToast("Task creato");
@@ -108,7 +116,14 @@ export class NewTaskPage implements OnInit {
           this.global.currentTask.name = form.value.name
           this.global.currentTask.description = form.value.description
           this.global.currentTask.duration = form.value.duration
+          if (this.sharedIService.src=="")
+        { 
+          this.sharedIService.src="../assets/img/icon-modal/generic.png" 
           this.global.currentTask.icon = this.sharedIService.src
+        }
+      else{
+        this.global.currentTask.icon = this.sharedIService.src
+      } 
           this.global.currentTask.autonomy = Number(this.autonomy)
           
           this.navCtrl.back()
