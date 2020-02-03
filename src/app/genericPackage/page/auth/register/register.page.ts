@@ -27,7 +27,6 @@ export class RegisterPage implements OnInit {
   private imageName:any
   constructor(public imagePicker: ImagePicker, private chooser:Chooser,public file: File,private navCtrl: NavController,private alertService: AlertService,
     public rubyService: RubyApiService, public location:Location, private loading:LoadingController,
-    private fileChooser: FileChooser,  private changeRef: ChangeDetectorRef,
     private filePath: FilePath) {}
 
      PickFile(){

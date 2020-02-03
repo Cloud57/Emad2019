@@ -6,7 +6,7 @@
     <ion-buttons slot="start">
       <ion-back-button color="secondary" defaultHref="home" (click)="loginPage()"></ion-back-button>
     </ion-buttons>
-    <ion-title>Registrazione</ion-title>
+    <ion-title style="text-align:center;">Registrazione</ion-title>
   </ion-toolbar>
 </ion-header>
 <!-------------------------------->
@@ -15,7 +15,7 @@
 
 
 
-<ion-content>
+<ion-content text-center>
 <!-------------------------------
   <ion-grid fixed>
     <ion-row><img id="blah"  width="100" height="80"/></ion-row>
@@ -30,17 +30,25 @@
 -->
  <ion-grid>
     <ion-row>
-      <ion-col >
-        <div *ngIf="fileObj">
-          <img src={{fileObj.dataURI}}/>
-        
-        </div>
+      <ion-col  *ngIf="!fileObj">
+      <ion-avatar >
+        <img src="../../assets/img/profilo.png"/>
+    </ion-avatar>
        
       </ion-col>
+
+      <ion-col *ngIf="fileObj">
+        <ion-avatar >
+          <img src={{fileObj.dataURI}}/>
+      </ion-avatar>
+         
+        </ion-col>
+   
+
     </ion-row>
     <ion-row>
       <ion-col text-center>
-        <ion-button (click)="PickFile()">Inserisci immagine profilo</ion-button>
+        <ion-button (click)="PickFile()">Inserisci immagine paziente</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

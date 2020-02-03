@@ -5,6 +5,8 @@ import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { AlertService } from 'src/app/service/alert.service';
 import { GlobalService } from 'src/app/service/global.service';
 import { Patient } from 'src/app/models/patient';
+
+
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.page.html',
@@ -12,10 +14,12 @@ import { Patient } from 'src/app/models/patient';
 })
 export class TabsPage implements OnInit {
    public title:string
+
   constructor(private navCtrl: NavController, private sharedService: SharedNewPazienteService,
               private rubyService: RubyApiService, private alertService: AlertService,
               private global: GlobalService) { 
                 sharedService.patient = new Patient();
+                sharedService.patient
               }
 
   ngOnInit() {
@@ -39,7 +43,7 @@ homePage() {
 save(){
   if(!this.global.modify) {
     var response : any = {id : "" };
-    this.rubyService.new_patient(this.sharedService.patient, this.global.currentUser.id).subscribe(
+    this.rubyService.new_patient(this.sharedService.patient, this.global.currentUser.id, this.sharedService.imageName, this.sharedService.imageBlob).subscribe(
       data => {
         this.alertService.presentToast("Paziente inserito");  
         response = data;
@@ -54,7 +58,7 @@ save(){
       }
     );
   } else {
-    this.rubyService.mod_patient(this.sharedService.patient, this.global.currentUser.id, this.global.currentPatient.id).subscribe(
+    this.rubyService.mod_patient(this.sharedService.patient, this.global.currentUser.id, this.global.currentPatient.id, this.sharedService.imageName, this.sharedService.imageBlob).subscribe(
       data => {
         this.alertService.presentToast("Paziente modificato");  
         response = data;
@@ -101,4 +105,5 @@ modifyAlliance(allianceID) {
     }
   );
 }
+
 }

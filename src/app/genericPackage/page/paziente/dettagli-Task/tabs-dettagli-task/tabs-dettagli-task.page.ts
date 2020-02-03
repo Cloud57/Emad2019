@@ -20,7 +20,7 @@ export class TabsDettagliTaskPage implements OnInit {
   }
 
   goBack(){
-    if(this.global.currentUser.user_type > 0)
+    if(this.global.currentUser.user_type == 2)
       this.navCtrl.navigateRoot('/lista-task');
     else 
       this.navCtrl.navigateRoot('/paziente-home');

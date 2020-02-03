@@ -33,22 +33,34 @@ export class RubyApiService {
       return this.http.post(this.env.API_URL+"/users",formData);  
     }
 
-      new_patient(form, id) {
-        var register = { patient : {
-          name :form.name, surname : form.surname, address : form.address,
-          birth_date: form.birth_date, height: form.height,
-          weight: form.weight, diagnosis: form.diagnosis, user_id: id}
-         };
-        return this.http.post(this.env.API_URL+"/patients",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+      new_patient(form, id,imageName, imageBlob) {
+        let formData = new FormData();
+        formData.append('patient[name]', form.name);
+        formData.append('patient[surname]', form.surname);
+        formData.append('patient[address]', form.address);
+        formData.append('patient[birth_date]', form.birth_date);
+        formData.append('patient[height]', form.height);
+        formData.append('patient[weight]', form.weight);
+        formData.append('patient[diagnosis]',  form.diagnosis);
+        formData.append('patient[user_id]',  id);
+        if(imageBlob != null)
+          formData.append('profile_pic', imageBlob,imageName)
+        return this.http.post(this.env.API_URL+"/patients",formData);  
       }
 
-      mod_patient(form, id, patientID) {
-        var register = { patient : {
-          name :form.name, surname : form.surname, address : form.address,
-          birth_date: form.birth_date, height: form.height,
-          weight: form.weight, diagnosis: form.diagnosis, user_id: id}
-         };
-        return this.http.put(this.env.API_URL+"/patients/"+patientID,JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+      mod_patient(form, id, patientID, imageName, imageBlob) {
+        let formData = new FormData();
+        formData.append('patient[name]', form.name);
+        formData.append('patient[surname]', form.surname);
+        formData.append('patient[address]', form.address);
+        formData.append('patient[birth_date]', form.birth_date);
+        formData.append('patient[height]', form.height);
+        formData.append('patient[weight]', form.weight);
+        formData.append('patient[diagnosis]',  form.diagnosis);
+        formData.append('patient[user_id]',  id);
+        if(imageBlob != null)
+          formData.append('profile_pic', imageBlob,imageName)
+        return this.http.put(this.env.API_URL+"/patients/"+patientID,formData);
       }
 
       new_task(form, autonomy, id, src,imgBlob, filenameVideo, audioBlob, filenameAudio) {

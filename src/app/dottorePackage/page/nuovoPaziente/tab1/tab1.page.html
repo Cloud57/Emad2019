@@ -1,5 +1,27 @@
 <ion-content>
   <ion-grid>
+    <ion-row>
+      <ion-col  *ngIf="!fileObj">
+      <ion-avatar >
+        <img src="../../assets/img/profilo.png"/>
+    </ion-avatar>
+       
+      </ion-col>
+
+      <ion-col *ngIf="fileObj">
+        <ion-avatar >
+          <img src={{fileObj.dataURI}}/>
+      </ion-avatar>
+         
+        </ion-col>
+   
+
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="PickFile()">Inserisci immagine profilo</ion-button>
+      </ion-col>
+    </ion-row>
         <ion-row>
           <ion-col size="6">
             <ion-item>
@@ -45,11 +67,6 @@
   </ion-col>
 </ion-row>    
   </ion-grid>
-    
-    <ion-button type="submit" shape="round" class="roundButton" name="imgProfilo" >
-      <ion-icon color="secondary" name="person"></ion-icon> 
-      <ion-label style="margin-left: 3%;">Inserisci immagine</ion-label>
-  </ion-button>
   
 
 </ion-content>  

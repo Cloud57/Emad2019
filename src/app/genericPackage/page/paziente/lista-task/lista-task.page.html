@@ -5,16 +5,16 @@
       <ion-row justify-content-center align-items-center>
         <ion-col>
           <ion-buttons >
-            <ion-back-button color="secondary" defaultHref="home" (click)="goBack()"
-              [ngClass]="[noLeftIcon ? 'notVisible' : '']"></ion-back-button>
+            <ion-back-button color="secondary" defaultHref="home" (click)="goBack()"></ion-back-button>
           </ion-buttons>
         </ion-col>
         <ion-col>
           <ion-title style="text-align:center;">{{title}}</ion-title>
         </ion-col>
         <ion-col>
-          <img class="imgProfilo" src="../../assets/img/profilo.png" (click)="openProfile()"
-            >
+          <ion-avatar >
+        </ion-avatar>
+          <img [src]="this.globalService.currentUser.profile_pic" (click)="openProfile()">
         </ion-col>
       </ion-row>
   
@@ -55,7 +55,7 @@
     </ion-row>
   </ion-grid>
 
-  <ion-fab *ngIf="this.globalService.currentUser.user_type == 0" vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab *ngIf="this.globalService.currentUser.user_type == 2" vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="primary" (click)="inserisciTask()">
       <ion-icon name="add" color="secondary" ></ion-icon>
     </ion-fab-button>

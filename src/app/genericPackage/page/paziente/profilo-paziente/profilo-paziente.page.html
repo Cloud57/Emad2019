@@ -7,7 +7,7 @@
       <ion-row>
           
           <ion-title style="text-align:center;" >{{title}}</ion-title>
-          <ion-icon *ngIf="this.global.currentUser.user_type > 0" name="create" (click)="modify()"></ion-icon>
+          <ion-icon *ngIf="this.global.currentUser.user_type == 2" name="create" (click)="modify()"></ion-icon>
       </ion-row>
        
   </ion-grid> 
@@ -20,7 +20,9 @@
   <ion-grid >
     <ion-row justify-content-center align-items-center>
       <ion-col size="6">
-        <img class="paziente" src="../../assets/img/profilo.png">
+        <ion-avatar >
+          <img [src]="this.paziente.profile_pic"/>
+      </ion-avatar>
       </ion-col>
 
       <ion-col size="6">
@@ -72,8 +74,8 @@
     </ion-col>
   </ion-row>
  </ion-grid>
- <ion-item-divider *ngIf="this.global.currentUser.user_type > 0"></ion-item-divider>
- <ion-grid *ngIf="this.global.currentUser.user_type > 0">
+ <ion-item-divider *ngIf="this.global.currentUser.user_type == 2"></ion-item-divider>
+ <ion-grid *ngIf="this.global.currentUser.user_type == 2">
    <ion-row>
      <ion-col size="6">
       <ion-button shape="round" size="small" (click)="ProblemBehPage()">
@@ -97,9 +99,9 @@
    </ion-row>
  </ion-grid>
 
-  <ion-item-divider *ngIf="this.global.currentUser.user_type > 0" style="margin-top: 3%;"></ion-item-divider>
+  <ion-item-divider *ngIf="this.global.currentUser.user_type == 2" style="margin-top: 3%;"></ion-item-divider>
     
-    <ion-grid *ngIf="this.global.currentUser.user_type > 0">  
+    <ion-grid *ngIf="this.global.currentUser.user_type == 2">  
       <ion-row>
         <ion-col size="12" text-left>
           <ion-label><b>Alleanza</b></ion-label>

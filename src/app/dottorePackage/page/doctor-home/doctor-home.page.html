@@ -12,7 +12,9 @@
     <ion-grid>
       <ion-row  align-items-center>
         <ion-col size="2">
-          <img src="../../assets/img/martina.png">
+          <ion-avatar >
+            <img [src]="item?.patient.profile_pic"/>
+        </ion-avatar>
         </ion-col>
         <ion-col size="8" offset="1">
           <ion-label>
@@ -26,7 +28,7 @@
   </ion-item>
   
 </ion-list>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="this.globalService.currentUser.user_type == 0">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="this.globalService.currentUser.user_type == 2">
     <ion-fab-button color="primary" (click)="inserisciPaziente()">
       <ion-icon name="add" color="secondary" ></ion-icon>
     </ion-fab-button>

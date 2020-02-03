@@ -8,5 +8,7 @@ import { Alliance } from 'src/app/models/alliance';
 export class SharedNewPazienteService {
   patient:Patient = new Patient();
   alliance: Alliance[] = []
+  public imageBlob: Blob = null;
+  public imageName:any
   constructor() { }
 }

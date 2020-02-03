@@ -4,17 +4,16 @@
     <ion-grid>
       <ion-row justify-content-center align-items-center>
         <ion-col>
-          <ion-buttons (click)="goBack()">
-            <ion-back-button color="secondary" defaultHref="paziente-home" 
-              [ngClass]="[noLeftIcon ? 'notVisible' : '']"></ion-back-button>
+          <ion-buttons >
+            <ion-back-button color="secondary" defaultHref="home" (click)="goBack()"></ion-back-button>
           </ion-buttons>
         </ion-col>
         <ion-col>
           <ion-title style="text-align:center;">{{title}}</ion-title>
         </ion-col>
         <ion-col>
-          <img class="imgProfilo" src="../../assets/img/profilo.png" (click)="openProfile()"
-            >
+          <ion-avatar>
+          <img class="imgProfilo" [src]="this.global.currentUser.profile_pic" (click)="openProfile()"></ion-avatar>
         </ion-col>
       </ion-row>
   
