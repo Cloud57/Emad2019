@@ -59,9 +59,10 @@ save(){
       error => {
         this.alertService.presentToast("Errore nell'inserimento paziente");
         console.log(error);
+        this.spinner.dismiss()
       },
       () => {
-      
+        this.spinner.dismiss()
       }
     );
     });
@@ -81,9 +82,10 @@ save(){
       error => {
         this.alertService.presentToast("Errore nella modifica del paziente");
         console.log(error);
+        this.spinner.dismiss()
       },
       () => {
-      
+        this.spinner.dismiss()
       }
     );
   });
@@ -91,6 +93,8 @@ save(){
 }
 
 insertAlliance(patientID) {
+  console.log(this.sharedService.alliance);
+  
   this.rubyService.new_alliance(this.sharedService.alliance,patientID).subscribe(
     data => {
       this.homePage();

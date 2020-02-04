@@ -36,7 +36,7 @@ export class RubyApiService {
     mod_utente(imageName, imageBlob, id) {
       let formData = new FormData();
       formData.append('profile_pic', imageBlob,imageName)
-      return this.http.post(this.env.API_URL+"/users/"+id,formData);  
+      return this.http.put(this.env.API_URL+"/users/"+id,formData);  
     }
 
       new_patient(form, id,imageName, imageBlob) {
