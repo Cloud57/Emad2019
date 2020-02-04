@@ -35,6 +35,7 @@ export class RubyApiService {
 
     mod_utente(imageName, imageBlob, id) {
       let formData = new FormData();
+      formData.append('user[id]', id);
       formData.append('profile_pic', imageBlob,imageName)
       return this.http.put(EnvService.API_URL+"/users/"+id,formData);  
     }
