@@ -6,6 +6,7 @@ import { AlertService } from 'src/app/service/alert.service';
 import { GlobalService } from 'src/app/service/global.service';
 import { Patient } from 'src/app/models/patient';
 import { LoadingController } from '@ionic/angular';
+import { Alliance } from 'src/app/models/alliance';
 
 @Component({
   selector: 'app-tabs',
@@ -20,7 +21,13 @@ export class TabsPage implements OnInit {
               private rubyService: RubyApiService, private alertService: AlertService,
               private global: GlobalService,private loading:LoadingController) { 
                 sharedService.patient = new Patient();
-                sharedService.patient
+                this.sharedService.alliance = [];
+                this.sharedService.alliance.push(new Alliance(this.global.currentUser.id, 1, this.global.currentUser.email))
+                if(this.global.modify){
+                  for(let user of this.global.currentPatient.users_in_alliance)
+                    if(user.id != this.global.currentUser.id)
+                      this.sharedService.alliance.push(new Alliance(user.id, 0, user.email))
+                }
               }
 
   ngOnInit() {

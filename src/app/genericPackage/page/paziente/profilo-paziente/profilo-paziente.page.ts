@@ -88,6 +88,7 @@ export class ProfiloPazientePage implements OnInit {
         this.global.currentPatient = this.response.patient
         this.paziente = this.response.patient
         this.paziente.users_in_alliance = this.response.users_in_alliance
+        this.paziente.alliance = this.response.alliance
       },
       error => {
         console.log(error);
