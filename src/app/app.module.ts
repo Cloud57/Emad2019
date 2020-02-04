@@ -1,5 +1,6 @@
+import { IonicGestureConfig } from './IonicGestureConfig';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import {ImagePicker} from '@ionic-native/image-picker/ngx';
 import {File} from '@ionic-native/file/ngx';
@@ -39,6 +40,7 @@ import {Chooser} from '@ionic-native/chooser/ngx';
     Chooser,
     FilePath,
     FileChooser,
+    {provide: HAMMER_GESTURE_CONFIG, useClass: IonicGestureConfig},
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { GlobalService } from 'src/app/service/global.service';
 import { EnvService } from 'src/app/service/env.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-doctor-home',
@@ -13,8 +14,32 @@ export class DoctorHomePage implements OnInit {
   public response : any = [];
   title = "Lista pazienti"
   constructor(private navCtrl: NavController,
-    public rubyService: RubyApiService, public globalService:GlobalService, public env:EnvService) {
-     }
+    public rubyService: RubyApiService, public globalService:GlobalService, public env:EnvService, public alertController: AlertController) {
+    }
+
+     async presentAlertConfirm(patient) {
+      const alert = await this.alertController.create({
+        header: 'Attenzione!',
+        message: 'Vuoi cancellare questo paziente?',
+        buttons: [
+          {
+            text: 'Annulla',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }, {
+            text: 'Conferma',
+            handler: () => {
+              console.log('Confirm Okay');
+            }
+          }
+        ]
+      });
+  
+      await alert.present();
+    }
 
   ngOnInit() {
     if(this.globalService.currentUser.user_type ==2)
@@ -50,7 +75,7 @@ export class DoctorHomePage implements OnInit {
           if(item.patient.profile_pic == undefined){
             item.patient.profile_pic = "../../assets/img/profilo.png"
           } else {
-            item.patient.profile_pic = this.env.API_URL +  item.patient.profile_pic
+            item.patient.profile_pic = EnvService.API_URL +  item.patient.profile_pic
           }
         }
       },
@@ -97,5 +122,20 @@ export class DoctorHomePage implements OnInit {
       console.log(this.globalService.currentPatient);
       this.navCtrl.navigateRoot('/paziente-home');
     }
+  }
+
+  deletePatient(patient){
+    this.rubyService.delete_patient(patient.id).subscribe(
+      data => {
+        console.log(data);
+        this.response = this.response.filter(obj => obj !== patient);
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+       
+      }
+    );
   }
 }

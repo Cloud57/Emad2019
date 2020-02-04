@@ -29,7 +29,7 @@ export class GlobalService {
     this.currentUser.telephone = data.response.telephone
     
     if(data.response.profile_pic != undefined){
-      this.currentUser.profile_pic = this.env.API_URL + data.response.profile_pic
+      this.currentUser.profile_pic = EnvService.API_URL + data.response.profile_pic
     } else {
       this.currentUser.profile_pic = "../../assets/img/profilo.png"
     }

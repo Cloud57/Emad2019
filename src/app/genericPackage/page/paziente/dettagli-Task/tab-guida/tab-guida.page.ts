@@ -17,9 +17,9 @@ export class TabGuidaPage implements OnInit {
     if(this.global.currentTask.media_files.length > 0){
       for(let media of this.global.currentTask.media_files)
         if(media.media.includes("mp4"))
-          this.videoUrl = this.env.API_URL+  media.media
+          this.videoUrl = EnvService.API_URL+  media.media
         else if(media.media.includes("aac") || media.media.includes("mp3"))
-          this.audioUrl = this.env.API_URL+  media.media
+          this.audioUrl = EnvService.API_URL+  media.media
     }
       console.log("video "+ this.videoUrl);
       console.log("audio "+ this.audioUrl);

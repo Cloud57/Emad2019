@@ -92,11 +92,7 @@ export class ProfiloPazientePage implements OnInit {
         this.paziente = this.response.patient
         this.paziente.users_in_alliance = this.response.users_in_alliance
         this.paziente.alliance = this.response.alliance
-        if(this.global.currentPatient.profile_pic == undefined){
-          this.global.currentPatient.profile_pic = "../../assets/img/profilo.png"
-        } else {
-          this.global.currentPatient.profile_pic = this.env.API_URL +  this.global.currentPatient.profile_pic
-        }
+        this.global.currentPatient.setProfileIcon()
       },
       error => {
         console.log(error);

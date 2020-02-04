@@ -8,7 +8,7 @@
   <ion-router-outlet id="content1" main></ion-router-outlet>
   
 <ion-list>
-  <ion-item *ngFor="let item of response" (click)="openDetail(item)">
+  <ion-item *ngFor="let item of response" (click)="openDetail(item)" (longPressed)="presentAlertConfirm(item)">
     <ion-grid>
       <ion-row  align-items-center>
         <ion-col size="2">

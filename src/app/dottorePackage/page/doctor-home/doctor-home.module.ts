@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { DoctorHomePage } from './doctor-home.page';
+import { LongPressModule } from 'ionic-long-press';
 const routes: Routes = [
   {
     path: '',
@@ -18,6 +19,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     UiComponentsModule,
+    LongPressModule,
     RouterModule.forChild(routes)
     
   ],

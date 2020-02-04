@@ -15,7 +15,7 @@ export class PazientePage implements OnInit {
     title:string="Profilo Paziente";
   constructor(private navCtrl: NavController, public global: GlobalService, private rubyService: RubyApiService) { 
 
-    
+    this.global.currentPatient.setProfileIcon()
   }
 
   ngOnInit() {

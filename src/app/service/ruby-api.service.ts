@@ -16,7 +16,7 @@ export class RubyApiService {
 
   login(emailInput,passwordInput) {
     var login = {email :emailInput.toLowerCase(), password : passwordInput};
-    return this.http.post(this.env.API_URL+"/authenticate",JSON.stringify(login), {headers: {'Content-Type': 'application/json'}});
+    return this.http.post(EnvService.API_URL+"/authenticate",JSON.stringify(login), {headers: {'Content-Type': 'application/json'}});
     }
 
     register(form, imageName, imageBlob) {
@@ -30,13 +30,13 @@ export class RubyApiService {
       formData.append('user[user_type]',  form.user_type);
       if(imageBlob != null)
         formData.append('profile_pic', imageBlob,imageName)
-      return this.http.post(this.env.API_URL+"/users",formData);  
+      return this.http.post(EnvService.API_URL+"/users",formData);  
     }
 
     mod_utente(imageName, imageBlob, id) {
       let formData = new FormData();
       formData.append('profile_pic', imageBlob,imageName)
-      return this.http.put(this.env.API_URL+"/users/"+id,formData);  
+      return this.http.put(EnvService.API_URL+"/users/"+id,formData);  
     }
 
       new_patient(form, id,imageName, imageBlob) {
@@ -51,7 +51,7 @@ export class RubyApiService {
         formData.append('patient[user_id]',  id);
         if(imageBlob != null)
           formData.append('profile_pic', imageBlob,imageName)
-        return this.http.post(this.env.API_URL+"/patients",formData);  
+        return this.http.post(EnvService.API_URL+"/patients",formData);  
       }
 
       mod_patient(form, id, patientID, imageName, imageBlob) {
@@ -66,7 +66,7 @@ export class RubyApiService {
         formData.append('patient[user_id]',  id);
         if(imageBlob != null)
           formData.append('profile_pic', imageBlob,imageName)
-        return this.http.put(this.env.API_URL+"/patients/"+patientID,formData);
+        return this.http.put(EnvService.API_URL+"/patients/"+patientID,formData);
       }
 
       new_task(form, autonomy, id, src,imgBlob, filenameVideo, audioBlob, filenameAudio) {
@@ -86,7 +86,7 @@ export class RubyApiService {
             formData.append('media_files[]', imgBlob,filenameVideo);
           if(audioBlob != null)
             formData.append('media_files[]', audioBlob,filenameAudio);
-          return this.http.post(this.env.API_URL+"/tasks",formData);
+          return this.http.post(EnvService.API_URL+"/tasks",formData);
         }
 
         mod_task(form,autonomy ,id, src, taskId) {
@@ -100,7 +100,7 @@ export class RubyApiService {
            formData.forEach((value,key) => {
              console.log(key+" "+value)
            });
-          return this.http.put(this.env.API_URL+"/tasks/"+taskId,formData);
+          return this.http.put(EnvService.API_URL+"/tasks/"+taskId,formData);
         }
 
         new_prom_beh(form, id) {
@@ -110,7 +110,7 @@ export class RubyApiService {
             behavior: form.behavior, consequence: form.consequence, date : form.date,
             patient_id: id}
            };
-          return this.http.post(this.env.API_URL+"/problem_behaviors",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+          return this.http.post(EnvService.API_URL+"/problem_behaviors",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
         }
 
         mod_prom_beh(form, id, problemId) {
@@ -120,7 +120,7 @@ export class RubyApiService {
             behavior: form.behavior, consequence: form.consequence, date : form.date,
             patient_id: id}
            };
-          return this.http.put(this.env.API_URL+"/problem_behaviors/"+problemId,JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+          return this.http.put(EnvService.API_URL+"/problem_behaviors/"+problemId,JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
         }
 
         new_alliance(allianceForm:Alliance[],patientID) {
@@ -131,7 +131,7 @@ export class RubyApiService {
           var register = { alliance : {
             user_ids :ids, patient_id : patientID}
            };
-          return this.http.post(this.env.API_URL+"/alliances",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+          return this.http.post(EnvService.API_URL+"/alliances",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
         }
 
         mod_alliance(allianceForm:Alliance[],allianceID) {
@@ -143,7 +143,7 @@ export class RubyApiService {
             user_ids :ids}
            };
            console.log(register)
-          return this.http.put(this.env.API_URL+"/alliances/"+allianceID,JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+          return this.http.put(EnvService.API_URL+"/alliances/"+allianceID,JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
         }
 
       new_Report(form, id_user,id_task) {
@@ -152,7 +152,7 @@ export class RubyApiService {
             date_execution: form.date_execution, is_executed: form.is_executed,
             task_id: id_task, user_id: id_user}
            };
-          return this.http.post(this.env.API_URL+"/reports.json",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+          return this.http.post(EnvService.API_URL+"/reports.json",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
         }
 
       mod_Report(form, idReport) {
@@ -160,35 +160,43 @@ export class RubyApiService {
           description : form.description, duration : form.duration,
           date_execution: form.date_execution, is_executed: form.is_executed}
          };
-        return this.http.put(this.env.API_URL+"/reports/"+idReport+".json",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+        return this.http.put(EnvService.API_URL+"/reports/"+idReport+".json",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
       }
 
       get_patients(id) {
-          return this.http.get(this.env.API_URL+"/users/search_patient.json?id="+id, {headers: {'Content-Type': 'application/json'}});
+          return this.http.get(EnvService.API_URL+"/users/search_patient.json?id="+id, {headers: {'Content-Type': 'application/json'}});
       }
       get_patients_alliance(id) {
-        return this.http.get(this.env.API_URL+"/users/search_patient_alliance.json?id="+id, {headers: {'Content-Type': 'application/json'}});
+        return this.http.get(EnvService.API_URL+"/users/search_patient_alliance.json?id="+id, {headers: {'Content-Type': 'application/json'}});
     }
 
       get_tasks(id) {
-          return this.http.get(this.env.API_URL+"/patients/search_task.json?id="+id, {headers: {'Content-Type': 'application/json'}});
+          return this.http.get(EnvService.API_URL+"/patients/search_task.json?id="+id, {headers: {'Content-Type': 'application/json'}});
         }
 
       get_problem(id) {
-          return this.http.get(this.env.API_URL+"/patients/search_problem_behavior?id="+id, {headers: {'Content-Type': 'application/json'}});
+          return this.http.get(EnvService.API_URL+"/patients/search_problem_behavior?id="+id, {headers: {'Content-Type': 'application/json'}});
       }
 
 
       get_users() {
-          return this.http.get(this.env.API_URL+"/users.json", {headers: {'Content-Type': 'application/json'}});
+          return this.http.get(EnvService.API_URL+"/users.json", {headers: {'Content-Type': 'application/json'}});
       }
 
       get_patient(id) {
-        return this.http.get(this.env.API_URL+"/patients/"+id+".json", {headers: {'Content-Type': 'application/json'}});
+        return this.http.get(EnvService.API_URL+"/patients/"+id+".json", {headers: {'Content-Type': 'application/json'}});
     }
 
       get_report(id) {
-        return this.http.get(this.env.API_URL+"/tasks/search_report.json?id="+id, {headers: {'Content-Type': 'application/json'}});
+        return this.http.get(EnvService.API_URL+"/tasks/search_report.json?id="+id, {headers: {'Content-Type': 'application/json'}});
+      }
+
+      delete_media_task(idTask, idMedia) {
+        return this.http.delete(EnvService.API_URL+"/media_tasks/"+idTask+"/"+idMedia);
+      }
+
+      delete_patient(id) {
+        return this.http.delete(EnvService.API_URL+"/patients/"+id);
       }
 
 }

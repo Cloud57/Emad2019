@@ -32,6 +32,9 @@ export class NewTaskPage implements OnInit {
   public fileAudioToUpload: any
   public videoBlob: Blob = null;
   public audioBlob: Blob = null;
+
+  public fileVideoToMod:number = null
+  public fileAudioToMod:number = null
   spinner:any;
   constructor(private modalController: ModalController, public sharedIService: SharedIconService, private alertService: AlertService,
     public rubyService: RubyApiService, private navCtrl: NavController, private global: GlobalService,
@@ -46,8 +49,6 @@ export class NewTaskPage implements OnInit {
       duration: ['', Validators.required],
       description: ['', Validators.required]
       });
-    this.uploadVideoText = "Carica un file video";
-    this.uploadAudioText = "Carica un file Audio";
     this.downloadText = "";
     if(this.global.modify){
       this.title = "Modifica task"
@@ -58,6 +59,13 @@ export class NewTaskPage implements OnInit {
         description: this.global.currentTask.description
       })
       this.autonomy = this.global.currentTask.autonomy+""
+      if(this.global.currentTask.media_files.length > 0){
+        for(let media of this.global.currentTask.media_files)
+          if(media.media.includes("mp4"))
+            this.fileAudioToMod = media.media_id
+          else if(media.media.includes("aac") || media.media.includes("mp3"))
+            this.fileVideoToMod = media.media_id
+      }
     } else {
       this.title = "Nuovo task"
       this.sharedIService.src = "";
@@ -231,6 +239,31 @@ export class NewTaskPage implements OnInit {
 
   goBack() {
     this.navCtrl.back();
+  }
+
+  deleteMedia(idMedia,video){
+    if(this.global.modify){
+      this.rubyService.delete_media_task(this.global.currentTask.id, idMedia).subscribe(
+        data => {
+          console.log(data);
+          if(video)
+            this.fileVideoToMod = null
+          else
+            this.fileAudioToMod = null
+        },
+        error => {
+          console.log(error);
+        },
+        () => {
+         
+        }
+      );
+    } else {
+      if(video)
+        this.videoBlob = null
+      else
+        this.audioBlob = null
+    }
   }
 
 }
