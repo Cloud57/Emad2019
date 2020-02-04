@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/service/global.service';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab-report',
@@ -10,7 +11,7 @@ import { RubyApiService } from 'src/app/service/ruby-api.service';
 })
 export class TabReportPage implements OnInit {
   public response : any = [];
-  constructor(private navCtrl:NavController, public global:GlobalService, public rubyService:RubyApiService) { }
+  constructor(private navCtrl:NavController, public global:GlobalService, public rubyService:RubyApiService,public alertController: AlertController) { }
 
   ngOnInit() {
     this.getListaReport()
@@ -31,6 +32,46 @@ export class TabReportPage implements OnInit {
       data => {
         console.log(data);
         this.response = data   
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+       
+      }
+    );
+  }
+
+  async presentAlertConfirm(report) {
+      const alert = await this.alertController.create({
+        header: 'Attenzione!',
+        message: 'Vuoi cancellare questo task?',
+        buttons: [
+          {
+            text: 'Annulla',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              
+            }
+          }, {
+            text: 'Conferma',
+            handler: () => {
+              this.deleteReport(report)
+            }
+          }
+        ]
+      });
+  
+      await alert.present();
+    
+  }
+
+  deleteReport(report){
+    this.rubyService.delete_report(report.id).subscribe(
+      data => {
+        console.log(data);
+        this.response = this.response.filter(obj => obj.report !== report);
       },
       error => {
         console.log(error);

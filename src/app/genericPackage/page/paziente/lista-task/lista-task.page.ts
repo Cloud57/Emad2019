@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/service/global.service';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { Task } from 'src/app/models/task';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-lista-task',
@@ -17,8 +18,50 @@ export class ListaTaskPage implements OnInit {
   originalItems : Task[] =[]
   filterItems : Task[] =[]
   searchText = "";
-  constructor(private navCtrl: NavController, public globalService: GlobalService, private rubyService: RubyApiService) { 
+  constructor(private navCtrl: NavController, public globalService: GlobalService, private rubyService: RubyApiService, public alertController: AlertController) { 
 
+  }
+
+  
+  async presentAlertConfirm(task) {
+    if(this.globalService.currentUser.user_type == 2){
+      const alert = await this.alertController.create({
+        header: 'Attenzione!',
+        message: 'Vuoi cancellare questo task?',
+        buttons: [
+          {
+            text: 'Annulla',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              
+            }
+          }, {
+            text: 'Conferma',
+            handler: () => {
+              this.deleteTask(task)
+            }
+          }
+        ]
+      });
+  
+      await alert.present();
+    }
+  }
+
+  deleteTask(task){
+    this.rubyService.delete_task(task.id).subscribe(
+      data => {
+        console.log(data);
+        this.originalItems = this.originalItems.filter(obj => obj !== task);
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+       
+      }
+    );
   }
 
   ngOnInit() {

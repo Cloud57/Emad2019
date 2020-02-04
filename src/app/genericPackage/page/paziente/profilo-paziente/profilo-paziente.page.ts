@@ -22,6 +22,7 @@ export class ProfiloPazientePage implements OnInit {
   constructor(private location:Location, private navCtrl: NavController, public global : GlobalService, public rubyService:RubyApiService, private env:EnvService) { 
       this.paziente = global.currentPatient
       this.paziente.users_in_alliance = global.currentPatient.users_in_alliance
+      this.setProfileIconAlleanza()
       console.log(this.paziente);
       
       this.age = this.getAge(this.paziente.birth_date)
@@ -92,7 +93,12 @@ export class ProfiloPazientePage implements OnInit {
         this.paziente = this.response.patient
         this.paziente.users_in_alliance = this.response.users_in_alliance
         this.paziente.alliance = this.response.alliance
-        this.global.currentPatient.setProfileIcon()
+        this.setProfileIconAlleanza()
+        if(this.global.currentPatient.profile_pic == undefined){
+          this.global.currentPatient.profile_pic = "../../assets/img/profilo.png"
+        } else {
+          this.global.currentPatient.profile_pic = EnvService.API_URL +  this.global.currentPatient.profile_pic
+        }
       },
       error => {
         console.log(error);
@@ -101,5 +107,15 @@ export class ProfiloPazientePage implements OnInit {
        
       }
     );
+  }
+
+  setProfileIconAlleanza(){
+    for(let item of this.paziente.users_in_alliance){
+      if(item.profile_pic == undefined){
+        item.profile_pic = "../../assets/img/profilo.png"
+      } else {
+        item.profile_pic = EnvService.API_URL +  item.profile_pic
+      }
+   }
   }
 }

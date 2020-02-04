@@ -1,6 +1,6 @@
 <ion-content>
 
-<ion-item>
+<ion-item *ngIf="videoUrl != ''">
   <ion-grid fixed>
     <ion-row>
       <h4>Spiegazione video</h4>
@@ -28,8 +28,8 @@
   </ion-grid>
     
     
-</ion-item>
-<ion-item>
+</ion-item> 
+<ion-item *ngIf="audioUrl != ''">
   <ion-grid fixed>
     <ion-row>
       <h4>Spiegazione audio</h4>

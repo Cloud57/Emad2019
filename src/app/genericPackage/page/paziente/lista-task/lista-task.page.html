@@ -37,7 +37,7 @@
       size-md="4" 
       size-lg="3" *ngFor="let item of filterItems">
        <!--<ion-card [ngClass]="(item.is_task_active==true)?'active':''" (click)="openTask(item)">--> 
-        <ion-card (click)="openTask(item)">
+        <ion-card (click)="openTask(item)" ion-long-press [interval]="500" (longPressed)="presentAlertConfirm(item)">
           <ion-card-title *ngIf="item.is_task_active==true">
             <ion-icon name="radio-button-on" color="success"></ion-icon>
 

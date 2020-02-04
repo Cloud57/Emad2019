@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { TabReportPage } from './tab-report.page';
-
+import { LongPressModule } from 'ionic-long-press';
 const routes: Routes = [
   {
     path: '',
@@ -19,6 +19,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    LongPressModule,
     RouterModule.forChild(routes)
   ],
   declarations: [TabReportPage]

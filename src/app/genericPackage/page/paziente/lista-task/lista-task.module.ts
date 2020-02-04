@@ -8,6 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { ListaTaskPage } from './lista-task.page';
+import { LongPressModule } from 'ionic-long-press';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     UiComponentsModule,
+    LongPressModule,
     RouterModule.forChild(routes)
   ],
   declarations: [ListaTaskPage]

@@ -5,7 +5,7 @@ import { NavController, ModalController } from '@ionic/angular';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { GlobalService } from 'src/app/service/global.service';
 import { Filter } from 'src/app/models/filter';
-
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-com-problema',
@@ -17,13 +17,52 @@ export class ComProblemaPage implements OnInit {
   originalItems : Problem_behaviour[] =[]
   filterItems : Problem_behaviour[] =[]
   constructor(private navCtrl: NavController, private rubyService:RubyApiService,
-              public globalService: GlobalService,private modalController: ModalController ) { 
+              public globalService: GlobalService,private modalController: ModalController, public alertController: AlertController ) { 
                 this.globalService.currentFilter = new Filter()
               }
 
 
   ngOnInit() {
     this.getListaProblem()
+  }
+
+  async presentAlertConfirm(comp) {
+      const alert = await this.alertController.create({
+        header: 'Attenzione!',
+        message: 'Vuoi cancellare questo comportamento?',
+        buttons: [
+          {
+            text: 'Annulla',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              
+            }
+          }, {
+            text: 'Conferma',
+            handler: () => {
+              this.deleteComp(comp)
+            }
+          }
+        ]
+      });
+  
+      await alert.present();
+  }
+
+  deleteComp(comp){
+    this.rubyService.delete_comp(comp.id).subscribe(
+      data => {
+        console.log(data);
+        this.originalItems = this.originalItems.filter(obj => obj !== comp);
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+       
+      }
+    );
   }
 
   openProfile(){

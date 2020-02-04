@@ -11,7 +11,7 @@
 
     <ion-card *ngFor="let item of response">
    
-    <ion-card-content (click)="openReport(item)">
+    <ion-card-content (click)="openReport(item)" ion-long-press [interval]="500" (longPressed)="presentAlertConfirm(item.report)">
       <ion-row>
         <ion-col>
           <img src="../../assets/img/profilo.png">        </ion-col>

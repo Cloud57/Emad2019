@@ -63,7 +63,7 @@
 </ion-row>
   
 
-  <ion-card *ngFor="let problem of filterItems" (click)=openProblem(problem)>
+  <ion-card *ngFor="let problem of filterItems" (click)=openProblem(problem)  ion-long-press [interval]="500" (longPressed)="presentAlertConfirm(problem)">
     <ion-card-header>
       <ion-row>
         <ion-col>

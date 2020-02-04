@@ -2,6 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/service/global.service';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
+import { EnvService } from 'src/app/service/env.service';
 
 @Component({
   selector: 'app-paziente',
@@ -15,7 +16,11 @@ export class PazientePage implements OnInit {
     title:string="Profilo Paziente";
   constructor(private navCtrl: NavController, public global: GlobalService, private rubyService: RubyApiService) { 
 
-    this.global.currentPatient.setProfileIcon()
+    if( this.global.currentPatient.profile_pic == undefined){
+      this.global.currentPatient.profile_pic = "../../assets/img/profilo.png"
+    } else {
+      this.global.currentPatient.profile_pic = EnvService.API_URL +   this.global.currentPatient.profile_pic
+    }
   }
 
   ngOnInit() {

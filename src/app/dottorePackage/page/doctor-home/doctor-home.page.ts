@@ -18,27 +18,29 @@ export class DoctorHomePage implements OnInit {
     }
 
      async presentAlertConfirm(patient) {
-      const alert = await this.alertController.create({
-        header: 'Attenzione!',
-        message: 'Vuoi cancellare questo paziente?',
-        buttons: [
-          {
-            text: 'Annulla',
-            role: 'cancel',
-            cssClass: 'secondary',
-            handler: (blah) => {
-              console.log('Confirm Cancel: blah');
+      if(this.globalService.currentUser.user_type == 2){
+        const alert = await this.alertController.create({
+          header: 'Attenzione!',
+          message: 'Vuoi cancellare questo paziente?',
+          buttons: [
+            {
+              text: 'Annulla',
+              role: 'cancel',
+              cssClass: 'secondary',
+              handler: (blah) => {
+                
+              }
+            }, {
+              text: 'Conferma',
+              handler: () => {
+                this.deletePatient(patient)
+              }
             }
-          }, {
-            text: 'Conferma',
-            handler: () => {
-              console.log('Confirm Okay');
-            }
-          }
-        ]
-      });
-  
-      await alert.present();
+          ]
+        });
+    
+        await alert.present();
+      }
     }
 
   ngOnInit() {
@@ -128,7 +130,7 @@ export class DoctorHomePage implements OnInit {
     this.rubyService.delete_patient(patient.id).subscribe(
       data => {
         console.log(data);
-        this.response = this.response.filter(obj => obj !== patient);
+        this.response = this.response.filter(obj => obj.patient !== patient);
       },
       error => {
         console.log(error);

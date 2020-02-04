@@ -199,4 +199,16 @@ export class RubyApiService {
         return this.http.delete(EnvService.API_URL+"/patients/"+id);
       }
 
+      delete_comp(id) {
+        return this.http.delete(EnvService.API_URL+"/problem_behaviors/"+id);
+      }
+
+      delete_task(id) {
+        return this.http.delete(EnvService.API_URL+"/tasks/"+id);
+      }
+
+      delete_report(id) {
+        return this.http.delete(EnvService.API_URL+"/reports/"+id);
+      }
+
 }

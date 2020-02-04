@@ -9,6 +9,7 @@ import { IonicModule } from '@ionic/angular';
 import { ComProblemaPage } from './com-problema.page';
 import { UiComponentsModule } from '../../../ui-components/ui-components.module';
 import { PipesModule } from 'src/app/genericPackage/pipe/pipes/pipes.module';
+import { LongPressModule } from 'ionic-long-press';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
     UiComponentsModule,
     PipesModule,
     IonicModule,
+    LongPressModule,
     RouterModule.forChild(routes)
   ],
   declarations: [ComProblemaPage,ModalFiltriPage],
