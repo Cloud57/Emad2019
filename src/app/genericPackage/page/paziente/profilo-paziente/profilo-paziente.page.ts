@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { GlobalService } from 'src/app/service/global.service';
 import { Patient } from 'src/app/models/patient';
 import { Location } from '@angular/common';
+import { EnvService } from 'src/app/service/env.service';
 
 @Component({
   selector: 'app-profilo-paziente',
@@ -18,7 +19,7 @@ export class ProfiloPazientePage implements OnInit {
   public title:string = "Profilo paziente"
   public response;
   public role:string[] = ["Caregiver", "Terapista", "Medico"]
-  constructor(private location:Location, private navCtrl: NavController, public global : GlobalService, public rubyService:RubyApiService) { 
+  constructor(private location:Location, private navCtrl: NavController, public global : GlobalService, public rubyService:RubyApiService, private env:EnvService) { 
       this.paziente = global.currentPatient
       this.paziente.users_in_alliance = global.currentPatient.users_in_alliance
       console.log(this.paziente);
@@ -86,9 +87,16 @@ export class ProfiloPazientePage implements OnInit {
         console.log(data);
         this.response = data   
         this.global.currentPatient = this.response.patient
+        this.global.currentPatient.alliance = this.response.patient.alliance
+        this.global.currentPatient.users_in_alliance = this.response.patient.users_in_alliance
         this.paziente = this.response.patient
         this.paziente.users_in_alliance = this.response.users_in_alliance
         this.paziente.alliance = this.response.alliance
+        if(this.global.currentPatient.profile_pic == undefined){
+          this.global.currentPatient.profile_pic = "../../assets/img/profilo.png"
+        } else {
+          this.global.currentPatient.profile_pic = this.env.API_URL +  this.global.currentPatient.profile_pic
+        }
       },
       error => {
         console.log(error);
