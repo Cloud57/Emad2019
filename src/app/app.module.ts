@@ -21,6 +21,7 @@ import {FileTransfer} from '@ionic-native/file-transfer/ngx';
 import {FileChooser} from '@ionic-native/file-chooser/ngx';
 import {FilePath} from '@ionic-native/file-path/ngx';
 import {Chooser} from '@ionic-native/chooser/ngx';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -41,7 +42,8 @@ import {Chooser} from '@ionic-native/chooser/ngx';
     FilePath,
     FileChooser,
     {provide: HAMMER_GESTURE_CONFIG, useClass: IonicGestureConfig},
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    SpeechRecognition
   ],
   bootstrap: [AppComponent]
 })

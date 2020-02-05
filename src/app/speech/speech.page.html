@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar [color]="isRecording ? 'danger':'primary'">
+    <ion-title>Assistente Tea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--<button ion-button full (click)="getPermission()">Get permission</button>-->
+  <ion-button color="success" ion-button size="large" (click)="startListening()">Chiedi a Tea<ion-icon name="mic"></ion-icon></ion-button>
+  <!--<button ion-button full (click)="stopListening()">Stop Listening</button>-->
+  
+  <ion-card>
+    <ion-card-header>
+      Quello che ho capito  
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let match of matches" >
+          {{match}}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
