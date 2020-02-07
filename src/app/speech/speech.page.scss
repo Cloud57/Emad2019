@@ -53,5 +53,11 @@ div.fixedContent{
 
 .chatbody{
     height: 85%;
+}
+#chatBody{
+    height: 100%;
     overflow: scroll;
+}
+img.placeholder{
+    width: 60px;
 }

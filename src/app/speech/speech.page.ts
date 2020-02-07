@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild  } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { GlobalService } from '../service/global.service';
 import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
@@ -15,9 +15,11 @@ import { scan } from 'rxjs/operators'
   styleUrls: ['./speech.page.scss'],
 })
 export class SpeechPage implements OnInit {
+  @ViewChild('chatBody', {static: false}) content
   //Speech recognition
   matches: String[];
   isRecording = false;
+  
 
   //DialogFlow
   //messages: Observable<Message[]>;
@@ -116,20 +118,52 @@ export class SpeechPage implements OnInit {
   responseHanlder(data){
     console.log(data);
     if(data.length>0){
-      this.messages.push(data[0]);
+      this.scrollToBottom();
+      if (data[0].sentBy=='user'){
+        this.messages.push(data[0]);
+        this.messages.push(new Message(
+          "",
+          "bot",
+          true
+        ));
+      }
+      
+      
+      if(data[0].sentBy=='bot'){
+        this.messages[this.messages.length-1]=data[0];
+            this.tts.speak({
+              text: data[0].content,
+              locale: 'it-IT'
+            })
+            .then(() => console.log('Success'))
+            .catch((reason: any) => console.log(reason));
+        }
+      }
+      
       this.cd.detectChanges();
-      if(data[0].sentBy=='bot')
-        this.tts.speak({
-          text: data[0].content,
-          locale: 'it-IT'
-        })
-        .then(() => console.log('Success'))
-        .catch((reason: any) => console.log(reason));
-    }
+      
   }
 
   
+  scrollToBottom(){
+    
+    this.content.scrollToBottom(300);  //300 for animate the scroll effect.
+}
 
+  addMock(){
+    this.messages.push(new Message("prova1","user"));
+    this.messages.push(new Message("prova1Resp","bot"));
+    this.messages.push(new Message("prova2","user"));
+    this.messages.push(new Message("prova2Resp","bot"));
+    this.messages.push(new Message("prova3","user"));
+    this.messages.push(new Message("prova3Resp","bot"));
+    this.messages.push(new Message("prova4","user"));
+    this.messages.push(new Message("prova4Resp","bot"));
+    this.messages.push(new Message("prova5","user"));
+    this.messages.push(new Message("prova5Resp","bot"));
+    this.messages.push(new Message("","bot",true));
+    this.scrollToBottom(); 
+  }
 
 
   

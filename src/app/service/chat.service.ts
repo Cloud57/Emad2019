@@ -8,11 +8,14 @@ import { BehaviorSubject, Observable} from 'rxjs';
 // Message class for displaying messages in the component
 export class Message {
   profile_pic: string
+  
   constructor(
     public content: string,
     public sentBy: string,
-    ) {
-      this.profile_pic = (sentBy=='user') ? "../../assets/img/bot/user.png": "../../assets/img/bot/bot.png"
+    public placeholder : boolean = false
+    ) 
+    {
+      this.profile_pic = (sentBy=='user') ? "../../assets/img/bot/user.png": "../../assets/img/bot/bot.png";
     }
 }
 
