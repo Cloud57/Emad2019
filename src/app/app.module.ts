@@ -22,6 +22,7 @@ import {FileChooser} from '@ionic-native/file-chooser/ngx';
 import {FilePath} from '@ionic-native/file-path/ngx';
 import {Chooser} from '@ionic-native/chooser/ngx';
 import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -43,7 +44,8 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
     FileChooser,
     {provide: HAMMER_GESTURE_CONFIG, useClass: IonicGestureConfig},
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    SpeechRecognition
+    SpeechRecognition,
+    TextToSpeech
   ],
   bootstrap: [AppComponent]
 })

@@ -3,6 +3,7 @@ import { NavController, Platform } from '@ionic/angular';
 import { GlobalService } from '../service/global.service';
 import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 import { ChatService, Message } from '../service/chat.service';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 import { Observable } from 'rxjs';
 import { scan } from 'rxjs/operators'
 
@@ -40,7 +41,8 @@ export class SpeechPage implements OnInit {
     private speechRecognition: SpeechRecognition,
     private plt: Platform,
     private cd: ChangeDetectorRef,
-    public chat: ChatService
+    public chat: ChatService,
+    private tts: TextToSpeech
   ){
     if (!this.checkPermission){
       this.getPermission();
@@ -116,6 +118,13 @@ export class SpeechPage implements OnInit {
     if(data.length>0){
       this.messages.push(data[0]);
       this.cd.detectChanges();
+      if(data[0].sentBy=='bot')
+        this.tts.speak({
+          text: data[0].content,
+          locale: 'it-IT'
+        })
+        .then(() => console.log('Success'))
+        .catch((reason: any) => console.log(reason));
     }
   }
 
