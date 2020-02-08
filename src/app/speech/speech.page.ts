@@ -6,6 +6,8 @@ import { ChatService, Message } from '../service/chat.service';
 import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 import { Observable } from 'rxjs';
 import { scan } from 'rxjs/operators'
+import { Router } from '@angular/router';
+
 
 
 
@@ -19,22 +21,8 @@ export class SpeechPage implements OnInit {
   //Speech recognition
   matches: String[];
   isRecording = false;
-  
-
   //DialogFlow
-  //messages: Observable<Message[]>;
   messages: Array<Message>=[];
-    /*new Message("prova1","user"),
-    new Message("prova1Resp","bot"),
-    new Message("prova2","user"),
-    new Message("prova2Resp","bot"),
-    new Message("prova3","user"),
-    new Message("prova3Resp","bot"),
-    new Message("prova4","user"),
-    new Message("prova4Resp","bot"),
-    new Message("prova5","user"),
-    new Message("prova5Resp","bot")
-  ];*/
   
 
   constructor( 
@@ -44,7 +32,8 @@ export class SpeechPage implements OnInit {
     private plt: Platform,
     private cd: ChangeDetectorRef,
     public chat: ChatService,
-    private tts: TextToSpeech
+    private tts: TextToSpeech,
+    private router: Router
   ){
     if (!this.checkPermission){
       this.getPermission();
@@ -120,7 +109,9 @@ export class SpeechPage implements OnInit {
     if(data.length>0){
       this.scrollToBottom();
       if (data[0].sentBy=='user'){
+        //Add user question to messages list
         this.messages.push(data[0]);
+        //Add fake messages with gif typing...
         this.messages.push(new Message(
           "",
           "bot",
@@ -130,13 +121,17 @@ export class SpeechPage implements OnInit {
       
       
       if(data[0].sentBy=='bot'){
+        //Replace placeholder (gif) with bot response
         this.messages[this.messages.length-1]=data[0];
-            this.tts.speak({
-              text: data[0].content,
-              locale: 'it-IT'
-            })
-            .then(() => console.log('Success'))
-            .catch((reason: any) => console.log(reason));
+        //And now TTS
+        this.tts.speak({
+          text: data[0].content,
+          locale: 'it-IT'
+        })
+        .then(() => console.log('Success') )
+        .catch((reason: any) => console.log(reason));
+        //execute action
+        this.doAction(data[0]);
         }
       }
       
@@ -166,7 +161,11 @@ export class SpeechPage implements OnInit {
   }
 
 
-  
+  doAction(message){
+    setTimeout(()=>{
+      this.router.navigate([message.action])
+    },3000)
+  }
 
     
 

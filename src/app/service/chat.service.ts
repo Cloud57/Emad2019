@@ -12,7 +12,8 @@ export class Message {
   constructor(
     public content: string,
     public sentBy: string,
-    public placeholder : boolean = false
+    public placeholder : boolean = false,
+    public action: string = null
     ) 
     {
       this.profile_pic = (sentBy=='user') ? "../../assets/img/bot/user.png": "../../assets/img/bot/bot.png";
@@ -42,7 +43,12 @@ export class ChatService {
     return this.client.textRequest(msg)
                .then(res => {
                   const speech = res.result.fulfillment.speech;
-                  const botMessage = new Message(speech, 'bot');
+                  const botMessage = new Message(
+                      speech, 
+                      'bot',
+                      false,
+                      res.result.action
+                    );
                   this.update(botMessage);
                });
   }
