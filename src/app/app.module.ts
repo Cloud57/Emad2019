@@ -21,11 +21,20 @@ import {FileTransfer} from '@ionic-native/file-transfer/ngx';
 import {FileChooser} from '@ionic-native/file-chooser/ngx';
 import {FilePath} from '@ionic-native/file-path/ngx';
 import {Chooser} from '@ionic-native/chooser/ngx';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent
+  ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
-    IonicStorageModule.forRoot()],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    HttpClientModule,
+    IonicStorageModule.forRoot()
+  ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -41,7 +50,9 @@ import {Chooser} from '@ionic-native/chooser/ngx';
     FilePath,
     FileChooser,
     {provide: HAMMER_GESTURE_CONFIG, useClass: IonicGestureConfig},
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    SpeechRecognition,
+    TextToSpeech
   ],
   bootstrap: [AppComponent]
 })

@@ -42,6 +42,9 @@ export class LoginPage implements OnInit {
     this.navCtrl.navigateRoot('/new-task');
 
   }
+  speechPage() {
+    this.navCtrl.navigateRoot('/speech');
+  }
 
 
   login(form: NgForm) {

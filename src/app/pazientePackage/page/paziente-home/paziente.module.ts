@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PazientePage } from './paziente.page';
+import { AssistantComponent } from 'src/app/assistant/assistant.component';
 
 const routes: Routes = [
   {
