@@ -10,5 +10,6 @@ export class Task {
     patient_id:number
     reports: any[]
     is_task_active:boolean
+    last_exec_time:number
     media_files: any[]
 }

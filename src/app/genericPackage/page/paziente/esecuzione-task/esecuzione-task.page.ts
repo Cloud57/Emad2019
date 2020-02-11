@@ -55,6 +55,7 @@ export class EsecuzioneTaskPage implements OnInit {
       this.rubyService.new_Report(form.value, this.global.currentUser.id,this.global.currentTask.id).subscribe(
         data => {
           this.alertService.presentToast("Report creato");
+          this.global.currentTask.last_exec_time= form.value.duration
           this.goBack()
         },
         error => {
@@ -73,6 +74,7 @@ export class EsecuzioneTaskPage implements OnInit {
           this.global.currentReport.duration = this.reportForm.value.duration
           this.global.currentReport.description = this.reportForm.value.description
           this.global.currentReport.date_execution = this.reportForm.value.date_execution
+          this.global.currentTask.last_exec_time= form.value.duration
           this.goBack()
         },
         error => {
