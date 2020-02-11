@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar [color]="isRecording ? 'danger':'primary'">
+    <ion-buttons slot="start">
+      <ion-back-button color="secondary" defaultHref="home" (click)="back()"></ion-back-button>
+    </ion-buttons>
     <ion-title>Assistente Tea</ion-title>
   </ion-toolbar>
 </ion-header>

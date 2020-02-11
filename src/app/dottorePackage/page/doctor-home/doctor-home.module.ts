@@ -21,8 +21,9 @@ const routes: Routes = [
     UiComponentsModule,
     LongPressModule,
     RouterModule.forChild(routes)
-    
   ],
-  declarations: [DoctorHomePage]
+  declarations: [
+    DoctorHomePage
+  ]
 })
 export class DoctorHomePageModule {}

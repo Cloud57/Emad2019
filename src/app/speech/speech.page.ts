@@ -96,6 +96,10 @@ export class SpeechPage implements OnInit {
     this.navCtrl.navigateRoot('/speech');
   }
 
+  back(){
+    this.navCtrl.back();
+  }
+
   isIos(){
     return this.plt.is('ios');
   }
