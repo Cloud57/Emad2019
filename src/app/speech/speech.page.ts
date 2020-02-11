@@ -21,6 +21,7 @@ export class SpeechPage implements OnInit {
   //Speech recognition
   matches: String[];
   isRecording = false;
+  permissionGranted =false;
   //DialogFlow
   messages: Array<Message>=[];
   
@@ -34,28 +35,40 @@ export class SpeechPage implements OnInit {
     public chat: ChatService,
     private tts: TextToSpeech,
     private router: Router
-  ){
-    if (!this.checkPermission){
-      this.getPermission();
-    }
-  }
+  ){  }
 
   getPermission(){
     // Request permissions
     this.speechRecognition.requestPermission()
     .then(
-      () => console.log('Granted'),
-      () => console.log('Denied')
+      () => this.permissionGrantedNorify(),
+      () => this.permissionDeniedNorify()
     )
   }
 
   checkPermission(){
     // Check permission
     this.speechRecognition.hasPermission()
-    .then((hasPermission: boolean) => console.log(hasPermission))
+    .then((hasPermission: boolean) => 
+      this.permissionGranted = hasPermission
+    )
+  }
+
+  permissionGrantedNorify(){
+    this.permissionGranted=true;
+    this.startListening();
+  }
+
+  permissionDeniedNorify(){
+    this.permissionGranted=false;
+    alert("La'aplicazione ha bisogno di utilizzare il microfono per funzionare!");
   }
 
   startListening(){
+    if (!this.permissionGranted){
+      this.getPermission();
+      return;
+    }
     let options={
       language: 'it-IT'
     }
