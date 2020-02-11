@@ -4,12 +4,13 @@ img{
 }
 ion-tab-button{
     max-width:100% !important;   
+    --color-selected: #7B7B7B !important;
 }
 
 ion-icon{
     font-size: 40px;
 }
-.active{
-    background-color: #f8f9fa;
-    color: grey;
-}
+
+.tab-item-active {
+    background:green;
+} 

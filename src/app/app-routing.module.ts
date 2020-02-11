@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'modal-filtri', loadChildren: './genericPackage/page/paziente/com-problema/modal-filtri/modal-filtri.module#ModalFiltriPageModule' },
   { path: 'profilo-caregiver', loadChildren: './genericPackage/page/alleanza/profilo-caregiver/profilo-caregiver.module#ProfiloCaregiverPageModule' },
   { path: 'speech', loadChildren: './speech/speech.module#SpeechPageModule' },
+  { path: 'storico-esecuzione-task', loadChildren: './genericPackage/page/paziente/dettagli-esecuzione-task/storico-esecuzione-task/storico-esecuzione-task.module#StoricoEsecuzioneTaskPageModule' },
   
 
 ];
