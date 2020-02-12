@@ -34,7 +34,7 @@
     </ion-col>
     <ion-col size=  "6">
       <ion-label text-center>
-      <b>Tempo impiegato</b>
+      <b>Ultimo Tempo impiegato</b>
       </ion-label>
     </ion-col>
 </ion-row>
@@ -43,7 +43,7 @@
           <ion-label text-center>{{this.global.currentTask.duration}} Min</ion-label>
         </ion-col>
         <ion-col size="6">
-          <ion-label text-center>10 Min</ion-label>
+          <ion-label text-center>{{this.global.currentTask.last_exec_time}} Min</ion-label>
         </ion-col>
       </ion-row>
       <ion-row align-items-center style="margin-top: 15%;">

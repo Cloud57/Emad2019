@@ -97,6 +97,13 @@ export class DoctorHomePage implements OnInit {
       data => {
         console.log(data);
         this.response = data   
+        for(let item of this.response){
+          if(item.patient.profile_pic == undefined){
+            item.patient.profile_pic = "../../assets/img/profilo.png"
+          } else {
+            item.patient.profile_pic = EnvService.API_URL +  item.patient.profile_pic
+          }
+        }
       },
       error => {
         console.log(error);
