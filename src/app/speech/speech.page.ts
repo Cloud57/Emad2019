@@ -1,10 +1,10 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild  } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, OnDestroy  } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { GlobalService } from '../service/global.service';
 import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 import { ChatService, Message } from '../service/chat.service';
 import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { scan } from 'rxjs/operators'
 import { Router } from '@angular/router';
 
@@ -16,14 +16,15 @@ import { Router } from '@angular/router';
   templateUrl: './speech.page.html',
   styleUrls: ['./speech.page.scss'],
 })
-export class SpeechPage implements OnInit {
-  @ViewChild('chatBody', {static: false}) content
+export class SpeechPage implements OnInit, OnDestroy {
+  @ViewChild('chatBody', {static: true}) content
   //Speech recognition
   matches: String[];
   isRecording = false;
   permissionGranted =false;
   //DialogFlow
   messages: Array<Message>=[];
+  subscription: Subscription;
   
 
   constructor( 
@@ -90,12 +91,6 @@ export class SpeechPage implements OnInit {
     })
   }
 
-  
-
-  speechPage() {
-    this.navCtrl.navigateRoot('/speech');
-  }
-
   back(){
     this.navCtrl.back();
   }
@@ -105,15 +100,15 @@ export class SpeechPage implements OnInit {
   }
 
   ngOnInit() {
-    // appends to array after each new message is added to feedSource
-    /*this.messages = this.chat.conversation.asObservable()
-    .pipe(
-      scan((acc, val) => acc.concat(val) )
-    )*/
-    this.chat.conversation.subscribe((data)=>this.responseHanlder(data));
-    
-    
-    
+    this.subscription = this.chat.conversation.subscribe((data)=>this.responseHanlder(data));
+    this.startListening();
+  }
+
+  ngOnDestroy(){    
+    if(this.subscription)
+      this.subscription.unsubscribe();
+    this.messages = [];
+    this.stopListening();
   }
 
   sendMessage(message) {
@@ -137,7 +132,7 @@ export class SpeechPage implements OnInit {
       }
       
       
-      if(data[0].sentBy=='bot'){
+      if(data[0].sentBy=='bot' && this.messages.length>0 ){
         //Replace placeholder (gif) with bot response
         this.messages[this.messages.length-1]=data[0];
         //And now TTS
@@ -179,9 +174,10 @@ export class SpeechPage implements OnInit {
 
 
   doAction(message){
-    setTimeout(()=>{
-      this.router.navigate([message.action])
-    },3000)
+    if(message.action!="" && message.action!="input.unknown")
+      setTimeout(()=>{
+        this.navCtrl.navigateRoot(["/"+message.action]);
+      },3000)
   }
 
     
