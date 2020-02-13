@@ -20,12 +20,7 @@ export class ProfiloPazientePage implements OnInit {
   public response;
   public role:string[] = ["Caregiver", "Terapista", "Medico"]
   constructor(private location:Location, private navCtrl: NavController, public global : GlobalService, public rubyService:RubyApiService, private env:EnvService) { 
-      this.paziente = global.currentPatient
-      this.paziente.users_in_alliance = global.currentPatient.users_in_alliance
-      this.setProfileIconAlleanza()
-      console.log(this.paziente);
-      
-      this.age = this.getAge(this.paziente.birth_date)
+  
   }
   
 
@@ -42,14 +37,18 @@ export class ProfiloPazientePage implements OnInit {
     return age;
 }
   ngOnInit() {
-    console.log(this.paziente.users_in_alliance);
+    this.paziente = this.global.currentPatient
+    this.paziente.users_in_alliance = this.global.currentPatient.users_in_alliance
+    this.setProfileIconAlleanza()
+    console.log(this.paziente);
+    
+    this.age = this.getAge(this.paziente.birth_date)
     
     if(this.global.modify){
       this.global.modify=false
       this.getPazienteUpdated()
     }
 
-    console.log(this.paziente.users_in_alliance);
   }
   TaskListPage() {
     this.navCtrl.navigateRoot('/lista-task');
@@ -110,10 +109,12 @@ export class ProfiloPazientePage implements OnInit {
   }
 
   setProfileIconAlleanza(){
+    
     for(let item of this.paziente.users_in_alliance){
-      if(item.profile_pic == undefined){
+      console.log("setProfile "+item.profile_pic);
+      if(item.profile_pic == undefined ){
         item.profile_pic = "../../assets/img/profilo.png"
-      } else {
+      } else if(item.profile_pic.indexOf('http') < 0 && (item.profile_pic.indexOf('assets/img/profilo.png') < 0)) {
         item.profile_pic = EnvService.API_URL +  item.profile_pic
       }
    }
