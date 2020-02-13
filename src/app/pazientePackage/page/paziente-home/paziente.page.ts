@@ -16,11 +16,13 @@ export class PazientePage implements OnInit {
     title:string="Profilo Paziente";
   constructor(private navCtrl: NavController, public global: GlobalService, private rubyService: RubyApiService) { 
 
-    if( this.global.currentPatient.profile_pic == undefined){
+    if(this.global.currentPatient.profile_pic == undefined ){
       this.global.currentPatient.profile_pic = "../../assets/img/profilo.png"
-    } else {
-      this.global.currentPatient.profile_pic = EnvService.API_URL +   this.global.currentPatient.profile_pic
+    } else if(this.global.currentPatient.profile_pic.indexOf('http') < 0 && (this.global.currentPatient.profile_pic.indexOf('assets/img/profilo.png') < 0)) {
+      this.global.currentPatient.profile_pic = EnvService.API_URL +  this.global.currentPatient.profile_pic
     }
+
+ 
   }
 
   ngOnInit() {
