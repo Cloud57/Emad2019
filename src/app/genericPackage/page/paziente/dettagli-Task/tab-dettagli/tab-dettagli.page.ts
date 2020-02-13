@@ -1,3 +1,4 @@
+import { NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/service/global.service';
 
@@ -9,7 +10,7 @@ import { GlobalService } from 'src/app/service/global.service';
 export class TabDettagliPage implements OnInit {
 num: number;
 
-  constructor(public global:GlobalService) { }
+  constructor(public global:GlobalService, public nvCtrl:NavController) { }
 
   ngOnInit() {
     this.global.currentTask.autonomy;
@@ -25,6 +26,9 @@ num: number;
       this.num=100;
     }
 
+  }
+  goStorico(){
+    this.nvCtrl.navigateRoot('/storico-esecuzione-task');
   }
 
 }
