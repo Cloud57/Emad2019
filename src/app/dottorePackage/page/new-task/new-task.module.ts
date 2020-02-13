@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewTaskPage } from './new-task.page';
-
+import { ModalPage } from './modal/modal.page';
 const routes: Routes = [
   {
     path: '',
@@ -22,7 +22,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [NewTaskPage ],
-  entryComponents:[]
+  declarations: [NewTaskPage,ModalPage ],
+  entryComponents:[ModalPage]
 })
 export class NewTaskPageModule {}
