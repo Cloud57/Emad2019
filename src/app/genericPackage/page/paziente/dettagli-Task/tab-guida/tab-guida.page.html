@@ -1,15 +1,29 @@
 <ion-content>
 
-<ion-item *ngIf="videoUrl != ''">
+<ion-item *ngIf="videoUrl">
   <ion-grid fixed>
     <ion-row>
       <h4>Spiegazione video</h4>
     </ion-row>
-      <ion-row >
+      <ion-row>
         <video width="320" height="240" controls>
-          <source [src]="videoUrl" type="video/mp4">
+          <source [src]="videoUrl" type="video/*">
         
         </video>
+      </ion-row>
+    
+  </ion-grid>
+
+  
+</ion-item>
+
+<ion-item *ngIf="!videoUrl">
+  <ion-grid fixed>
+    <ion-row>
+      <h4>Spiegazione video</h4>
+    </ion-row>
+      <ion-row>
+        <ion-label>Nessuna video guida per questo task</ion-label>
       </ion-row>
     
   </ion-grid>
@@ -29,16 +43,30 @@
     
     
 </ion-item> 
-<ion-item *ngIf="audioUrl != ''">
+<ion-item *ngIf="audioUrl">
   <ion-grid fixed>
     <ion-row>
       <h4>Spiegazione audio</h4>
     </ion-row>
       <ion-row>
         <audio controls>
-        <source [src]="audioUrl" type="audio/aac">
+        <source [src]="audioUrl" type="audio/*">
       
       </audio>
+    </ion-row>
+  </ion-grid>
+  
+  
+  
+</ion-item>
+
+<ion-item *ngIf="!audioUrl">
+  <ion-grid fixed>
+    <ion-row>
+      <h4>Spiegazione audio</h4>
+    </ion-row>
+      <ion-row>
+      <ion-label>Nessun audio guida per questo task</ion-label>
     </ion-row>
   </ion-grid>
   

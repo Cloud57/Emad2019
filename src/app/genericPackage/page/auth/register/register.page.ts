@@ -72,6 +72,10 @@ export class RegisterPage implements OnInit {
   }
 
   register(form: NgForm) {
+    if(!form.valid){
+      this.alertService.presentToast("I campi obbligatori non sono compilati");
+      return
+    }
     this.loading.create({
       message: "Attendi..."
     }).then((overlay) => {

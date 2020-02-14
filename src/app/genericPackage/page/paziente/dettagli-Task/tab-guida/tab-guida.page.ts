@@ -9,8 +9,8 @@ import { EnvService } from 'src/app/service/env.service';
   styleUrls: ['./tab-guida.page.scss'],
 })
 export class TabGuidaPage implements OnInit {
-  videoUrl:string
-  audioUrl:string
+  videoUrl:string = null
+  audioUrl:string = null
   constructor(private videoPlayer: VideoPlayer, public global: GlobalService, public env: EnvService) { }
 
   ngOnInit() {
@@ -18,7 +18,7 @@ export class TabGuidaPage implements OnInit {
       for(let media of this.global.currentTask.media_files)
         if(media.media.includes("mp4"))
           this.videoUrl = EnvService.API_URL+  media.media
-        else if(media.media.includes("aac") || media.media.includes("mp3"))
+        else if(media.media.includes("aac") || media.media.includes("mp3") || media.media.includes("m4a"))
           this.audioUrl = EnvService.API_URL+  media.media
     }
       console.log("video "+ this.videoUrl);

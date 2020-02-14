@@ -64,7 +64,7 @@ save(){
         this.insertAlliance(response.id)
       },
       error => {
-        this.alertService.presentToast("Errore nell'inserimento paziente");
+        this.alertService.presentToast("Errore nell'inserimento paziente. I campi obbligatori potrebbero non essere stati compilati");
         console.log(error);
         this.spinner.dismiss()
       },
@@ -87,7 +87,7 @@ save(){
         this.modifyAlliance(this.global.currentPatient.alliance.id)
       },
       error => {
-        this.alertService.presentToast("Errore nella modifica del paziente");
+        this.alertService.presentToast("Errore nella modifica del paziente. I campi obbligatori potrebbero non essere compilati");
         console.log(error);
         this.spinner.dismiss()
       },

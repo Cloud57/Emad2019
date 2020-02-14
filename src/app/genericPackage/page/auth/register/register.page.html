@@ -48,7 +48,7 @@
     </ion-row>
     <ion-row>
       <ion-col text-center>
-        <ion-button (click)="PickFile()">Inserisci immagine paziente</ion-button>
+        <ion-button (click)="PickFile()">Inserisci immagine profilo</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -57,31 +57,33 @@
       <ion-item>
         <ion-input placeholder="Nome" name="name" ngModel type="text" required></ion-input>
       </ion-item>
-
+      <span *ngIf="!this.form.value.name">Campo richiesto</span>
         
        
       <ion-item>
         <ion-input required placeholder="Cognome" ngModel name="surname" type="text"></ion-input>
       </ion-item>
-
+      <span *ngIf="!this.form.value.surname">Campo richiesto</span>
       
       <ion-item>
         <ion-input placeholder="Cellulare" ngModel name="telephone" type="number"></ion-input>
       </ion-item>
-          
+      <span *ngIf="!this.form.value.telephone">Campo richiesto</span>
         
         <ion-item>
           <ion-input required type="email" ngModel name="email" placeholder="Email"></ion-input>
         </ion-item>
-          
+        <span *ngIf="!this.form.value.email">Campo richiesto</span>
         
         <ion-item>
           <ion-input required type="password" ngModel name="password" placeholder="Password"></ion-input>
         </ion-item>
+        <span *ngIf="!this.form.value.password">Campo richiesto</span>
 
         <ion-item>
           <ion-input required type="password" ngModel name="password_confirmation" placeholder="Conferma Password"></ion-input>
         </ion-item>
+        <span *ngIf="!this.form.value.password_confirmation">Campo richiesto</span>
         <ion-item class="utente">
           <ion-label >Tipologia Utente</ion-label>
           <ion-select  interface="popover" ngModel required name="user_type">
@@ -91,9 +93,10 @@
             
           </ion-select>
         </ion-item>
-
+        <span *ngIf="!this.form.value.user_type">Campo richiesto</span>
       
-          <ion-button [disabled]="!form.form.valid" type="submit" class="spacingButton" >Registrati</ion-button>
+      <br>
+          <ion-button type="submit" class="spacingButton" >Registrati</ion-button>
         
     </form>
 

@@ -134,7 +134,7 @@ export class NewTaskPage implements OnInit {
       } 
           this.global.currentTask.autonomy = Number(this.autonomy)
           
-          this.navCtrl.back()
+          this.goBack()
         },
         error => {
           console.log(error);
@@ -193,14 +193,12 @@ export class NewTaskPage implements OnInit {
             this.uploadVideoText = "";
           }) */
         }, (err) => {
-          alert(JSON.stringify(err));
         })
     }, (err) => {
-      alert(JSON.stringify(err));
     })
   }
   uploadAudio() {
-    this.fileChooser.open({ "mime": "audio/aac" }).then((uri) => {
+    this.fileChooser.open({ "mime": "audio/*" }).then((uri) => {
       this.filePath.resolveNativePath(uri).then(
         (nativepath) => {
           this.file.resolveLocalFilesystemUrl(nativepath).then((entry:any) =>{
@@ -220,25 +218,25 @@ export class NewTaskPage implements OnInit {
             })
           })
         }, (err) => {
-          alert(JSON.stringify(err));
         })
     }, (err) => {
-      alert(JSON.stringify(err));
     })
   }
 
   AbortUploadAudio() {
     this.fileTransferAudio.abort();
-    alert("upload cancel.");
   }
   AbortUploadVideo() {
     this.fileTransferVideo.abort();
-    alert("upload cancel.");
   }
 
 
   goBack() {
-    this.navCtrl.back();
+    if(this.global.modify)
+      this.navCtrl.navigateRoot('tabs-dettagli-task/tabDettagli');
+    else
+      this.listOfTask();
+    
   }
 
   deleteMedia(idMedia,video){
@@ -246,12 +244,14 @@ export class NewTaskPage implements OnInit {
       this.rubyService.delete_media_task(this.global.currentTask.id, idMedia).subscribe(
         data => {
           console.log(data);
+          this.alertService.presentToast("Media eliminato con successo")
           if(video)
             this.fileVideoToMod = null
           else
             this.fileAudioToMod = null
         },
         error => {
+          this.alertService.presentToast("Errore nell'eliminazione del media")
           console.log(error);
         },
         () => {
