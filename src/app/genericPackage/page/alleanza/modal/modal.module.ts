@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ModalPage } from './modal.page';
+import { ModalAlleanzaPage } from './modal.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ModalPage
+    component: ModalAlleanzaPage
   }
 ];
 

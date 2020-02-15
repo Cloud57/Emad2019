@@ -24,9 +24,7 @@
             </p>
           </ion-col>
           <ion-col  size="2">
-            <ion-buttons float-right style="text-align:right;">
-              <img src="../../assets/img/whatsapp.png" height="50" width="50" >
-             </ion-buttons>
+              <ion-icon name="trash" style="zoom: 3.0;"></ion-icon>
            
           </ion-col>
         </ion-row >
@@ -34,5 +32,9 @@
     </ion-item>
     
   </ion-list>
-
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+    <ion-fab-button color="primary" (click)="aggiungiAlleanza()">
+      <ion-icon name="add" color="secondary" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>  
 </ion-content>

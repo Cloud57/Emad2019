@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Task Icone</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid>
+  <ion-row>
+    <ion-col size="3"> <img src="../../assets/img/icon-modal/bathtub.png" id="1"(click)="closeModal(paths.bathtub)"></ion-col>
+    <ion-col size="3"><img src="../../assets/img/icon-modal/chat.png"  (click)="closeModal(paths.chat)"></ion-col>
+    <ion-col size="3"><img src="../../assets/img/icon-modal/cleaning.png"  (click)="closeModal(paths.cleaning)"></ion-col>
+    <ion-col size="3"><img src="../../assets/img/icon-modal/shirt.png"  (click)="closeModal(paths.shirt)"></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="3"> <img src="../../assets/img/icon-modal/shopping-cart.png"  (click)="closeModal(paths.shoppingCart)"></ion-col>
+    <ion-col size="3"><img src="../../assets/img/icon-modal/study.png"  (click)="closeModal(paths.study)"></ion-col>
+    <ion-col size="3"><img src="../../assets/img/icon-modal/toothbrush.png"  (click)="closeModal(paths.toothbrush)"></ion-col>
+    <ion-col size="3"><img src="../../assets/img/icon-modal/generic.png"  (click)="closeModal(paths.generic)"></ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
