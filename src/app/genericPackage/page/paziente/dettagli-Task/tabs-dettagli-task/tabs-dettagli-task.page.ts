@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/service/global.service';
 import { Location } from '@angular/common';
 import { NavController } from '@ionic/angular';
+import { RubyApiService } from 'src/app/service/ruby-api.service';
+import { Task } from 'src/app/models/task';
 
 @Component({
   selector: 'app-tabs-dettagli-task',
@@ -10,13 +12,28 @@ import { NavController } from '@ionic/angular';
 })
 export class TabsDettagliTaskPage implements OnInit {
   public title:String;
-  constructor(public global:GlobalService, public location:Location, public navCtrl:NavController) { 
+  constructor(public global:GlobalService, public location:Location, public navCtrl:NavController, public ruby:RubyApiService) { 
     this.title = global.currentTask.name;
     console.log(this.global.currentTask.autonomy);
     
   }
 
   ngOnInit() {
+    if(this.global.modify){
+      this.global.modify=false
+      this.ruby.get_task(this.global.currentTask.id).subscribe(
+        data => {
+          this.global.currentTask = data as Task
+          
+        },
+        error => {
+          console.log(error);
+        },
+        () => {
+         
+        }
+      );
+    }
   }
 
   goBack(){

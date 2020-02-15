@@ -79,9 +79,6 @@ export class RubyApiService {
           formData.append('task[is_task_active]',  "true");
           formData.append('task[patient_id]',  id);
           formData.append('task[icon]', src)
-          formData.forEach((value,key) => {
-            console.log(key+" "+value)
-          });
           
           if(imgBlob != null)
             formData.append('media_files[]', imgBlob,filenameVideo);
@@ -90,7 +87,7 @@ export class RubyApiService {
           return this.http.post(EnvService.API_URL+"/tasks",formData);
         }
 
-        mod_task(form,autonomy ,id, src, taskId) {
+        mod_task(form,autonomy ,id, src, taskId,imgBlob, filenameVideo, audioBlob, filenameAudio) {
            let formData = new FormData();
            formData.append('task[name]', form.name);
            formData.append('task[description]', form.description);
@@ -98,9 +95,10 @@ export class RubyApiService {
            formData.append('task[autonomy]', autonomy);
            formData.append('task[patient_id]',  id);
            formData.append('task[icon]', src)
-           formData.forEach((value,key) => {
-             console.log(key+" "+value)
-           });
+           if(imgBlob != null)
+           formData.append('media_files[]', imgBlob,filenameVideo);
+         if(audioBlob != null)
+           formData.append('media_files[]', audioBlob,filenameAudio);
           return this.http.put(EnvService.API_URL+"/tasks/"+taskId,formData);
         }
 
@@ -174,6 +172,10 @@ export class RubyApiService {
       get_tasks(id) {
           return this.http.get(EnvService.API_URL+"/patients/search_task.json?id="+id, {headers: {'Content-Type': 'application/json'}});
         }
+
+      get_task(id) {
+          return this.http.get(EnvService.API_URL+"/tasks/"+id, {headers: {'Content-Type': 'application/json'}});
+      }
 
       get_problem(id) {
           return this.http.get(EnvService.API_URL+"/patients/search_problem_behavior?id="+id, {headers: {'Content-Type': 'application/json'}});

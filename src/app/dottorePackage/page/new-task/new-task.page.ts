@@ -62,9 +62,9 @@ export class NewTaskPage implements OnInit {
       if(this.global.currentTask.media_files.length > 0){
         for(let media of this.global.currentTask.media_files)
           if(media.media.includes("mp4"))
-            this.fileAudioToMod = media.media_id
-          else if(media.media.includes("aac") || media.media.includes("mp3"))
             this.fileVideoToMod = media.media_id
+          else if(media.media.includes("aac") || media.media.includes("mp3")|| media.media.includes("m4a"))
+            this.fileAudioToMod = media.media_id
       }
     } else {
       this.title = "Nuovo task"
@@ -118,7 +118,7 @@ export class NewTaskPage implements OnInit {
           }
         );
     } else {
-      this.rubyService.mod_task(form.value, Number(this.autonomy), this.global.currentPatient.id, this.sharedIService.src, this.global.currentTask.id).subscribe(
+      this.rubyService.mod_task(form.value, Number(this.autonomy), this.global.currentPatient.id, this.sharedIService.src, this.global.currentTask.id,this.videoBlob, this.fileVideoToUpload, this.audioBlob, this.fileAudioToUpload).subscribe(
         data => {
           this.alertService.presentToast("Task modificato");
           this.global.currentTask.name = form.value.name
@@ -245,6 +245,12 @@ export class NewTaskPage implements OnInit {
         data => {
           console.log(data);
           this.alertService.presentToast("Media eliminato con successo")
+          for(let media of this.global.currentTask.media_files){
+            if(media.media_id == idMedia){
+              this.global.currentTask.media_files = this.global.currentTask.media_files.filter(obj => obj !== media);
+            }
+             
+          }
           if(video)
             this.fileVideoToMod = null
           else
