@@ -19,21 +19,7 @@ export class TabsDettagliTaskPage implements OnInit {
   }
 
   ngOnInit() {
-    if(this.global.modify){
-      this.global.modify=false
-      this.ruby.get_task(this.global.currentTask.id).subscribe(
-        data => {
-          this.global.currentTask = data as Task
-          
-        },
-        error => {
-          console.log(error);
-        },
-        () => {
-         
-        }
-      );
-    }
+
   }
 
   goBack(){

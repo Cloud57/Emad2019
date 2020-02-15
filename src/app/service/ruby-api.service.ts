@@ -174,7 +174,7 @@ export class RubyApiService {
         }
 
       get_task(id) {
-          return this.http.get(EnvService.API_URL+"/tasks/"+id, {headers: {'Content-Type': 'application/json'}});
+          return this.http.get(EnvService.API_URL+"/tasks/"+id+".json", {headers: {'Content-Type': 'application/json'}});
       }
 
       get_problem(id) {
