@@ -19,7 +19,10 @@
     <ion-card-content (click)="openReport(item)" ion-long-press [interval]="500" (longPressed)="presentAlertConfirm(item)">
       <ion-row>
         <ion-col>
-          <img src="../../assets/img/profilo.png">        </ion-col>
+          <ion-avatar> 
+            <img [src]="item.user.profile_pic"> 
+          </ion-avatar>
+        </ion-col>
         <ion-col>
         <div><h2>{{item.user.name}} {{item.user.surname}}</h2></div>
         </ion-col>

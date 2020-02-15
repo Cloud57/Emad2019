@@ -237,6 +237,8 @@ export class EsecuzioneTaskPage implements OnInit {
               this.fileVideoToMod = null
             else
               this.fileAudioToMod = null
+
+              this.changeRef.detectChanges();
           },
           error => {
             this.alertService.presentToast("Errore nell'eliminazione del media")
@@ -256,5 +258,6 @@ export class EsecuzioneTaskPage implements OnInit {
       else
         this.audioBlob = null
     }
+    this.changeRef.detectChanges();
   }
 }
