@@ -145,21 +145,35 @@ export class RubyApiService {
           return this.http.put(EnvService.API_URL+"/alliances/"+allianceID,JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
         }
 
-      new_Report(form, id_user,id_task) {
-          var register = { report : {
-            description : form.description, duration : form.duration,
-            date_execution: form.date_execution, is_executed: form.is_executed,
-            task_id: id_task, user_id: id_user}
-           };
-          return this.http.post(EnvService.API_URL+"/reports.json",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+      new_Report(form, id_user,id_task,imgBlob, filenameVideo, audioBlob, filenameAudio) {
+          let formData = new FormData();
+          formData.append('report[date_execution]', form.date_execution);
+          formData.append('report[description]', form.description);
+          formData.append('report[duration]', form.duration);
+          formData.append('report[is_executed]', form.is_executed);
+          formData.append('report[task_id]',  id_task);
+          formData.append('report[user_id]', id_user)
+          
+          if(imgBlob != null)
+            formData.append('media_files[]', imgBlob,filenameVideo);
+          if(audioBlob != null)
+            formData.append('media_files[]', audioBlob,filenameAudio);
+          return this.http.post(EnvService.API_URL+"/reports.json",formData);
         }
 
-      mod_Report(form, idReport) {
-        var register = { report : {
-          description : form.description, duration : form.duration,
-          date_execution: form.date_execution, is_executed: form.is_executed}
-         };
-        return this.http.put(EnvService.API_URL+"/reports/"+idReport+".json",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+      mod_Report(form, idReport,imgBlob, filenameVideo, audioBlob, filenameAudio) {
+        let formData = new FormData();
+        formData.append('report[date_execution]', form.date_execution);
+        formData.append('report[description]', form.description);
+        formData.append('report[duration]', form.duration);
+        formData.append('report[is_executed]', form.is_executed);
+        
+        if(imgBlob != null)
+          formData.append('media_files[]', imgBlob,filenameVideo);
+        if(audioBlob != null)
+          formData.append('media_files[]', audioBlob,filenameAudio);
+        return this.http.put(EnvService.API_URL+"/reports/"+idReport+".json",formData);
+  
       }
 
       get_patients(id) {
@@ -196,6 +210,9 @@ export class RubyApiService {
 
       delete_media_task(idTask, idMedia) {
         return this.http.delete(EnvService.API_URL+"/media_tasks/"+idTask+"/"+idMedia);
+      }
+      delete_media_report(idReport, idMedia) {
+        return this.http.delete(EnvService.API_URL+"/media_reports/"+idReport+"/"+idMedia);
       }
 
       delete_patient(id) {

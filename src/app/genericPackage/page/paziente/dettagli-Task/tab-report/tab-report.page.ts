@@ -22,7 +22,7 @@ export class TabReportPage implements OnInit {
   }
 
   openReport(report){
-    this.global.currentReport= report.report;
+    this.global.currentReport= report;
     this.navCtrl.navigateRoot('/dettagli-esecuzione-task');
   }
 
@@ -71,7 +71,7 @@ export class TabReportPage implements OnInit {
     this.rubyService.delete_report(report.id).subscribe(
       data => {
         console.log(data);
-        this.response = this.response.filter(obj => obj.report !== report);
+        this.response = this.response.filter(obj => obj !== report);
       },
       error => {
         console.log(error);
