@@ -11,6 +11,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class TabReportPage implements OnInit {
   public response : any = [];
+  public loading = true;
   constructor(private navCtrl:NavController, public global:GlobalService, public rubyService:RubyApiService,public alertController: AlertController) { }
 
   ngOnInit() {
@@ -37,7 +38,7 @@ export class TabReportPage implements OnInit {
         console.log(error);
       },
       () => {
-       
+       this.loading=false;
       }
     );
   }

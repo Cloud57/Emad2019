@@ -13,6 +13,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class DoctorHomePage implements OnInit {
   public response : any = [];
+  public loading = true;
   title = "Lista pazienti"
   constructor(private navCtrl: NavController,
     public rubyService: RubyApiService, public globalService:GlobalService, public env:EnvService, public alertController: AlertController) {
@@ -86,7 +87,7 @@ export class DoctorHomePage implements OnInit {
         console.log(error);
       },
       () => {
-       
+        this.loading=false;
       }
     );
   }

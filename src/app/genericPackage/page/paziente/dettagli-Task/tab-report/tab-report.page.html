@@ -8,7 +8,12 @@
         <ion-icon slot="icon-only" name="options"></ion-icon>
       </ion-button>
     </ion-item>  
-
+    <ion-spinner *ngIf="loading" ></ion-spinner>
+  <ion-item *ngIf="!loading && response.length == 0">
+    <ion-label style="text-align: center;">
+      Lista vuota
+    </ion-label>
+  </ion-item>
     <ion-card *ngFor="let item of response">
    
     <ion-card-content (click)="openReport(item)" ion-long-press [interval]="500" (longPressed)="presentAlertConfirm(item)">

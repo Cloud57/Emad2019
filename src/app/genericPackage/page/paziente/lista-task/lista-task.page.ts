@@ -18,6 +18,7 @@ export class ListaTaskPage implements OnInit {
   originalItems : Task[] =[]
   filterItems : Task[] =[]
   searchText = "";
+  public loading =true;
   constructor(private navCtrl: NavController, public globalService: GlobalService, private rubyService: RubyApiService, public alertController: AlertController) { 
 
   }
@@ -93,7 +94,7 @@ export class ListaTaskPage implements OnInit {
         console.log(error);
       },
       () => {
-       
+       this.loading=false;
       }
     );
   }
