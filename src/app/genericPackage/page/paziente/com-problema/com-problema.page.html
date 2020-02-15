@@ -61,8 +61,13 @@
     </ion-chip>
   </ion-col>
 </ion-row>
-  
 
+<ion-spinner *ngIf="loading" ></ion-spinner>
+<ion-item *ngIf="!loading && filterItems.length == 0">
+  <ion-label style="text-align: center;">
+    Lista vuota
+  </ion-label>
+</ion-item>
   <ion-card *ngFor="let problem of filterItems" (click)=openProblem(problem)  ion-long-press [interval]="500" (longPressed)="presentAlertConfirm(problem)">
     <ion-card-header>
       <ion-row>

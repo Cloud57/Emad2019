@@ -28,7 +28,12 @@
   <ion-router-outlet id="content1" main></ion-router-outlet>
 
   <ion-searchbar name="searchText" [(ngModel)]="this.searchText" placeholder="Ricerca Task" type="text" debounce="200" (ionChange)="getItems($event)"></ion-searchbar>
-
+  <ion-spinner *ngIf="loading" ></ion-spinner>
+  <ion-item *ngIf="!loading && filterItems.length == 0">
+    <ion-label style="text-align: center;">
+      Lista vuota
+    </ion-label>
+  </ion-item>
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12" 

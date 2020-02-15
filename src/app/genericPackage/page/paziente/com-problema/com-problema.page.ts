@@ -16,6 +16,7 @@ export class ComProblemaPage implements OnInit {
   title="Comportamento problema"
   originalItems : Problem_behaviour[] =[]
   filterItems : Problem_behaviour[] =[]
+  public loading = true;
   constructor(private navCtrl: NavController, private rubyService:RubyApiService,
               public globalService: GlobalService,private modalController: ModalController, public alertController: AlertController ) { 
                 this.globalService.currentFilter = new Filter()
@@ -112,7 +113,7 @@ export class ComProblemaPage implements OnInit {
         console.log(error);
       },
       () => {
-       
+       this.loading=false;
       }
     );
   }
