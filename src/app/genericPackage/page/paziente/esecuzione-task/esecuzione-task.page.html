@@ -5,7 +5,7 @@
       <ion-back-button color="secondary" defaultHref="home" (click)="goBack()"></ion-back-button>
     </ion-buttons>
   <ion-title style="text-align:center;"> {{title}}</ion-title>
-    <ion-button slot="end" type="submit" [disabled]="!form.valid"  (click)="form.ngSubmit.emit()"><ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
+    <ion-button slot="end" type="submit"  (click)="form.ngSubmit.emit()"><ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -43,15 +43,19 @@
       </ion-radio-group>
     </ion-col>
     </ion-row>
+    <span *ngIf="!this.reportForm.value.is_executed">Campo richiesto</span>
     <ion-row>
 
       <ion-col>
         <h5>Data</h5>
-        <ion-datetime display-format="DD/MM/YY"  formControlName="date_execution" placeholder="GG/MM/AA" picker-format="DD MM YY" name="date_execution"></ion-datetime>
+        <ion-datetime style="padding-left: 0px !important;"display-format="DD/MM/YY"  formControlName="date_execution" placeholder="GG/MM/AA" picker-format="DD MM YY" name="date_execution"></ion-datetime>
+        <span *ngIf="!this.reportForm.value.is_executed">Campo richiesto</span>
       </ion-col>
+      
       <ion-col> 
         <h5>Durata</h5>
-        <ion-input type="number" formControlName="duration" name="duration" placeholder="Durata" ></ion-input>
+        <ion-input style="padding-left: 0px !important;" type="number" formControlName="duration" name="duration" placeholder="Durata in minuti" ></ion-input>
+        <span *ngIf="!this.reportForm.value.is_executed">Campo richiesto</span>
       </ion-col>
     </ion-row>
 

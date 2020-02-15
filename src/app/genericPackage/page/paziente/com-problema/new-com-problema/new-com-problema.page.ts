@@ -44,7 +44,7 @@ export class NewComProblemaPage implements OnInit {
           this.comProblemaPage()
         },
         error => {
-          this.alertService.presentToast("Errore nell'inserimento del comportamento problema");
+          this.alertService.presentToast("Errore nell'inserimento del comportamento problema. Assicurati di aver compilato i campi obbligatori");
           console.log(error);
         },
         () => {
@@ -58,7 +58,7 @@ export class NewComProblemaPage implements OnInit {
           this.comProblemaPage()
         },
         error => {
-          this.alertService.presentToast("Errore nella modifica del comportamento problema");
+          this.alertService.presentToast("Errore nella modifica del comportamento problema. Assicurati di aver compilato i campi obbligatori");
           console.log(error);
         },
         () => {

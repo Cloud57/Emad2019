@@ -22,7 +22,7 @@ export class EsecuzioneTaskPage implements OnInit {
                 is_executed: ['', Validators.required],
                 date_execution: ['', Validators.required],
                 duration: ['', Validators.required],
-                description: ['', Validators.required]
+                description: ['']
                 });
 
                 if(this.global.modify){

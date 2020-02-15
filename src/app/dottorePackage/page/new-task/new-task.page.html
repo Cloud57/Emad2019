@@ -5,17 +5,13 @@
       <ion-back-button color="secondary" defaultHref="home" (click)="goBack()"></ion-back-button>
     </ion-buttons>
   <ion-title style="text-align:center;">{{title}}</ion-title>
-    <ion-button slot="end" type="submit" [disabled]="!form.valid && this.autonomy == undefined"  (click)="form.ngSubmit.emit()"><ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
+    <ion-button slot="end" type="submit" (click)="form.ngSubmit.emit()"><ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
 
-  
- 
- 
-    
     
     <ion-list >
       <img  [src]= "this.sharedIService.src" *ngIf="this.sharedIService.src"  (click)="openModal()" class="img-ico"> 
@@ -28,12 +24,15 @@
       <ion-item style="margin-top: 30px;">
         <ion-input name="name" formControlName="name" placeholder="Nome task" type="text" required></ion-input>
       </ion-item>
+      <span *ngIf="!this.taskForm.value.name">Campo richiesto</span>
       <ion-item>
-        <ion-input name="duration" formControlName="duration"  type="text" placeholder="Durata" required></ion-input>
+        <ion-input name="duration" formControlName="duration"  type="text" placeholder="Durata in minuti" required></ion-input>
       </ion-item>
+      <span *ngIf="!this.taskForm.value.duration">Campo richiesto</span>
       <ion-item>
         <ion-textarea style="margin-top: 1px!important" formControlName="description"  name="description" placeholder="Descrizione" maxlength="500" required></ion-textarea>
       </ion-item>
+      <span *ngIf="!this.taskForm.value.description">Campo richiesto</span>
       <ion-item>
         <ion-label color="placeholder"> Autonomia</ion-label>
         <ion-select [(ngModel)]="autonomy"  name="autonomy" interface="action-sheet" [ngModelOptions]="{standalone: true}" required>

@@ -110,6 +110,7 @@ export class NewTaskPage implements OnInit {
             this.listOfTask();
           },
           error => {
+            this.alertService.presentToast("Errore nell'inserimento del task. Assicurati di aver compilato i campi obbligatori");
             console.log(error);
             this.spinner.dismiss();
           },
@@ -137,6 +138,7 @@ export class NewTaskPage implements OnInit {
           this.goBack()
         },
         error => {
+          this.alertService.presentToast("Errore nella modifica del task. Assicurati di aver compilato i campi obbligatori");
           console.log(error);
           this.spinner.dismiss();
         },

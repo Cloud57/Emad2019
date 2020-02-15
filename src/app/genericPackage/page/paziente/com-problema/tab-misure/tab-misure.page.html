@@ -3,11 +3,12 @@
         <ion-item>
           <ion-label>Frequenza</ion-label>
           <ion-select name="frequency" [(ngModel)]="this.shared.problem.frequency">
-            <ion-select-option value="1">1 al giorno</ion-select-option>
-            <ion-select-option value="2">2 al giorno</ion-select-option>
-            <ion-select-option value="3">3 al giorno</ion-select-option>
+            <ion-select-option value="1">Una volta</ion-select-option>
+            <ion-select-option value="2">Più volte</ion-select-option>
+            <ion-select-option value="3">Spesso</ion-select-option>
           </ion-select>
         </ion-item>
+        <span *ngIf="!this.shared.problem.frequency">Campo richiesto</span>
         <ion-item>
           <ion-label>Intensita'</ion-label>
           <ion-select name="intensity"  [(ngModel)]="this.shared.problem.intensity" >
@@ -16,6 +17,7 @@
             <ion-select-option value="3">Alta</ion-select-option>
           </ion-select>
         </ion-item>
+        <span *ngIf="!this.shared.problem.intensity">Campo richiesto</span>
         <ion-item>
           <ion-label>Durata</ion-label>
           <ion-select  name="duration"  [(ngModel)]="this.shared.problem.duration">
@@ -24,7 +26,7 @@
             <ion-select-option value="3">piu' di 5 minuti</ion-select-option>
           </ion-select>
         </ion-item>
-      
+        <span *ngIf="!this.shared.problem.duration">Campo richiesto</span>
       </ion-list>
 
 

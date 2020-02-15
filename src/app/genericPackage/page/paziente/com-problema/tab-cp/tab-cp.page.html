@@ -9,7 +9,7 @@
             <ion-select-option *ngFor="let item of type; index as i" [value]="i" >{{item}}</ ion-select-option>
           </ion-select>
         </ion-item>
-        <span *ngIf="!this.shared.problem.name">Campo richiesto</span>
+        <span *ngIf="!this.shared.problem.name && this.shared.problem.name != '0'">Campo richiesto</span>
         
         
         <ion-item >
