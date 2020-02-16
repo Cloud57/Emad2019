@@ -24,7 +24,7 @@
             </p>
           </ion-col>
           <ion-col  size="2">
-              <ion-icon name="trash" style="zoom: 3.0;"></ion-icon>
+              <ion-icon name="trash" style="zoom: 3.0;" *ngIf="item.user_type < 2 && item.id != this.global.currentUser.id" (click)="removeFromAlleanza(item)"></ion-icon>
            
           </ion-col>
         </ion-row >

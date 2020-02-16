@@ -67,9 +67,10 @@ save(){
         this.alertService.presentToast("Errore nell'inserimento paziente. Assicurati di aver compilato i campi obbligatori");
         console.log(error);
         this.spinner.dismiss()
+        
       },
       () => {
-        this.spinner.dismiss()
+
       }
     );
     });
@@ -92,7 +93,6 @@ save(){
         this.spinner.dismiss()
       },
       () => {
-        this.spinner.dismiss()
       }
     );
   });
@@ -109,9 +109,10 @@ insertAlliance(patientID) {
     error => {
       this.homePage();
       console.log(error);
+      this.spinner.dismiss()
     },
     () => {
-     
+      this.spinner.dismiss()
     }
   );
 }
@@ -121,10 +122,12 @@ modifyAlliance(allianceID) {
   this.rubyService.mod_alliance(this.sharedService.alliance,allianceID).subscribe(
     data => {
       this.homePage();
+      this.spinner.dismiss()
     },
     error => {
       this.homePage();
       console.log(error);
+      this.spinner.dismiss()
     },
     () => {
      

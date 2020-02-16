@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Task Icone</ion-title>
+    <ion-title>Inserisci in alleanza</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="closeModal()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -9,20 +9,22 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
-<ion-grid>
-  <ion-row>
-    <ion-col size="3"> <img src="../../assets/img/icon-modal/bathtub.png" id="1"(click)="closeModal(paths.bathtub)"></ion-col>
-    <ion-col size="3"><img src="../../assets/img/icon-modal/chat.png"  (click)="closeModal(paths.chat)"></ion-col>
-    <ion-col size="3"><img src="../../assets/img/icon-modal/cleaning.png"  (click)="closeModal(paths.cleaning)"></ion-col>
-    <ion-col size="3"><img src="../../assets/img/icon-modal/shirt.png"  (click)="closeModal(paths.shirt)"></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col size="3"> <img src="../../assets/img/icon-modal/shopping-cart.png"  (click)="closeModal(paths.shoppingCart)"></ion-col>
-    <ion-col size="3"><img src="../../assets/img/icon-modal/study.png"  (click)="closeModal(paths.study)"></ion-col>
-    <ion-col size="3"><img src="../../assets/img/icon-modal/toothbrush.png"  (click)="closeModal(paths.toothbrush)"></ion-col>
-    <ion-col size="3"><img src="../../assets/img/icon-modal/generic.png"  (click)="closeModal(paths.generic)"></ion-col>
-  </ion-row>
-</ion-grid>
+  <ion-grid>  
+      <ion-row>
+        <ion-col  *ngFor="let item of this.newAlliance" >
+         <ion-label color="placeholder">{{item.email}}</ion-label>
+         <ion-icon name="close" (click)="removeToAlliance(item.email)"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <ion-item>
+      <ion-searchbar [(ngModel)]="this.searchText" placeholder="Ricerca Utente" type="text" debounce="200" (ionChange)="getItems($event)"></ion-searchbar>
+      </ion-item>
+      <ion-list *ngIf="isItemAvailable">
+          <ion-item *ngFor="let item of items" (click)="addToAlliance(item)">{{ item }}</ion-item>
+      </ion-list>
+      <ion-button class="center" type="submit" (click)="save()">Salva</ion-button>
 
 </ion-content>
