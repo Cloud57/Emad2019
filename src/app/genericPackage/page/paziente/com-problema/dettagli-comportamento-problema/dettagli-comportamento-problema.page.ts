@@ -68,7 +68,7 @@ export class DettagliComportamentoProblemaPage implements OnInit {
   }
 
   goBack(){
-    this.navCtrl.back();
+    this.navCtrl.navigateRoot('/com-problema');
   }
 
   modify(){

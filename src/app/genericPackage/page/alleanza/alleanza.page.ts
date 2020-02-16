@@ -20,7 +20,7 @@ public title:string="Alleanza";
   alliance: Alliance[] = []
   ngOnInit() {
     console.log(this.global.currentPatient);
-    this.setProfilePic
+    this.setProfilePic()
    
   }
 

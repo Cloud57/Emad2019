@@ -31,15 +31,17 @@ export class AuthInterceptor implements HttpInterceptor {
         // YOU CAN ALSO DO THIS
         // const token = this.authenticationService.getToke()
         
-        if(request.url.includes("authenticate") || request.url == this.url+"/users.json"){
+        if(request.url.includes("authenticate")){
             return next.handle(request)
             
         } else
         return from(this.storage.get(TOKEN_KEY))
             .pipe(
                 switchMap(token => {
-                    token = JSON.parse(token).auth_token
-
+                    if(JSON.parse(token) != undefined)
+                        token = JSON.parse(token).auth_token
+                    else
+                        token = ""
                     
                     if (token) {
                         request = request.clone({ headers: request.headers.set('Authorization', token) });

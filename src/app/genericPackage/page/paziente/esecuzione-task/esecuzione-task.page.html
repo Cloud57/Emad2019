@@ -71,7 +71,7 @@
 
 <ion-list >
 <ion-list-header style="color:#7B7B7B;">Aggiungi Materiale Video</ion-list-header>
-<ion-label *ngIf="videoBlob"><b>{{uploadVideoText}}</b></ion-label>
+<ion-label *ngIf="videoBlob"><b>{{uploadVideoText}}</b></ion-label><br>
 <ion-label *ngIf="videoBlob || fileVideoToMod">Elimina il media prima di poterlo modificare</ion-label>
 <ion-item lines="none">
   <button *ngIf="!videoBlob && !fileVideoToMod" (click)="uploadVideo()" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
@@ -83,7 +83,7 @@
 </ion-item>
 
 <ion-list-header style="color:#7B7B7B;">Aggiungi Materiale Audio</ion-list-header>
-<ion-label *ngIf="audioBlob"><b>{{uploadAudioText}}</b></ion-label>
+<ion-label *ngIf="audioBlob"><b>{{uploadAudioText}}</b></ion-label><br>
 <ion-label *ngIf="audioBlob || fileAudioToMod">Elimina il media prima di poterlo modificare</ion-label>
 <ion-item lines="none">
   <button *ngIf="!audioBlob && !fileAudioToMod" (click)="uploadAudio()" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
