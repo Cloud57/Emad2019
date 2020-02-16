@@ -65,6 +65,7 @@ export class NewComProblemaPage implements OnInit {
         this.rubyService.mod_prom_beh(this.sharedService.problem, this.global.currentPatient.id, this.sharedService.problem.id,this.sharedService.videoBlob, this.sharedService.fileVideoToUpload, this.sharedService.audioBlob, this.sharedService.fileAudioToUpload).subscribe(
           data => {
             this.alertService.presentToast("Comportamento problema modificato");  
+            this.global.currentProblem=data as Problem_behaviour
             this.comProblemaPage()
 
           },

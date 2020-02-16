@@ -26,7 +26,7 @@ export class DettagliComportamentoProblemaPage implements OnInit {
   audioUrl:string = null
   constructor(private navCtrl: NavController, public global : GlobalService, private EnvService:EnvService) { 
     this.problem = global.currentProblem;
-
+    this.setUrl()
   }
 
   ngOnInit() {
@@ -80,8 +80,8 @@ export class DettagliComportamentoProblemaPage implements OnInit {
   }
 
   setUrl(){
-    if(this.global.currentReport.media_files.length > 0){
-      for(let media of this.global.currentReport.media_files)
+    if(this.global.currentProblem.media_files.length > 0){
+      for(let media of this.global.currentProblem.media_files)
         if(media.media.includes("mp4"))
           this.videoUrl = EnvService.API_URL+  media.media
         else if(media.media.includes("aac") || media.media.includes("mp3") || media.media.includes("m4a"))

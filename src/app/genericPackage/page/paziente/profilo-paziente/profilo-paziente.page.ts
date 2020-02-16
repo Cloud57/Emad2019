@@ -15,7 +15,6 @@ export class ProfiloPazientePage implements OnInit {
   public show:boolean = false;
   public buttonName:any = 'Mostra';
   public paziente:Patient = new Patient();
-  public age:number;
   public title:string = "Profilo paziente"
   public response;
   public role:string[] = ["Caregiver", "Terapista", "Medico"]
@@ -41,8 +40,6 @@ export class ProfiloPazientePage implements OnInit {
     this.paziente.users_in_alliance = this.global.currentPatient.users_in_alliance
     this.setProfileIconAlleanza()
     console.log(this.paziente);
-    
-    this.age = this.getAge(this.paziente.birth_date)
     
     if(this.global.modify){
       this.global.modify=false
