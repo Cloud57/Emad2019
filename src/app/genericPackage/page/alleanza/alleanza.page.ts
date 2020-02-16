@@ -36,9 +36,9 @@ public title:string="Alleanza";
   }
   setProfilePic(){
     for(let item of this.global.currentPatient.users_in_alliance){
-      if(item.profile_pic == undefined){
+      if(item.profile_pic == undefined ){
         item.profile_pic = "../../assets/img/profilo.png"
-      } else {
+      } else if(item.profile_pic.indexOf('http') < 0 && (item.profile_pic.indexOf('assets/img/profilo.png') < 0)) {
         item.profile_pic = EnvService.API_URL +  item.profile_pic
       }
    }
