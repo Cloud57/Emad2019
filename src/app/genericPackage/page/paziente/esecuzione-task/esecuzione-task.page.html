@@ -49,13 +49,13 @@
       <ion-col>
         <h5>Data</h5>
         <ion-datetime style="padding-left: 0px !important;"display-format="DD/MM/YY"  formControlName="date_execution" placeholder="GG/MM/AA" picker-format="DD MM YY" name="date_execution"></ion-datetime>
-        <span *ngIf="!this.reportForm.value.is_executed">Campo richiesto</span>
+        <span *ngIf="!this.reportForm.value.date_execution">Campo richiesto</span>
       </ion-col>
       
       <ion-col> 
         <h5>Durata</h5>
         <ion-input style="padding-left: 0px !important;" type="number" formControlName="duration" name="duration" placeholder="Durata in minuti" ></ion-input>
-        <span *ngIf="!this.reportForm.value.is_executed">Campo richiesto</span>
+        <span *ngIf="!this.reportForm.value.duration">Campo richiesto</span>
       </ion-col>
     </ion-row>
 
@@ -63,8 +63,35 @@
       <h3>Commento</h3>
     </ion-row>
     <ion-row>
-      <ion-textarea placeholder="Inserisci il testo" formControlName="description" name="description"></ion-textarea>
+      <ion-col> <ion-textarea style="padding: 0px" placeholder="Inserisci il testo" formControlName="description" name="description"></ion-textarea></ion-col>
     </ion-row>
   </ion-grid>
+  <span *ngIf="!this.reportForm.value.description">Campo richiesto</span>
 </form>
+
+<ion-list >
+<ion-list-header style="color:#7B7B7B;">Aggiungi Materiale Video</ion-list-header>
+<ion-label *ngIf="videoBlob"><b>{{uploadVideoText}}</b></ion-label>
+<ion-item lines="none">
+  <button *ngIf="!videoBlob && !fileVideoToMod" (click)="uploadVideo()" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <button *ngIf="videoBlob || fileVideoToMod" (click)="deleteMedia(fileVideoToMod, true)" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
+    <ion-icon name="trash"></ion-icon>
+  </button>
+</ion-item>
+
+<ion-list-header style="color:#7B7B7B;">Aggiungi Materiale Audio</ion-list-header>
+<ion-label *ngIf="audioBlob"><b>{{uploadAudioText}}</b></ion-label>
+<ion-item lines="none">
+  <button *ngIf="!audioBlob && !fileAudioToMod" (click)="uploadAudio()" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <button *ngIf="audioBlob || fileAudioToMod" (click)="deleteMedia(fileAudioToMod, false)" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
+    <ion-icon name="trash"></ion-icon>
+  </button>
+</ion-item>
+
+</ion-list>
+
 </ion-content>

@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { AlleanzaPage } from './alleanza.page';
+import { ModalAlleanzaPage } from './modal/modal.page';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     UiComponentsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AlleanzaPage]
+  declarations: [AlleanzaPage, ModalAlleanzaPage],
+  entryComponents: [ModalAlleanzaPage]
 })
 export class AlleanzaPageModule {}

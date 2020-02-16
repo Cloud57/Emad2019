@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inserisci in alleanza</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>  
+      <ion-row>
+        <ion-col  *ngFor="let item of this.newAlliance" >
+         <ion-label color="placeholder">{{item.email}}</ion-label>
+         <ion-icon name="close" (click)="removeToAlliance(item.email)"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <ion-item>
+      <ion-searchbar [(ngModel)]="this.searchText" placeholder="Ricerca Utente" type="text" debounce="200" (ionChange)="getItems($event)"></ion-searchbar>
+      </ion-item>
+      <ion-list *ngIf="isItemAvailable">
+          <ion-item *ngFor="let item of items" (click)="addToAlliance(item)">{{ item }}</ion-item>
+      </ion-list>
+      <ion-button class="center" type="submit" (click)="save()">Salva</ion-button>
+
+</ion-content>

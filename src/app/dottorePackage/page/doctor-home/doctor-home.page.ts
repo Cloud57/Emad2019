@@ -97,7 +97,7 @@ export class DoctorHomePage implements OnInit {
     this.rubyService.get_patients_alliance(this.globalService.currentUser.id).subscribe(
       data => {
         console.log(data);
-        this.response = data   
+        this.response = data
         for(let item of this.response){
           if(item.patient.profile_pic == undefined){
             item.patient.profile_pic = "../../assets/img/profilo.png"
@@ -130,6 +130,7 @@ export class DoctorHomePage implements OnInit {
       console.log(patient.users_in_alliance);
       this.globalService.currentPatient= patient.patient;
       this.globalService.currentPatient.users_in_alliance= patient.users_in_alliance;
+      this.globalService.currentAlliance = patient.alliance
       console.log(this.globalService.currentPatient);
       this.navCtrl.navigateRoot('/paziente-home');
     }

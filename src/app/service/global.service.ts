@@ -6,6 +6,7 @@ import { Task } from '../models/task';
 import { Problem_behaviour } from '../models/Problem_behaviour';
 import { Reports } from '../models/reports';
 import { EnvService } from './env.service';
+import { Alliance } from '../models/alliance';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,7 @@ export class GlobalService {
   public params:any;
   public currentUser:User = new User();
   public currentPatient:Patient= new Patient();
+  public currentAlliance:Alliance
   public currentTask:Task= new Task();
   public currentFilter= new Filter();
   public currentProblem:Problem_behaviour= new Problem_behaviour();

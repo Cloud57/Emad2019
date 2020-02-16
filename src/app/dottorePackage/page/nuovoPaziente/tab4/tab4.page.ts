@@ -33,7 +33,7 @@ export class Tab4Page implements OnInit {
   prepareSearchData(){
     this.items = []
     for(let item of this.originalItems){
-      if(!this.sharedService.alliance.some( ({email}) => email == item.email))
+      if(!this.sharedService.alliance.some( ({email}) => email == item.email)&& item.user_type < 2)
       this.items.push(item.email)
     }
   }

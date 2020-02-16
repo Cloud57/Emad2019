@@ -7,4 +7,5 @@ export class Reports {
     date_execution:string
     user_id:number
     task_id:number
+    media_files: any[]
 }
