@@ -130,4 +130,38 @@
     </ion-col>
     </ion-row>
 </ion-grid>
+
+<ion-item *ngIf="videoUrl">
+  <ion-grid fixed>
+    <ion-row>
+      <h4>Video</h4>
+    </ion-row>
+      <ion-row>
+        <video width="320" height="240" controls>
+          <source [src]="videoUrl"  type="video/mp4">
+        
+        </video>
+      </ion-row>
+    
+  </ion-grid>
+
+  
+</ion-item>
+
+<ion-item *ngIf="audioUrl">
+  <ion-grid fixed>
+    <ion-row>
+      <h4>Audio</h4>
+    </ion-row>
+      <ion-row>
+        <audio controls>
+        <source [src]="audioUrl" type="audio/aac">
+      
+      </audio>
+    </ion-row>
+  </ion-grid>
+  
+  
+  
+</ion-item>
 </ion-content>

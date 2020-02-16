@@ -112,3 +112,7 @@ ion-input{
   .form{
     margin-top: 2%;
   }
+
+  ion-card {
+    touch-action: auto !important;
+  }

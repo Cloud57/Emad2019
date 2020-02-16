@@ -102,24 +102,43 @@ export class RubyApiService {
           return this.http.put(EnvService.API_URL+"/tasks/"+taskId,formData);
         }
 
-        new_prom_beh(form, id) {
-          var register = { problem_behavior : {
-            name :form.name, description : form.description, frequency : form.frequency,
-            intensity: form.intensity, duration: form.duration, antecedent : form.antecedent,
-            behavior: form.behavior, consequence: form.consequence, date : form.date,
-            patient_id: id}
-           };
-          return this.http.post(EnvService.API_URL+"/problem_behaviors",JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+        new_prom_beh(form, id,imgBlob, filenameVideo, audioBlob, filenameAudio) {
+           let formData = new FormData();
+           formData.append('problem_behavior[name]', form.name);
+           formData.append('problem_behavior[description]', form.description);
+           formData.append('problem_behavior[frequency]', form.frequency);
+           formData.append('problem_behavior[intensity]', form.intensity);
+           formData.append('problem_behavior[duration]', form.duration);
+           formData.append('problem_behavior[antecedent]', form.antecedent);
+           formData.append('problem_behavior[behavior]', form.behavior);
+           formData.append('problem_behavior[consequence]', form.consequence);
+           formData.append('problem_behavior[date]', form.date);
+           formData.append('problem_behavior[patient_id]', id)
+           if(imgBlob != null)
+           formData.append('media_files[]', imgBlob,filenameVideo);
+          if(audioBlob != null)
+            formData.append('media_files[]', audioBlob,filenameAudio);
+          return this.http.post(EnvService.API_URL+"/problem_behaviors",formData);
+
         }
 
-        mod_prom_beh(form, id, problemId) {
-          var register = { problem_behavior : {
-            name :form.name, description : form.description, frequency : form.frequency,
-            intensity: form.intensity, duration: form.duration, antecedent : form.antecedent,
-            behavior: form.behavior, consequence: form.consequence, date : form.date,
-            patient_id: id}
-           };
-          return this.http.put(EnvService.API_URL+"/problem_behaviors/"+problemId,JSON.stringify(register), {headers: {'Content-Type': 'application/json'}});
+        mod_prom_beh(form, id, problemId,imgBlob, filenameVideo, audioBlob, filenameAudio) {
+           let formData = new FormData();
+           formData.append('problem_behavior[name]', form.name);
+           formData.append('problem_behavior[description]', form.description);
+           formData.append('problem_behavior[frequency]', form.frequency);
+           formData.append('problem_behavior[intensity]', form.intensity);
+           formData.append('problem_behavior[duration]', form.duration);
+           formData.append('problem_behavior[antecedent]', form.antecedent);
+           formData.append('problem_behavior[behavior]', form.behavior);
+           formData.append('problem_behavior[consequence]', form.consequence);
+           formData.append('problem_behavior[date]', form.date);
+           formData.append('problem_behavior[patient_id]', id)
+           if(imgBlob != null)
+           formData.append('media_files[]', imgBlob,filenameVideo);
+          if(audioBlob != null)
+            formData.append('media_files[]', audioBlob,filenameAudio);
+          return this.http.put(EnvService.API_URL+"/problem_behaviors/"+problemId,formData);
         }
 
         new_alliance(allianceForm:Alliance[],patientID) {
@@ -213,6 +232,10 @@ export class RubyApiService {
       }
       delete_media_report(idReport, idMedia) {
         return this.http.delete(EnvService.API_URL+"/media_reports/"+idReport+"/"+idMedia);
+      }
+
+      delete_media_problem(idProblem, idMedia) {
+        return this.http.delete(EnvService.API_URL+"/problem_behaviors/"+idProblem+"/"+idMedia);
       }
 
       delete_patient(id) {

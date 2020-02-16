@@ -25,6 +25,33 @@
         </ion-item>
       </ion-list>
       
+      <ion-list >
+        <ion-list-header style="color:#7B7B7B;">Aggiungi Materiale Video</ion-list-header>
+        <ion-label *ngIf=" this.shared.videoBlob"><b>{{uploadVideoText}}</b></ion-label><br>
+        <ion-label *ngIf="this.shared.videoBlob || fileVideoToMod">Elimina il media prima di poterlo modificare</ion-label>
+        <ion-item lines="none">
+          <button *ngIf="!this.shared.videoBlob && !fileVideoToMod" (click)="uploadVideo()" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
+            <ion-icon name="add"></ion-icon>
+          </button>
+          <button *ngIf="this.shared.videoBlob || fileVideoToMod" (click)="deleteMedia(fileVideoToMod, true)" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-item>
+
+        <ion-list-header style="color:#7B7B7B;">Aggiungi Materiale Audio</ion-list-header>
+        <ion-label *ngIf="this.shared.audioBlob"><b>{{uploadAudioText}}</b></ion-label><br>
+        <ion-label *ngIf="this.shared.audioBlob || fileAudioToMod">Elimina il media prima di poterlo modificare</ion-label>
+        <ion-item lines="none">
+          <button *ngIf="!this.shared.audioBlob && !fileAudioToMod" (click)="uploadAudio()" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
+            <ion-icon name="add"></ion-icon>
+          </button>
+          <button *ngIf="this.shared.audioBlob || fileAudioToMod" (click)="deleteMedia(fileAudioToMod, false)" class="round" style="margin-top:1%; margin-bottom:2%; width:40px;height:40px!important"> 
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-item>
+
+</ion-list>
+
         
       
     

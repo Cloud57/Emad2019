@@ -1,3 +1,4 @@
+import { EnvService } from './../../../../../service/env.service';
 import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/models/patient';
 import { NavController } from '@ionic/angular';
@@ -21,7 +22,9 @@ export class DettagliComportamentoProblemaPage implements OnInit {
   public problem:Problem_behaviour = new Problem_behaviour();
   
   public title:string = "Comportamento Problema"
-  constructor(private navCtrl: NavController, public global : GlobalService) { 
+  videoUrl:string = null
+  audioUrl:string = null
+  constructor(private navCtrl: NavController, public global : GlobalService, private EnvService:EnvService) { 
     this.problem = global.currentProblem;
 
   }
@@ -76,5 +79,14 @@ export class DettagliComportamentoProblemaPage implements OnInit {
     this.navCtrl.navigateRoot('/new-com-problema/tabCp');
   }
 
+  setUrl(){
+    if(this.global.currentReport.media_files.length > 0){
+      for(let media of this.global.currentReport.media_files)
+        if(media.media.includes("mp4"))
+          this.videoUrl = EnvService.API_URL+  media.media
+        else if(media.media.includes("aac") || media.media.includes("mp3") || media.media.includes("m4a"))
+          this.audioUrl = EnvService.API_URL+  media.media
+    }
+  }
 
 }
