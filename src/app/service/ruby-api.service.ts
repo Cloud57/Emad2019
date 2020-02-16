@@ -30,14 +30,14 @@ export class RubyApiService {
       formData.append('user[user_type]',  form.user_type);
       if(imageBlob != null)
         formData.append('profile_pic', imageBlob,imageName)
-      return this.http.post(EnvService.API_URL+"/users",formData);  
+      return this.http.post(EnvService.API_URL+"/users.json",formData);  
     }
 
     mod_utente(imageName, imageBlob, id) {
       let formData = new FormData();
       formData.append('user[id]', id);
       formData.append('profile_pic', imageBlob,imageName)
-      return this.http.put(EnvService.API_URL+"/users/"+id,formData);  
+      return this.http.put(EnvService.API_URL+"/users/"+id+".json",formData);  
     }
 
       new_patient(form, id,imageName, imageBlob) {

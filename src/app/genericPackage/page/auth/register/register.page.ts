@@ -90,8 +90,12 @@ export class RegisterPage implements OnInit {
         error => {
           this.spinner.dismiss();
           console.log(error);
-          if(error.status)
-          this.alertService.presentToast("Errore nella registrazione");
+          if(error.error.email){
+            this.alertService.presentToast("La mail inserita non è corretta");
+          } else if(error.error.password_confirmation){
+            this.alertService.presentToast("Le password non combaciano");
+          } else
+            this.alertService.presentToast("Errore nella registrazione");
         },
         () => {
          this.spinner.dismiss();

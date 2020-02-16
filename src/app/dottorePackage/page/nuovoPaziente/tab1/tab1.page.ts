@@ -4,6 +4,7 @@ import { SharedNewPazienteService } from '../shared-new-paziente.service';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import {Chooser, ChooserResult} from '@ionic-native/chooser/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { GlobalService } from 'src/app/service/global.service';
 @Component({
   selector: 'app-tab1',
   templateUrl: './tab1.page.html',
@@ -13,7 +14,7 @@ export class Tab1Page implements OnInit {
 
   public fileObj:ChooserResult
 
-  constructor(public sharedService: SharedNewPazienteService,  private chooser:Chooser,public file: File,private filePath: FilePath) {
+  constructor(public sharedService: SharedNewPazienteService,  private chooser:Chooser,public file: File,private filePath: FilePath, public global: GlobalService) {
     this.sharedService.imageBlob = null
     this.sharedService.imageName = ""
    }

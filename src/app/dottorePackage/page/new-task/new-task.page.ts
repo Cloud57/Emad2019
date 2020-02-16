@@ -253,10 +253,14 @@ export class NewTaskPage implements OnInit {
             }
              
           }
-          if(video)
+          if(video){
+            this.videoBlob = null
             this.fileVideoToMod = null
-          else
+          }
+          else {
             this.fileAudioToMod = null
+            this.audioBlob = null
+          }
             this.changeRef.detectChanges();
         },
         error => {

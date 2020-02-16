@@ -21,7 +21,7 @@ const TOKEN_KEY = 'user';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-    protected url   = this.envService;
+    protected url   = EnvService.API_URL;
     protected debug = false;
 
     constructor(private alertController: AlertController, private storage: Storage, private envService: EnvService) {}
@@ -30,8 +30,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
         // YOU CAN ALSO DO THIS
         // const token = this.authenticationService.getToke()
-        if(request.url.includes("authenticate") || request.url.includes(this.url+"/users")){
-            request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
+        
+        if(request.url.includes("authenticate") || request.url == this.url+"/users.json"){
             return next.handle(request)
             
         } else

@@ -8,6 +8,7 @@ import { File } from '@ionic-native/file/ngx';
 import { LoadingController } from '@ionic/angular';
 import { RubyApiService } from 'src/app/service/ruby-api.service';
 import { AlertService } from 'src/app/service/alert.service';
+import { EnvService } from 'src/app/service/env.service';
 @Component({
   selector: 'app-profilo-caregiver',
   templateUrl: './profilo-caregiver.page.html',
@@ -24,7 +25,7 @@ export class ProfiloCaregiverPage implements OnInit {
   spinner: any;
 
   constructor(private navCtrl: NavController, public global : GlobalService, private chooser:Chooser,public file: File,private filePath: FilePath,
-    private loading:LoadingController, private rubyService:RubyApiService,private alertService: AlertService)
+    private loading:LoadingController, private rubyService:RubyApiService,private alertService: AlertService, private EnvService:EnvService)
  { 
     this.caregiver = global.currentUser
   }
@@ -73,6 +74,12 @@ export class ProfiloCaregiverPage implements OnInit {
         this.spinner.present();
         this.rubyService.mod_utente(this.imageName, this.imageBlob, this.global.currentUser.id).subscribe(
           data => {
+            let response:any = data
+            if(response.profile_pic != undefined){
+              this.global.currentUser.profile_pic = EnvService.API_URL + response.profile_pic
+            } else {
+              this.global.currentUser.profile_pic = "../../assets/img/profilo.png"
+            }
             this.alertService.presentToast("Immagine aggiornata");
           },
           error => {

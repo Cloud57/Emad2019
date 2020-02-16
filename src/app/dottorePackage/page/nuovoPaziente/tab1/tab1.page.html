@@ -19,7 +19,8 @@
     </ion-row>
     <ion-row>
       <ion-col text-center>
-        <ion-button (click)="PickFile()">Inserisci immagine profilo</ion-button>
+        <ion-button *ngIf="this.global.modify" (click)="PickFile()">Modifica immagine paziente</ion-button>
+        <ion-button *ngIf="!this.global.modify" (click)="PickFile()">Inserisci immagine paziente</ion-button>
       </ion-col>
     </ion-row>
         <ion-row>
