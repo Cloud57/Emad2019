@@ -110,7 +110,7 @@ export class DoctorHomePage implements OnInit {
         console.log(error);
       },
       () => {
-       
+        this.loading=false;
       }
     );
   }
